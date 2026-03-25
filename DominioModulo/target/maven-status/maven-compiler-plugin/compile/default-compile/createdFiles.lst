@@ -1,0 +1,12 @@
+entidades\Mesa.class
+entidades\UnidadMedida.class
+entidades\Mesero.class
+entidades\ClienteFrecuente.class
+entidades\ProductoIngrediente.class
+entidades\EstadoComanda.class
+entidades\Producto.class
+entidades\Cliente.class
+entidades\Ingrediente.class
+entidades\Comanda.class
+entidades\ComandaProducto.class
+entidades\Empleado.class
