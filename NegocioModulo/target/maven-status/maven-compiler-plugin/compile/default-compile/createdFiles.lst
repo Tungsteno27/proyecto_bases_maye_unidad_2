@@ -1,1 +1,7 @@
-com\mycompany\negociomodulo\NegocioModulo.class
+adaptadores\ClienteFrecuenteAdapter.class
+BOs\ClienteBO.class
+adaptadores\ClienteAdapter.class
+factory\ClienteAdapterFactory.class
+utilidadesBO\Encriptador.class
+utilidadesBO\Validadores.class
+excepciones\NegocioException.class
