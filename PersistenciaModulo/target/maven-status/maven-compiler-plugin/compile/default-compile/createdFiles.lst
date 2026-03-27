@@ -1,3 +1,5 @@
 excepciones\PersistenciaException.class
+interfaces\IClienteDAO.class
 insertsMasivosGPTOs\PobladorBD.class
 conexion\ConexionBD.class
+DAOs\ClienteDAO.class

@@ -16,11 +16,15 @@ import entidades.Mesero;
 import entidades.Producto;
 import entidades.ProductoIngrediente;
 import entidades.UnidadMedida;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.Random;
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 import javax.persistence.EntityManager;
 
 /**
@@ -57,33 +61,18 @@ public class PobladorBD {
                 meseros.add(m);
             }
 
-            // =====================
-            // 2. CLIENTES
-            // =====================
-            String[][] datosClientes = {
-                {"Luis", "Hernández", "Torres"},
-                {"Sofía", "Ramírez", "Díaz"},
-                {"Pedro", "Flores", "Cruz"},
-                {"Laura", "Morales", "Vega"}
-            };
 
             List<Cliente> clientes = new ArrayList<>();
-            for (String[] datos : datosClientes) {
-                Cliente c = new Cliente();
-                c.setNombres(datos[0]);
-                c.setApellidoPaterno(datos[1]);
-                c.setApellidoMaterno(datos[2]);
-                c.setTelefono("644" + (1000000 + random.nextInt(9000000)));
-                c.setCorreo(datos[0].toLowerCase() + "." + datos[1].toLowerCase() + "@gmail.com");
-                c.setFechaRegistro(LocalDate.now().minusDays(random.nextInt(365)));
-                em.persist(c);
-                clientes.add(c);
-            }
+           
 
             // =====================
             // 3. CLIENTES FRECUENTES
             // =====================
             String[][] datosFrecuentes = {
+                {"Luis", "Hernández", "Torres"},
+                {"Sofía", "Ramírez", "Díaz"},
+                {"Pedro", "Flores", "Cruz"},
+                {"Laura", "Morales", "Vega"},
                 {"Roberto", "Castro", "Núñez"},
                 {"Elena", "Vargas", "Ríos"}
             };
@@ -93,12 +82,18 @@ public class PobladorBD {
                 cf.setNombres(datos[0]);
                 cf.setApellidoPaterno(datos[1]);
                 cf.setApellidoMaterno(datos[2]);
-                cf.setTelefono("644" + (1000000 + random.nextInt(9000000)));
+
+                // Generar teléfono y encriptarlo
+                String telefonoPlano = "644" + (1000000 + random.nextInt(9000000));
+                String telefonoEncriptado = encriptarTelefono(telefonoPlano);
+                cf.setTelefono(telefonoEncriptado);
+
                 cf.setCorreo(datos[0].toLowerCase() + "." + datos[1].toLowerCase() + "@gmail.com");
                 cf.setFechaRegistro(LocalDate.now().minusDays(random.nextInt(365)));
                 em.persist(cf);
                 clientes.add(cf);
             }
+
 
             // =====================
             // 4. INGREDIENTES
@@ -232,5 +227,20 @@ public class PobladorBD {
     public static void main(String[] args) {
         poblar();
     }
+    
+    private static String encriptarTelefono(String telefonoPlano) {
+        try {
+            String algoritmo = "AES/ECB/PKCS5Padding";
+            String clave = "MiClaveSecreta16";
+            SecretKeySpec secretKey = new SecretKeySpec(clave.getBytes(StandardCharsets.UTF_8), "AES");
+            Cipher cipher = Cipher.getInstance(algoritmo);
+            cipher.init(Cipher.ENCRYPT_MODE, secretKey);
+            byte[] cifrado = cipher.doFinal(telefonoPlano.getBytes(StandardCharsets.UTF_8));
+            return Base64.getEncoder().encodeToString(cifrado);
+        } catch (Exception e) {
+            throw new RuntimeException("Error al encriptar teléfono: " + e.getMessage(), e);
+        }
+    }
+
 
 }
