@@ -6,7 +6,6 @@ package pantallas;
 
 import EstilosGUI.UI;
 import coordinador.Coordinador;
-import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
