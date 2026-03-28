@@ -19,7 +19,7 @@ public interface IClienteDAO {
 
     public Cliente buscarCliente(Long id);
 
-    public void eliminarCliente(int id) throws PersistenciaException;
+    public void eliminarCliente(Long id) throws PersistenciaException;
 
     public List<Cliente> obtenerTodosLosClientes();
 

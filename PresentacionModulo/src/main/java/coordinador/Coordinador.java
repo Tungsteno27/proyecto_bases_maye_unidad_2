@@ -12,6 +12,7 @@ import excepciones.NegocioException;
 import javax.swing.JOptionPane;
 import pantallas.FrmBuscadorClientes;
 import pantallas.FrmEnMantenimiento;
+import pantallas.FrmEnProgreso;
 import pantallas.FrmExito;
 import pantallas.FrmInfoAdicional;
 import pantallas.FrmModificarCliente;
@@ -41,8 +42,9 @@ public class Coordinador {
     private FrmModificarCliente frmModificarCliente;
     private FrmBuscadorClientes frmBuscadorClientes;
     private FrmInfoAdicional    frmInfoAdicional;
-    private FrmExito            frmExito; 
+    private FrmExito            frmExito;  
     private FrmEnMantenimiento frmMantenimieto;
+    private FrmEnProgreso frmProgreso;
     
     //
     private ClienteBO clienteBO;
@@ -73,7 +75,10 @@ public class Coordinador {
  
     //Si elige mesero lo manda al modulo de comandas (Dayanara)
     public void rolMeseroSeleccionado() {
-        // TODO: navegar al módulo de mesero cuando esté listo
+        if (frmSeleccionRol != null) frmSeleccionRol.setVisible(false);
+        if (frmProgreso == null) frmProgreso = new FrmEnProgreso(this);
+        frmProgreso.setVisible(true);
+        frmProgreso.toFront();
     }
  
     //Valida la contraseña ingresada (falta implementar, aún no sé donde guardarla)
@@ -218,7 +223,7 @@ public class Coordinador {
                 JOptionPane.WARNING_MESSAGE);
             
             if(respuesta == JOptionPane.YES_OPTION){
-                clienteBO.eliminar(id.intValue());
+                clienteBO.eliminar(id);
                 if(frmSeleccionarId != null)frmSeleccionarId.setVisible(false);
                 mostrarExito("El Cliente con ID: " + id + " fue\neliminado con éxito", "eliminar_cliente");
             }

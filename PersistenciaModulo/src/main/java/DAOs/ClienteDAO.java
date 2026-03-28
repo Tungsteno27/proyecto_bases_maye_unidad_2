@@ -97,24 +97,22 @@ public class ClienteDAO implements IClienteDAO {
      * @param id el id del cliente a eliminar
      */
     @Override
-    public void eliminarCliente(int id) throws PersistenciaException {
+    public void eliminarCliente(Long id) throws PersistenciaException {
         EntityManager em = ConexionBD.crearConexion();
         try {
-
-            em.getTransaction().begin();
-
             Cliente cliente = em.find(Cliente.class, id);
 
             if (cliente != null) {
+                em.getTransaction().begin();
                 em.remove(cliente);
                 em.getTransaction().commit();
                 LOG.info("Se eliminó al cliente con id: " + id);
             } else {
-                em.getTransaction().rollback();
                 LOG.warning("No se encontró al cliente con id: " + id);
             }
 
         } catch (Exception e) {
+            e.printStackTrace();
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
             }

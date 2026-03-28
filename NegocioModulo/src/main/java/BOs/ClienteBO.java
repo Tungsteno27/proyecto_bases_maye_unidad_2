@@ -36,12 +36,24 @@ public class ClienteBO {
             if (dto.getNombres() == null || dto.getNombres().isBlank()) {
                 throw new NegocioException("El nombre es obligatorio");
             }
+            if (dto.getApellidoPaterno() == null || dto.getApellidoPaterno().isBlank()) {
+                throw new NegocioException("El apellido paterno es obligatorio");
+            }
             if (dto.getTelefono() == null || dto.getTelefono().isBlank()) {
                 throw new NegocioException("El teléfono es obligatorio");
             }
             if (!Validadores.validarNombre(dto.getNombres())) {
                 throw new NegocioException("El nombre no es válido");
             }
+            if (!Validadores.validarApellido(dto.getApellidoPaterno())) {
+                throw new NegocioException("El apellido no es válido");
+            }
+            if(dto.getApellidoMaterno() != null && !dto.getApellidoMaterno().isBlank()){
+                if (!Validadores.validarApellidoMa(dto.getApellidoMaterno())) {
+                throw new NegocioException("El apellido no es válido");
+            }
+            }
+            
             if (!Validadores.validarTelefono(dto.getTelefono())) {
                 throw new NegocioException("El teléfono debe tener 10 dígitos");
             }
@@ -59,7 +71,7 @@ public class ClienteBO {
         }
     }
 
-    public void eliminar(int idCliente) throws NegocioException {
+    public void eliminar(Long idCliente) throws NegocioException {
         try {
             clienteDAO.eliminarCliente(idCliente);
         } catch (PersistenciaException e) {

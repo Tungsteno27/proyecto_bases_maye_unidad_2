@@ -15,6 +15,9 @@ public class Validadores {
     
     //Expresión regular para los nombres, todas las letras del abecedario con un mínimo de dos letras
     public static final String regexNombre = "[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{2,}";
+    
+    //Expresión regular para los apellidos, todas las letras del abecedario con un mínimo de dos letras
+    public static final String regexApellidoPa = "[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{2,}";
 
     //regex del correo, acepta varios símbolos y tiene que llevar el arroba entre el texto
     public static final String regexCorreo = "^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$";
@@ -42,6 +45,27 @@ public class Validadores {
             return false;
         }
         return nombre.matches(regexNombre);
+    }
+    
+    /**
+     * Método que valida un apellido
+     * @param apellido el apellido a validar
+     * @return  verdadero si es valido, falso en caso contrario
+     */
+    public static boolean validarApellido(String apellido) {
+        if (apellido == null) {
+            return false;
+        }
+        return apellido.matches(regexApellidoPa);
+    }
+    
+    /**
+     * Método que valida un apellido
+     * @param apellido el apellido a validar
+     * @return  verdadero si es valido, falso en caso contrario
+     */
+    public static boolean validarApellidoMa(String apellido) {
+        return apellido.matches(regexApellidoPa);
     }
 
     /**

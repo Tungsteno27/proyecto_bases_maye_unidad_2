@@ -7,6 +7,8 @@ pantallas\FrmModuloClientes$1.class
 pantallas\FrmRegistrarCliente$1.class
 pantallas\FrmPassword$2.class
 EstilosGUI\UI$3.class
+pantallas\FrmEnProgreso$1.class
+pantallas\FrmEnProgreso.class
 iniciar\ArrancarSistema.class
 pantallas\FrmPassword.class
 pantallas\FrmEnMantenimiento$1.class
