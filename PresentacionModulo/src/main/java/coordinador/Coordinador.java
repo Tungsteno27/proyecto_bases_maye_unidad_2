@@ -6,10 +6,12 @@ package coordinador;
 
 import BOs.ClienteBO;
 import DAOs.ClienteDAO;
+import DTOs.ClienteDTO;
 import DTOs.ClienteFrecuenteDTO;
 import excepciones.NegocioException;
 import javax.swing.JOptionPane;
 import pantallas.FrmBuscadorClientes;
+import pantallas.FrmEnMantenimiento;
 import pantallas.FrmExito;
 import pantallas.FrmInfoAdicional;
 import pantallas.FrmModificarCliente;
@@ -40,6 +42,7 @@ public class Coordinador {
     private FrmBuscadorClientes frmBuscadorClientes;
     private FrmInfoAdicional    frmInfoAdicional;
     private FrmExito            frmExito; 
+    private FrmEnMantenimiento frmMantenimieto;
     
     //
     private ClienteBO clienteBO;
@@ -157,6 +160,7 @@ public class Coordinador {
         if (frmModuloClientes != null) frmModuloClientes.setVisible(false);
         if (frmSeleccionarId == null) frmSeleccionarId = new FrmSeleccionarId(this);
         frmSeleccionarId.setAccion(accion);
+        frmSeleccionarId.setVisible(true);
         frmSeleccionarId.toFront();
     }
     
@@ -199,9 +203,25 @@ public class Coordinador {
     // Eliminar
     public void eliminarCliente(Long id) {
         try {
-            clienteBO.eliminar(id.intValue());
-            if (frmSeleccionarId != null) frmSeleccionarId.setVisible(false);
-            mostrarExito("El Cliente con ID: " + id + " fue\neliminado con éxito", "eliminar_cliente");
+            ClienteDTO dto = clienteBO.obtenerPorId(id);
+            if(dto == null){
+                JOptionPane.showMessageDialog(frmSeleccionarId, "No se entro el cliente con el "
+                        + "id indicado", "Aviso", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            
+            int respuesta = JOptionPane.showConfirmDialog(frmSeleccionarId,
+                "¿Seguro de que desea eliminar al cliente?\n" + 
+                "Nombre: " + dto.getNombres() + " " + dto.getApellidoPaterno(),
+                "Confirmar Eliminación", 
+                JOptionPane.YES_NO_OPTION, 
+                JOptionPane.WARNING_MESSAGE);
+            
+            if(respuesta == JOptionPane.YES_OPTION){
+                clienteBO.eliminar(id.intValue());
+                if(frmSeleccionarId != null)frmSeleccionarId.setVisible(false);
+                mostrarExito("El Cliente con ID: " + id + " fue\neliminado con éxito", "eliminar_cliente");
+            }
         } catch (NegocioException ex) {
             JOptionPane.showMessageDialog(frmSeleccionarId,
                     ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -305,6 +325,30 @@ public class Coordinador {
             JOptionPane.showMessageDialog(null,
                     ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
+    }
+    
+    public void abrirModuloIngredientes(){
+        if (frmModulos != null) frmModulos.setVisible(false);
+        if (frmMantenimieto == null) frmMantenimieto = new FrmEnMantenimiento(this);
+        frmMantenimieto.setVisible(true);
+        frmMantenimieto.toFront();
+    }
+    
+    /**
+     *
+     */
+    public void abrirModuloProductos(){
+        if (frmModulos != null) frmModulos.setVisible(false);
+        if (frmMantenimieto == null) frmMantenimieto = new FrmEnMantenimiento(this);
+        frmMantenimieto.setVisible(true);
+        frmMantenimieto.toFront();
+    }
+    
+    public void abrirModuloReportes(){
+        if (frmModulos != null) frmModulos.setVisible(false);
+        if (frmMantenimieto == null) frmMantenimieto = new FrmEnMantenimiento(this);
+        frmMantenimieto.setVisible(true);
+        frmMantenimieto.toFront();
     }
 }
     

@@ -8,6 +8,7 @@ import EstilosGUI.UI;
 import coordinador.Coordinador;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -15,6 +16,7 @@ import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -73,7 +75,23 @@ public class FrmModulos extends JFrame {
             btn.setFont(new Font("Georgia", Font.PLAIN, 15));
             //luego se implementará la navegación hacia el módulo de clientes
             grid.add(btn);
+            switch (nombre) {
+                case "Ingredientes" ->
+                    btn.addActionListener(e -> coordinador.abrirModuloIngredientes());
+
+                case "Productos" ->
+                    btn.addActionListener(e -> coordinador.abrirModuloProductos());
+
+                case "Reportes" ->
+                    btn.addActionListener(e -> coordinador.abrirModuloReportes());
+
+                case "Clientes frecuentes" ->
+                    btn.addActionListener(e -> coordinador.abrirModuloClientes());
+
+            }
         }
+
+        
  
         card.add(grid, BorderLayout.CENTER);
  

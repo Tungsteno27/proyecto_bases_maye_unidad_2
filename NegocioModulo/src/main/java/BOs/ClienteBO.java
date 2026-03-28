@@ -51,7 +51,7 @@ public class ClienteBO {
             dto.setTelefono(telefonoEncriptado);
             //La verdad hacer esto fue lo único que se me ocurrió, si se maneja otro cliente entonces se agregaría un if con instanceOf
             //que no es lo más óptimo pero ya no se como arreglarlo
-
+            //Lo hice de tipo ClienteAdapterFactory para el uso del instanceOf
             Cliente cliente = ClienteAdapterFactory.dtoAEntidad(dto);
 
             clienteDAO.registrarCliente(cliente);
@@ -244,7 +244,7 @@ public class ClienteBO {
     public void registrarClienteGeneral() throws NegocioException {
         try {
             // Verificamos si ya existe buscando por nombre exacto
-            List<ClienteFrecuente> existentes = clienteDAO.buscarFrecuentesPorFiltros("General", null);
+            List<ClienteDTO> existentes = obtenerTodos();
             boolean yaExiste = existentes.stream()
                     .anyMatch(c -> "Cliente".equalsIgnoreCase(c.getNombres())
                     && "General".equalsIgnoreCase(c.getApellidoPaterno()));
@@ -259,8 +259,8 @@ public class ClienteBO {
             dto.setTelefono("0000000000");
             dto.setCorreo("");
             dto.setFechaRegistro(java.time.LocalDate.now());
-            registrar(dto);
-        } catch (PersistenciaException ex) {
+            this.registrar(dto);
+        } catch (NegocioException ex) {
             throw new NegocioException("Error al registrar cliente general: " + ex.getMessage());
         }
     }
