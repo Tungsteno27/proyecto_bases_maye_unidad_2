@@ -14,8 +14,17 @@ import java.util.List;
  * @author Tungs
  */
 public interface IClienteDAO {
+
     public Cliente registrarCliente(Cliente cliente) throws PersistenciaException;
+
     public Cliente buscarCliente(Long id);
+
     public void eliminarCliente(int id) throws PersistenciaException;
+
     public List<Cliente> obtenerTodosLosClientes();
+
+    public Cliente actualizarCliente(Cliente cliente) throws PersistenciaException;
+
+    public List<ClienteFrecuente> buscarFrecuentesPorFiltros(String nombre, String correo) throws PersistenciaException;
+
 }

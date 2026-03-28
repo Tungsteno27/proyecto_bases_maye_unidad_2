@@ -188,6 +188,14 @@ public class Coordinador {
                     ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);        }
     }
     
+    public void regresarDesdeModificarCliente() {
+        if (frmModificarCliente != null) frmModificarCliente.setVisible(false);
+        if (frmModuloClientes == null) frmModuloClientes = new FrmModuloClientes(this);
+        frmModuloClientes.setVisible(true);
+        frmModuloClientes.toFront();
+    }
+    
+    
     // Eliminar
     public void eliminarCliente(Long id) {
         try {
