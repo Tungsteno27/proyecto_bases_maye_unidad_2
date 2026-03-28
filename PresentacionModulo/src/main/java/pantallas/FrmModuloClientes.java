@@ -25,32 +25,32 @@ import javax.swing.border.EmptyBorder;
  * @author Dell PC
  */
 public class FrmModuloClientes extends JFrame {
-    
+
     private final Coordinador coordinador;
-    
+
     public FrmModuloClientes(Coordinador coordinador) {
         this.coordinador = coordinador;
         iniciar();
     }
-    
+
     private void iniciar() {
         setTitle("Módulo de clientes");
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setResizable(false);
         setSize(520, 420);
         setLocationRelativeTo(null);
-        
+
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent e) {
                 coordinador.cerrarSesion();
             }
         });
-        
+
         JPanel fondo = new JPanel(new GridBagLayout());
         fondo.setBackground(UI.FONDO);
         setContentPane(fondo);
-        
+
         JPanel card = UI.card(440, 340);
         card.setLayout(new BorderLayout());
         card.setBorder(new EmptyBorder(36, 44, 40, 44));
@@ -66,31 +66,31 @@ public class FrmModuloClientes extends JFrame {
         columna.setOpaque(false);
         columna.setLayout(new BoxLayout(columna, BoxLayout.Y_AXIS));
         columna.setBorder(new EmptyBorder(26, 0, 0, 0));
-        
+
         String[] opciones = {"Registrar Cliente", "Modificar Cliente", "Eliminar Cliente", "Buscador de Clientes"};
         for (String opcion : opciones) {
             JButton btn = UI.botonPrimario(opcion);
             btn.setAlignmentX(Component.CENTER_ALIGNMENT);
             btn.setMaximumSize(new Dimension(260, 46));
-            
+
             switch (opcion) {
                 case "Registrar Cliente" ->
                     btn.addActionListener(e -> coordinador.abrirRegistrarCliente());
-                
+
                 case "Modificar Cliente" ->
                     btn.addActionListener(e -> coordinador.abrirSeleccionarIdCliente());
-                
+
                 case "Eliminar Cliente" ->
                     btn.addActionListener(e -> coordinador.abrirSeleccionarIdCliente());
-                
+
                 case "Buscador de Clientes" ->
                     btn.addActionListener(e -> coordinador.abrirBuscadorClientes());
-                
+
             }
             columna.add(btn);
             columna.add(Box.createVerticalStrut(12));
         }
-        
+
         card.add(columna, BorderLayout.CENTER);
 
         // Boton volver pantalla modulos
@@ -103,17 +103,15 @@ public class FrmModuloClientes extends JFrame {
         btnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVolver.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnVolver.addActionListener(e -> coordinador.regresarDesdeModuloClientes());
-        
-        
+
         JPanel footer = new JPanel();
         footer.setOpaque(false);
         footer.setBorder(new EmptyBorder(10, 0, 0, 0));
         footer.add(btnVolver);
         card.add(footer, BorderLayout.SOUTH);
-        
-        
+
         fondo.add(card);
-        
+
     }
-    
+
 }
