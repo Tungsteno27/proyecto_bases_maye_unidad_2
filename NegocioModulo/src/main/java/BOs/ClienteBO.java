@@ -54,7 +54,7 @@ public class ClienteBO {
             dto.setTelefono(telefonoEncriptado);
             //La verdad hacer esto fue lo único que se me ocurrió, si se maneja otro cliente entonces se agregaría un if con instanceOf
             //que no es lo más óptimo pero ya no se como arreglarlo
-            Cliente cliente = ClienteFrecuenteAdapter.dtoAEntidad((ClienteFrecuenteDTO)dto);
+            Cliente cliente = ClienteAdapterFactory.dtoAEntidad(dto);
             clienteDAO.registrarCliente(cliente);
         } catch (PersistenciaException ex) {
             System.getLogger(ClienteBO.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
@@ -89,8 +89,9 @@ public class ClienteBO {
     public List<ClienteDTO> obtenerTodos() throws NegocioException {
         List<Cliente> clientes = clienteDAO.obtenerTodosLosClientes();
         List<ClienteDTO> clientesDTO = new ArrayList<>();
+        
         for (Cliente cliente : clientes) {
-            ClienteDTO dto = ClienteAdapter.entidadADTO(cliente);
+            ClienteDTO dto = ClienteAdapterFactory.entidadADTO(cliente);
             
             // Desencripta el teléfono de cada cliente
             String telefonoDesencriptado = Encriptador.desencriptar(dto.getTelefono());

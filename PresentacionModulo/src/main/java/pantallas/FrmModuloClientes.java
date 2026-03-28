@@ -78,10 +78,10 @@ public class FrmModuloClientes extends JFrame {
                     btn.addActionListener(e -> coordinador.abrirRegistrarCliente());
 
                 case "Modificar Cliente" ->
-                    btn.addActionListener(e -> coordinador.abrirSeleccionarIdCliente());
+                    btn.addActionListener(e -> coordinador.abrirSeleccionarIdCliente("modificar"));
 
                 case "Eliminar Cliente" ->
-                    btn.addActionListener(e -> coordinador.abrirSeleccionarIdCliente());
+                    btn.addActionListener(e -> coordinador.abrirSeleccionarIdCliente("eliminar"));
 
                 case "Buscador de Clientes" ->
                     btn.addActionListener(e -> coordinador.abrirBuscadorClientes());
