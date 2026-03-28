@@ -176,6 +176,8 @@ public class ClienteDAO implements IClienteDAO {
             return 0;
         } catch (Exception e) {
             throw new PersistenciaException("Error al calcular visitas del cliente: " + e.getMessage());
+        }finally {
+            em.close();
         }
     }
 
@@ -205,6 +207,8 @@ public class ClienteDAO implements IClienteDAO {
             return 0.0;
         } catch (Exception e) {
             throw new PersistenciaException("Error al calcular total gastado: " + e.getMessage());
+        }finally {
+            em.close();
         }
     }
 
