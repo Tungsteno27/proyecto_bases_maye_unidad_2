@@ -7,7 +7,6 @@ package BOs;
 import DAOs.ClienteDAO;
 import DTOs.ClienteDTO;
 import DTOs.ClienteFrecuenteDTO;
-import adaptadores.ClienteAdapter;
 import adaptadores.ClienteFrecuenteAdapter;
 import entidades.Cliente;
 import entidades.ClienteFrecuente;
@@ -139,9 +138,7 @@ public class ClienteBO {
         return (int) (totalGastado / 20);
     }
 
-    // ─────────────────────────────────────────────────────────────────────────────
-// AGREGAR ESTOS MÉTODOS A ClienteBO.java (NegocioModulo)
-// ─────────────────────────────────────────────────────────────────────────────
+    
     /**
      * Actualiza los datos de un cliente frecuente. Valida campos obligatorios,
      * desencripta el teléfono recibido (ya viene en texto plano desde la GUI) y
