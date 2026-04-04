@@ -13,8 +13,10 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -30,51 +32,54 @@ import javax.swing.border.EmptyBorder;
  */
 public class FrmModulos extends JFrame {
     private final Coordinador coordinador;
- 
+
     public FrmModulos(Coordinador coordinador) {
         this.coordinador = coordinador;
         initUI();
     }
- 
+
     private void initUI() {
         setTitle("Maye's Family Diner — Módulos");
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        setResizable(false);
-        setSize(520, 420);
-        setLocationRelativeTo(null);
- 
+
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent e) {
                 coordinador.cerrarSesion();
             }
         });
- 
+
         JPanel fondo = new JPanel(new GridBagLayout());
         fondo.setBackground(UI.FONDO);
         setContentPane(fondo);
- 
-        JPanel card = UI.card(440, 340);
-        card.setLayout(new BorderLayout());
-        card.setBorder(new EmptyBorder(36, 44, 40, 44));
- 
-        // Título
-        JLabel lblTitulo = new JLabel("Elija un módulo", SwingConstants.CENTER);
-        lblTitulo.setFont(new Font("Georgia", Font.PLAIN, 20));
-        lblTitulo.setForeground(UI.TEXTO_OSCURO);
-        card.add(lblTitulo, BorderLayout.NORTH);
- 
-        // Grid 2x2 de módulos
-        JPanel grid = new JPanel(new GridLayout(2, 2, 16, 16));
+
+        JPanel card = UI.card();
+
+        GridBagConstraints gbc = UI.gbcBase(0, 0);
+        gbc.anchor = GridBagConstraints.CENTER;
+
+        JLabel lblTitulo = UI.tituloGrande("Elija un módulo");
+        gbc.gridy = 0;
+        gbc.insets = new Insets(10, 10, 20, 10);
+        card.add(lblTitulo, gbc);
+
+        gbc.gridy++;
+        JPanel grid = new JPanel(new GridLayout(2, 2, 20, 20));
         grid.setOpaque(false);
-        grid.setBorder(new EmptyBorder(26, 0, 0, 0));
- 
-        String[] modulos = {"Ingredientes", "Productos", "Reportes", "Clientes frecuentes"};
+
+        String[] modulos = {
+            "Ingredientes",
+            "Productos",
+            "Reportes",
+            "Clientes frecuentes"
+        };
+
         for (String nombre : modulos) {
             JButton btn = UI.botonPrimario(nombre);
             btn.setFont(new Font("Georgia", Font.PLAIN, 15));
-            //luego se implementará la navegación hacia el módulo de clientes
-            grid.add(btn);
+
             switch (nombre) {
                 case "Ingredientes" ->
                     btn.addActionListener(e -> coordinador.abrirModuloIngredientes());
@@ -87,31 +92,24 @@ public class FrmModulos extends JFrame {
 
                 case "Clientes frecuentes" ->
                     btn.addActionListener(e -> coordinador.abrirModuloClientes());
-
             }
+
+            grid.add(btn);
         }
 
-        
- 
-        card.add(grid, BorderLayout.CENTER);
- 
-        // Botón de cerrado de sesión
-        JButton btnSalir = new JButton("Cerrar sesión");
-        btnSalir.setFont(new Font("Georgia", Font.PLAIN, 13));
-        btnSalir.setForeground(UI.TEXTO_OSCURO);
-        btnSalir.setContentAreaFilled(false);
-        btnSalir.setBorderPainted(false);
-        btnSalir.setFocusPainted(false);
-        btnSalir.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        btnSalir.setHorizontalAlignment(SwingConstants.RIGHT);
+        card.add(grid, gbc);
+
+        gbc.gridy++;
+        gbc.insets = new Insets(20, 10, 10, 10);
+        gbc.fill = GridBagConstraints.NONE;
+        gbc.anchor = GridBagConstraints.EAST;
+
+        JButton btnSalir = UI.boton("Cerrar sesión", new Color(0x7F8C8D), new Color(0x626567));
+        btnSalir.setPreferredSize(new Dimension(160, 40));
         btnSalir.addActionListener(e -> coordinador.cerrarSesion());
- 
-        JPanel footer = new JPanel(new FlowLayout(FlowLayout.RIGHT, 0, 0));
-        footer.setOpaque(false);
-        footer.setBorder(new EmptyBorder(14, 0, 0, 0));
-        footer.add(btnSalir);
-        card.add(footer, BorderLayout.SOUTH);
- 
-        fondo.add(card);
+
+        card.add(btnSalir, gbc);
+
+        UI.centrar(fondo, card);
     }
 }

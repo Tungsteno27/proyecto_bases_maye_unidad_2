@@ -28,60 +28,59 @@ import javax.swing.border.EmptyBorder;
  * @author Tungs
  */
 public class FrmSeleccionRol extends JFrame {
-    private final Coordinador coordinador;
- 
+   private final Coordinador coordinador;
+
     public FrmSeleccionRol(Coordinador coordinador) {
         this.coordinador = coordinador;
         initUI();
     }
-    /**
-     * Método que crea la pantalla, aquí aún no hay lógica de navegación ni nada por ahora
-     */
+
     private void initUI() {
         setTitle("Maye's Family Diner");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(false);
-        setSize(480, 420);
-        setLocationRelativeTo(null);
- 
+
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+
         JPanel fondo = new JPanel(new GridBagLayout());
         fondo.setBackground(UI.FONDO);
         setContentPane(fondo);
- 
-        JPanel card = UI.card(380, 340);
-        card.setLayout(new BoxLayout(card, BoxLayout.Y_AXIS));
-        card.setBorder(new EmptyBorder(44, 52, 48, 52));
- 
+
+        JPanel card = UI.card();
+
+        GridBagConstraints gbc = UI.gbcBase(0, 0);
+        gbc.anchor = GridBagConstraints.CENTER;
+
         JLabel lblNombre = new JLabel("Maye's Family Diner", SwingConstants.CENTER);
-        lblNombre.setFont(new Font("Georgia", Font.BOLD, 20));
+        lblNombre.setFont(new Font("Georgia", Font.BOLD, 24));
         lblNombre.setForeground(UI.BORDE_ORO);
-        lblNombre.setAlignmentX(Component.CENTER_ALIGNMENT);
-        card.add(lblNombre);
- 
-        card.add(Box.createVerticalStrut(30));
- 
-        JLabel lblRol = new JLabel("Indique su rol", SwingConstants.CENTER);
-        lblRol.setFont(new Font("Georgia", Font.PLAIN, 19));
-        lblRol.setForeground(UI.TEXTO_OSCURO);
-        lblRol.setAlignmentX(Component.CENTER_ALIGNMENT);
-        card.add(lblRol);
- 
-        card.add(Box.createVerticalStrut(26));
- 
+
+        gbc.gridy = 0;
+        gbc.insets = new Insets(10, 10, 20, 10);
+        card.add(lblNombre, gbc);
+
+        JLabel lblRol = UI.titulo("Indique su rol");
+        lblRol.setHorizontalAlignment(SwingConstants.CENTER);
+
+        gbc.gridy++;
+        gbc.insets = new Insets(10, 10, 20, 10);
+        card.add(lblRol, gbc);
+        
+        gbc.gridy++;
+        gbc.fill = GridBagConstraints.NONE;
+
         JButton btnMesero = UI.botonPrimario("Mesero");
-        btnMesero.setAlignmentX(Component.CENTER_ALIGNMENT);
-        btnMesero.setMaximumSize(new Dimension(280, 50));
+        btnMesero.setPreferredSize(new Dimension(220, 45));
         btnMesero.addActionListener(e -> coordinador.rolMeseroSeleccionado());
-        card.add(btnMesero);
- 
-        card.add(Box.createVerticalStrut(14));
- 
+        card.add(btnMesero, gbc);
+
+        gbc.gridy++;
+        gbc.insets = new Insets(10, 10, 10, 10);
+
         JButton btnAdmin = UI.botonPrimario("Administrador");
-        btnAdmin.setAlignmentX(Component.CENTER_ALIGNMENT);
-        btnAdmin.setMaximumSize(new Dimension(280, 50));
+        btnAdmin.setPreferredSize(new Dimension(220, 45));
         btnAdmin.addActionListener(e -> coordinador.rolAdministradorSeleccionado());
-        card.add(btnAdmin);
- 
-        fondo.add(card);
+        card.add(btnAdmin, gbc);
+
+        UI.centrar(fondo, card);
     }
 }

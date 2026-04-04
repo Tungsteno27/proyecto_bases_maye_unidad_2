@@ -7,8 +7,11 @@ package pantallas;
 import EstilosGUI.UI;
 import coordinador.Coordinador;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -29,11 +32,10 @@ public class FrmEnProgreso extends JFrame{
     }
 
     private void iniciar() {
-        setTitle("En mantenimiento");
+        setTitle("En progreso");
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        setResizable(false);
-        setSize(400, 300);
-        setLocationRelativeTo(null);
+
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
@@ -46,34 +48,25 @@ public class FrmEnProgreso extends JFrame{
         fondo.setBackground(UI.FONDO);
         setContentPane(fondo);
 
-        JPanel card = UI.card(320, 200);
-        card.setLayout(new BorderLayout());
-        card.setBorder(new EmptyBorder(30, 30, 30, 30));
+        JPanel card = UI.card();
 
-        // Texto principal
-        JLabel lblMensaje = new JLabel("En progreso", SwingConstants.CENTER);
-        lblMensaje.setFont(new Font("Georgia", Font.BOLD, 20));
-        lblMensaje.setForeground(UI.TEXTO_OSCURO);
-        card.add(lblMensaje, BorderLayout.CENTER);
+        GridBagConstraints gbc = UI.gbcBase(0, 0);
+        gbc.anchor = GridBagConstraints.CENTER;
 
-        // Botón volver
-        JButton btnVolver = new JButton("Volver");
-        btnVolver.setFont(new Font("Georgia", Font.PLAIN, 13));
-        btnVolver.setForeground(UI.TEXTO_OSCURO);
-        btnVolver.setContentAreaFilled(false);
-        btnVolver.setBorderPainted(false);
-        btnVolver.setFocusPainted(false);
-        btnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        JLabel lblMensaje = UI.tituloGrande("En progreso");
+        gbc.gridy = 0;
+        gbc.insets = new Insets(10, 10, 20, 10);
+        card.add(lblMensaje, gbc);
 
+        JButton btnVolver = UI.botonAccion("Volver");
+        btnVolver.setPreferredSize(new Dimension(140, 40));
         btnVolver.addActionListener(e -> coordinador.iniciarSistema());
 
-        JPanel footer = new JPanel();
-        footer.setOpaque(false);
-        footer.setBorder(new EmptyBorder(10, 0, 0, 0));
-        footer.add(btnVolver);
+        gbc.gridy = 1;
+        gbc.insets = new Insets(10, 10, 10, 10);
+        gbc.fill = GridBagConstraints.NONE;
+        card.add(btnVolver, gbc);
 
-        card.add(footer, BorderLayout.SOUTH);
-
-        fondo.add(card);
+        UI.centrar(fondo, card);
     }
 }

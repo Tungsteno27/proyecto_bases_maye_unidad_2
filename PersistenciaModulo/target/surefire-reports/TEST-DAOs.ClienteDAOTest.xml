@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="DAOs.ClienteDAOTest" time="2.898" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="DAOs.ClienteDAOTest" time="2.767" tests="16" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="23"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.class.path" value="C:\Users\dayan\OneDrive\Documentos\GitHub\proyecto_bases_maye_unidad_2\PersistenciaModulo\target\test-classes;C:\Users\dayan\OneDrive\Documentos\GitHub\proyecto_bases_maye_unidad_2\PersistenciaModulo\target\classes;C:\Users\dayan\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.core\2.7.12\org.eclipse.persistence.core-2.7.12.jar;C:\Users\dayan\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.asm\9.4.0\org.eclipse.persistence.asm-9.4.0.jar;C:\Users\dayan\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.antlr\2.7.12\org.eclipse.persistence.antlr-2.7.12.jar;C:\Users\dayan\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.jpa\2.7.12\org.eclipse.persistence.jpa-2.7.12.jar;C:\Users\dayan\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.jpa.jpql\2.7.12\org.eclipse.persistence.jpa.jpql-2.7.12.jar;C:\Users\dayan\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.moxy\2.7.12\org.eclipse.persistence.moxy-2.7.12.jar;C:\Users\dayan\.m2\repository\org\eclipse\persistence\jakarta.persistence\2.2.3\jakarta.persistence-2.2.3.jar;C:\Users\dayan\.m2\repository\com\mycompany\DominioModulo\1.0-SNAPSHOT\DominioModulo-1.0-SNAPSHOT.jar;C:\Users\dayan\.m2\repository\com\mysql\mysql-connector-j\9.0.0\mysql-connector-j-9.0.0.jar;C:\Users\dayan\.m2\repository\com\google\protobuf\protobuf-java\4.26.1\protobuf-java-4.26.1.jar;C:\Users\dayan\.m2\repository\com\mycompany\DTOsModulo\1.0-SNAPSHOT\DTOsModulo-1.0-SNAPSHOT.jar;C:\Users\dayan\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.3\junit-jupiter-api-5.10.3.jar;C:\Users\dayan\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\dayan\.m2\repository\org\junit\platform\junit-platform-commons\1.10.3\junit-platform-commons-1.10.3.jar;C:\Users\dayan\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\dayan\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.3\junit-jupiter-params-5.10.3.jar;C:\Users\dayan\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.3\junit-jupiter-engine-5.10.3.jar;C:\Users\dayan\.m2\repository\org\junit\platform\junit-platform-engine\1.10.3\junit-platform-engine-1.10.3.jar;"/>
+    <property name="java.class.path" value="C:\NetBeans\ProyectoBasesAV_U2\PersistenciaModulo\target\test-classes;C:\NetBeans\ProyectoBasesAV_U2\PersistenciaModulo\target\classes;C:\Users\Tungs\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.core\2.7.12\org.eclipse.persistence.core-2.7.12.jar;C:\Users\Tungs\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.asm\9.4.0\org.eclipse.persistence.asm-9.4.0.jar;C:\Users\Tungs\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.antlr\2.7.12\org.eclipse.persistence.antlr-2.7.12.jar;C:\Users\Tungs\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.jpa\2.7.12\org.eclipse.persistence.jpa-2.7.12.jar;C:\Users\Tungs\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.jpa.jpql\2.7.12\org.eclipse.persistence.jpa.jpql-2.7.12.jar;C:\Users\Tungs\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.moxy\2.7.12\org.eclipse.persistence.moxy-2.7.12.jar;C:\Users\Tungs\.m2\repository\org\eclipse\persistence\jakarta.persistence\2.2.3\jakarta.persistence-2.2.3.jar;C:\NetBeans\ProyectoBasesAV_U2\DominioModulo\target\DominioModulo-1.0-SNAPSHOT.jar;C:\Users\Tungs\.m2\repository\com\mysql\mysql-connector-j\9.0.0\mysql-connector-j-9.0.0.jar;C:\Users\Tungs\.m2\repository\com\google\protobuf\protobuf-java\4.26.1\protobuf-java-4.26.1.jar;C:\NetBeans\ProyectoBasesAV_U2\DTOsModulo\target\DTOsModulo-1.0-SNAPSHOT.jar;C:\Users\Tungs\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.3\junit-jupiter-api-5.10.3.jar;C:\Users\Tungs\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\Tungs\.m2\repository\org\junit\platform\junit-platform-commons\1.10.3\junit-platform-commons-1.10.3.jar;C:\Users\Tungs\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Tungs\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.3\junit-jupiter-params-5.10.3.jar;C:\Users\Tungs\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.3\junit-jupiter-engine-5.10.3.jar;C:\Users\Tungs\.m2\repository\org\junit\platform\junit-platform-engine\1.10.3\junit-platform-engine-1.10.3.jar;"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
@@ -15,44 +15,43 @@
     <property name="user.country" value="MX"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-23\bin"/>
-    <property name="sun.java.command" value="C:\Users\dayan\AppData\Local\Temp\surefire2301050091556111744\surefirebooter-20260327232218507_3.jar C:\Users\dayan\AppData\Local\Temp\surefire2301050091556111744 2026-03-27T23-22-18_271-jvmRun1 surefire-20260327232218507_1tmp surefire_0-20260327232218507_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\Tungs\AppData\Local\Temp\surefire17142601343660172105\surefirebooter-20260403212854535_3.jar C:\Users\Tungs\AppData\Local\Temp\surefire17142601343660172105 2026-04-03T21-28-52_181-jvmRun1 surefire-20260403212854535_1tmp surefire_0-20260403212854535_2tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="test" value="DAOs.ClienteDAOTest#testCalcularTotalGastado_Fail"/>
-    <property name="surefire.test.class.path" value="C:\Users\dayan\OneDrive\Documentos\GitHub\proyecto_bases_maye_unidad_2\PersistenciaModulo\target\test-classes;C:\Users\dayan\OneDrive\Documentos\GitHub\proyecto_bases_maye_unidad_2\PersistenciaModulo\target\classes;C:\Users\dayan\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.core\2.7.12\org.eclipse.persistence.core-2.7.12.jar;C:\Users\dayan\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.asm\9.4.0\org.eclipse.persistence.asm-9.4.0.jar;C:\Users\dayan\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.antlr\2.7.12\org.eclipse.persistence.antlr-2.7.12.jar;C:\Users\dayan\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.jpa\2.7.12\org.eclipse.persistence.jpa-2.7.12.jar;C:\Users\dayan\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.jpa.jpql\2.7.12\org.eclipse.persistence.jpa.jpql-2.7.12.jar;C:\Users\dayan\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.moxy\2.7.12\org.eclipse.persistence.moxy-2.7.12.jar;C:\Users\dayan\.m2\repository\org\eclipse\persistence\jakarta.persistence\2.2.3\jakarta.persistence-2.2.3.jar;C:\Users\dayan\.m2\repository\com\mycompany\DominioModulo\1.0-SNAPSHOT\DominioModulo-1.0-SNAPSHOT.jar;C:\Users\dayan\.m2\repository\com\mysql\mysql-connector-j\9.0.0\mysql-connector-j-9.0.0.jar;C:\Users\dayan\.m2\repository\com\google\protobuf\protobuf-java\4.26.1\protobuf-java-4.26.1.jar;C:\Users\dayan\.m2\repository\com\mycompany\DTOsModulo\1.0-SNAPSHOT\DTOsModulo-1.0-SNAPSHOT.jar;C:\Users\dayan\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.3\junit-jupiter-api-5.10.3.jar;C:\Users\dayan\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\dayan\.m2\repository\org\junit\platform\junit-platform-commons\1.10.3\junit-platform-commons-1.10.3.jar;C:\Users\dayan\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\dayan\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.3\junit-jupiter-params-5.10.3.jar;C:\Users\dayan\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.3\junit-jupiter-engine-5.10.3.jar;C:\Users\dayan\.m2\repository\org\junit\platform\junit-platform-engine\1.10.3\junit-platform-engine-1.10.3.jar;"/>
+    <property name="surefire.test.class.path" value="C:\NetBeans\ProyectoBasesAV_U2\PersistenciaModulo\target\test-classes;C:\NetBeans\ProyectoBasesAV_U2\PersistenciaModulo\target\classes;C:\Users\Tungs\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.core\2.7.12\org.eclipse.persistence.core-2.7.12.jar;C:\Users\Tungs\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.asm\9.4.0\org.eclipse.persistence.asm-9.4.0.jar;C:\Users\Tungs\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.antlr\2.7.12\org.eclipse.persistence.antlr-2.7.12.jar;C:\Users\Tungs\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.jpa\2.7.12\org.eclipse.persistence.jpa-2.7.12.jar;C:\Users\Tungs\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.jpa.jpql\2.7.12\org.eclipse.persistence.jpa.jpql-2.7.12.jar;C:\Users\Tungs\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.moxy\2.7.12\org.eclipse.persistence.moxy-2.7.12.jar;C:\Users\Tungs\.m2\repository\org\eclipse\persistence\jakarta.persistence\2.2.3\jakarta.persistence-2.2.3.jar;C:\NetBeans\ProyectoBasesAV_U2\DominioModulo\target\DominioModulo-1.0-SNAPSHOT.jar;C:\Users\Tungs\.m2\repository\com\mysql\mysql-connector-j\9.0.0\mysql-connector-j-9.0.0.jar;C:\Users\Tungs\.m2\repository\com\google\protobuf\protobuf-java\4.26.1\protobuf-java-4.26.1.jar;C:\NetBeans\ProyectoBasesAV_U2\DTOsModulo\target\DTOsModulo-1.0-SNAPSHOT.jar;C:\Users\Tungs\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.3\junit-jupiter-api-5.10.3.jar;C:\Users\Tungs\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\Tungs\.m2\repository\org\junit\platform\junit-platform-commons\1.10.3\junit-platform-commons-1.10.3.jar;C:\Users\Tungs\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Tungs\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.3\junit-jupiter-params-5.10.3.jar;C:\Users\Tungs\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.3\junit-jupiter-engine-5.10.3.jar;C:\Users\Tungs\.m2\repository\org\junit\platform\junit-platform-engine\1.10.3\junit-platform-engine-1.10.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
-    <property name="user.home" value="C:\Users\dayan"/>
+    <property name="user.home" value="C:\Users\Tungs"/>
     <property name="user.language" value="es"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="java.version.date" value="2025-01-21"/>
     <property name="java.home" value="C:\Program Files\Java\jdk-23"/>
     <property name="file.separator" value="\"/>
-    <property name="basedir" value="C:\Users\dayan\OneDrive\Documentos\GitHub\proyecto_bases_maye_unidad_2\PersistenciaModulo"/>
-    <property name="java.vm.compressedOopsMode" value="32-bit"/>
+    <property name="basedir" value="C:\NetBeans\ProyectoBasesAV_U2\PersistenciaModulo"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\dayan\AppData\Local\Temp\surefire2301050091556111744\surefirebooter-20260327232218507_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Tungs\AppData\Local\Temp\surefire17142601343660172105\surefirebooter-20260403212854535_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="23.0.2+7-58"/>
-    <property name="user.name" value="Dayanara Peralta G"/>
+    <property name="user.name" value="Tungs"/>
     <property name="stdout.encoding" value="Cp1252"/>
     <property name="path.separator" value=";"/>
     <property name="os.version" value="10.0"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="file.encoding" value="UTF-8"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
-    <property name="maven.ext.class.path" value="C:\Program Files\NetBeans-24\netbeans\java\maven-nblib\netbeans-eventspy.jar"/>
-    <property name="localRepository" value="C:\Users\dayan\.m2\repository"/>
+    <property name="maven.ext.class.path" value="C:\NetBeans\netbeans-29-bin\netbeans\java\maven-nblib\netbeans-eventspy.jar"/>
+    <property name="localRepository" value="C:\Users\Tungs\.m2\repository"/>
     <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
-    <property name="java.io.tmpdir" value="C:\Users\dayan\AppData\Local\Temp\"/>
+    <property name="java.io.tmpdir" value="C:\Users\Tungs\AppData\Local\Temp\"/>
     <property name="java.version" value="23.0.2"/>
-    <property name="user.dir" value="C:\Users\dayan\OneDrive\Documentos\GitHub\proyecto_bases_maye_unidad_2\PersistenciaModulo"/>
+    <property name="user.dir" value="C:\NetBeans\ProyectoBasesAV_U2\PersistenciaModulo"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="native.encoding" value="Cp1252"/>
-    <property name="java.library.path" value="C:\Program Files\Java\jdk-23\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\170\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\dotnet\;C:\Program Files\nodejs\;C:\Users\dayan\AppData\Local\Programs\Python\Launcher\;C:\Users\dayan\AppData\Local\Microsoft\WindowsApps;C:\Users\dayan\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\dayan\.dotnet\tools;C:\Users\dayan\AppData\Local\GitHubDesktop\bin;C:\Users\dayan\AppData\Roaming\npm;."/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-23\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Users\Tungs\Downloads\Git\cmd;C:\Users\Tungs\AppData\Local\Programs\Python\Python313\Scripts\;C:\Users\Tungs\AppData\Local\Programs\Python\Python313\;C:\Users\Tungs\AppData\Local\Programs\Python\Launcher\;C:\Users\Tungs\AppData\Local\Microsoft\WindowsApps;C:\Users\Tungs\AppData\Local\Programs\Microsoft VS Code\bin;;C:\NetBeans\netbeans-29-bin\netbeans\bin\;."/>
     <property name="java.vm.info" value="mixed mode, sharing"/>
     <property name="stderr.encoding" value="Cp1252"/>
     <property name="java.vendor" value="Oracle Corporation"/>
@@ -60,14 +59,224 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="67.0"/>
   </properties>
-  <testcase name="testCalcularTotalGastado_Fail" classname="DAOs.ClienteDAOTest" time="2.845">
-    <system-out><![CDATA[[EL Info]: 2026-03-27 23:22:20.779--ServerSession(1895143699)--EclipseLink, version: Eclipse Persistence Services - 2.7.12.v20230209-e5c4074ef3
-calcularTotalGastado
+  <testcase name="testEliminarCliente_Fail" classname="DAOs.ClienteDAOTest" time="1.682">
+    <system-out><![CDATA[[EL Info]: 2026-04-03 21:28:55.953--ServerSession(1109113497)--EclipseLink, version: Eclipse Persistence Services - 2.7.12.v20230209-e5c4074ef3
+eliminarCliente
 ]]></system-out>
-    <system-err><![CDATA[mar 27, 2026 11:22:22 P.M. DAOs.ClienteDAO registrarCliente
+    <system-err><![CDATA[abr 03, 2026 9:28:57 P.M. DAOs.ClienteDAO registrarCliente
 INFO: se insertó al cliente de nombre: Test
-mar 27, 2026 11:22:22 P.M. DAOs.ClienteDAO calcularTotalGastado
+java.lang.IllegalArgumentException: An instance of a null PK has been incorrectly provided for this find operation.
+	at org.eclipse.persistence.internal.jpa.EntityManagerImpl.findInternal(EntityManagerImpl.java:886)
+	at org.eclipse.persistence.internal.jpa.EntityManagerImpl.find(EntityManagerImpl.java:830)
+	at org.eclipse.persistence.internal.jpa.EntityManagerImpl.find(EntityManagerImpl.java:696)
+	at DAOs.ClienteDAO.eliminarCliente(ClienteDAO.java:103)
+	at DAOs.ClienteDAOTest.lambda$testEliminarCliente_Fail$2(ClienteDAOTest.java:118)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3115)
+	at DAOs.ClienteDAOTest.testEliminarCliente_Fail(ClienteDAOTest.java:117)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+abr 03, 2026 9:28:57 P.M. DAOs.ClienteDAO eliminarCliente
+WARNING: Ocurrió un error al intentar eliminar al cliente con id: null
+]]></system-err>
+  </testcase>
+  <testcase name="testObtenerFrecuentes" classname="DAOs.ClienteDAOTest" time="0.22">
+    <system-out><![CDATA[obtenerFrecuentes
+]]></system-out>
+    <system-err><![CDATA[abr 03, 2026 9:28:57 P.M. DAOs.ClienteDAO registrarCliente
+INFO: se insertó al cliente de nombre: Test
+]]></system-err>
+  </testcase>
+  <testcase name="testCalcularTotalGastado_Exitoso" classname="DAOs.ClienteDAOTest" time="0.065">
+    <system-out><![CDATA[calcularTotalGastado
+]]></system-out>
+    <system-err><![CDATA[abr 03, 2026 9:28:57 P.M. DAOs.ClienteDAO registrarCliente
+INFO: se insertó al cliente de nombre: Test
+abr 03, 2026 9:28:57 P.M. DAOs.ClienteDAO calcularTotalGastado
+INFO: El cliente de id 11 no  ha gastado nada aún
+]]></system-err>
+  </testcase>
+  <testcase name="testBuscarCliente_Exitoso" classname="DAOs.ClienteDAOTest" time="0.017">
+    <system-out><![CDATA[buscarCliente
+]]></system-out>
+    <system-err><![CDATA[abr 03, 2026 9:28:57 P.M. DAOs.ClienteDAO registrarCliente
+INFO: se insertó al cliente de nombre: Test
+abr 03, 2026 9:28:57 P.M. DAOs.ClienteDAO buscarCliente
+INFO: Se encontró al cliente con id: 12
+]]></system-err>
+  </testcase>
+  <testcase name="testObtenerTodosLosClientes" classname="DAOs.ClienteDAOTest" time="0.024">
+    <system-out><![CDATA[obtenerTodosLosClientes
+]]></system-out>
+    <system-err><![CDATA[abr 03, 2026 9:28:57 P.M. DAOs.ClienteDAO registrarCliente
+INFO: se insertó al cliente de nombre: Test
+]]></system-err>
+  </testcase>
+  <testcase name="testRegistrarCliente_Error" classname="DAOs.ClienteDAOTest" time="0.52">
+    <system-out><![CDATA[registrarCliente
+[EL Warning]: 2026-04-03 21:28:57.958--UnitOfWork(859193874)--Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.7.12.v20230209-e5c4074ef3): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: java.sql.SQLIntegrityConstraintViolationException: Column 'nombres' cannot be null
+Error Code: 1048
+Call: INSERT INTO clientes (apellido_materno, apellido_paterno, correo, fecha_registro, nombres, telefono, tipo_cliente) VALUES (?, ?, ?, ?, ?, ?, ?)
+	bind => [7 parameters bound]
+Query: InsertObjectQuery(com.mycompany.persistenciamodulo.Cliente[ id=null ])
+]]></system-out>
+    <system-err><![CDATA[abr 03, 2026 9:28:57 P.M. DAOs.ClienteDAO registrarCliente
+INFO: se insertó al cliente de nombre: Test
+abr 03, 2026 9:28:57 P.M. DAOs.ClienteDAO registrarCliente
+WARNING: Ocurrió un error al intentar insertar al cliente de nombre: null
+]]></system-err>
+  </testcase>
+  <testcase name="testBuscarFrecuentesPorFiltros_Fail" classname="DAOs.ClienteDAOTest" time="0.021">
+    <system-out><![CDATA[buscarFrecuentesPorFiltros
+]]></system-out>
+    <system-err><![CDATA[abr 03, 2026 9:28:57 P.M. DAOs.ClienteDAO registrarCliente
+INFO: se insertó al cliente de nombre: Test
+]]></system-err>
+  </testcase>
+  <testcase name="testRegistrarCliente_Exitoso" classname="DAOs.ClienteDAOTest" time="0.018">
+    <system-out><![CDATA[registrarCliente
+]]></system-out>
+    <system-err><![CDATA[abr 03, 2026 9:28:57 P.M. DAOs.ClienteDAO registrarCliente
+INFO: se insertó al cliente de nombre: Test
+abr 03, 2026 9:28:58 P.M. DAOs.ClienteDAO registrarCliente
+INFO: se insertó al cliente de nombre: Dayanara
+]]></system-err>
+  </testcase>
+  <testcase name="testEliminarCliente_Exitoso" classname="DAOs.ClienteDAOTest" time="0.022">
+    <system-out><![CDATA[eliminarCliente
+]]></system-out>
+    <system-err><![CDATA[abr 03, 2026 9:28:58 P.M. DAOs.ClienteDAO registrarCliente
+INFO: se insertó al cliente de nombre: Test
+abr 03, 2026 9:28:58 P.M. DAOs.ClienteDAO eliminarCliente
+INFO: Se eliminó al cliente con id: 18
+abr 03, 2026 9:28:58 P.M. DAOs.ClienteDAO buscarCliente
+WARNING: No se encontró ningún cliente con id: 18
+]]></system-err>
+  </testcase>
+  <testcase name="testCalcularTotalGastado_Fail" classname="DAOs.ClienteDAOTest" time="0.015">
+    <system-out><![CDATA[calcularTotalGastado
+]]></system-out>
+    <system-err><![CDATA[abr 03, 2026 9:28:58 P.M. DAOs.ClienteDAO registrarCliente
+INFO: se insertó al cliente de nombre: Test
+abr 03, 2026 9:28:58 P.M. DAOs.ClienteDAO calcularTotalGastado
 INFO: El cliente de id null no  ha gastado nada aún
+]]></system-err>
+  </testcase>
+  <testcase name="testCalcularVisitas_Fail" classname="DAOs.ClienteDAOTest" time="0.017">
+    <system-out><![CDATA[calcularVisitas
+]]></system-out>
+    <system-err><![CDATA[abr 03, 2026 9:28:58 P.M. DAOs.ClienteDAO registrarCliente
+INFO: se insertó al cliente de nombre: Test
+]]></system-err>
+  </testcase>
+  <testcase name="testActualizarCliente_Fail" classname="DAOs.ClienteDAOTest" time="0.013">
+    <system-out><![CDATA[actualizarCliente
+]]></system-out>
+    <system-err><![CDATA[abr 03, 2026 9:28:58 P.M. DAOs.ClienteDAO registrarCliente
+INFO: se insertó al cliente de nombre: Test
+]]></system-err>
+  </testcase>
+  <testcase name="testBuscarCliente_Fail" classname="DAOs.ClienteDAOTest" time="0.017">
+    <system-out><![CDATA[buscarCliente
+]]></system-out>
+    <system-err><![CDATA[abr 03, 2026 9:28:58 P.M. DAOs.ClienteDAO registrarCliente
+INFO: se insertó al cliente de nombre: Test
+abr 03, 2026 9:28:58 P.M. DAOs.ClienteDAO buscarCliente
+WARNING: No se encontró ningún cliente con id: -1
+]]></system-err>
+  </testcase>
+  <testcase name="testCalcularVisitas_Vacio" classname="DAOs.ClienteDAOTest" time="0.012">
+    <system-out><![CDATA[calcularVisitas
+]]></system-out>
+    <system-err><![CDATA[abr 03, 2026 9:28:58 P.M. DAOs.ClienteDAO registrarCliente
+INFO: se insertó al cliente de nombre: Test
+]]></system-err>
+  </testcase>
+  <testcase name="testActualizarCliente_Exitoso" classname="DAOs.ClienteDAOTest" time="0.021">
+    <system-out><![CDATA[actualizarCliente
+]]></system-out>
+    <system-err><![CDATA[abr 03, 2026 9:28:58 P.M. DAOs.ClienteDAO registrarCliente
+INFO: se insertó al cliente de nombre: Test
+abr 03, 2026 9:28:58 P.M. DAOs.ClienteDAO buscarCliente
+INFO: Se encontró al cliente con id: 24
+abr 03, 2026 9:28:58 P.M. DAOs.ClienteDAO actualizarCliente
+INFO: Se actualizó el cliente con id: 24
+]]></system-err>
+  </testcase>
+  <testcase name="testBuscarFrecuentesPorFiltros_Exitoso" classname="DAOs.ClienteDAOTest" time="0.027">
+    <system-out><![CDATA[buscarFrecuentesPorFiltros
+]]></system-out>
+    <system-err><![CDATA[abr 03, 2026 9:28:58 P.M. DAOs.ClienteDAO registrarCliente
+INFO: se insertó al cliente de nombre: Test
 ]]></system-err>
   </testcase>
 </testsuite>

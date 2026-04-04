@@ -6,13 +6,16 @@ package pantallas;
 
 import EstilosGUI.UI;
 import coordinador.Coordinador;
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.RenderingHints;
 import java.awt.geom.Ellipse2D;
 import javax.swing.Box;
@@ -32,25 +35,21 @@ import javax.swing.border.EmptyBorder;
  * @author Noelia
  */
 public class FrmExito extends JFrame {
-
     private final Coordinador coordinador;
     private final JLabel lblMensaje;
-    
-    // Indica qué acción disparó esta pantalla para regresar al lugar correcto.
+
     private String origen;
 
     public FrmExito(Coordinador coordinador) {
         this.coordinador = coordinador;
-        lblMensaje = new JLabel(" ", SwingConstants.CENTER);
+        lblMensaje = new JLabel("", SwingConstants.CENTER);
         initUI();
     }
 
-    private void initUI() {
+   private void initUI() {
         setTitle("Éxito");
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        setResizable(false);
-        setSize(380, 280);
-        setLocationRelativeTo(null);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
@@ -63,84 +62,57 @@ public class FrmExito extends JFrame {
         fondo.setBackground(UI.FONDO);
         setContentPane(fondo);
 
-        JPanel card = UI.card(310, 220);
-        card.setLayout(new BoxLayout(card, BoxLayout.Y_AXIS));
-        card.setBorder(new EmptyBorder(28, 36, 28, 36));
+        JPanel card = UI.card();
+        card.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.fill = GridBagConstraints.NONE;
 
-        // Mensaje de éxito (puede tener \n que se transforma en HTML)
-        lblMensaje.setFont(new Font("Georgia", Font.BOLD, 15));
-        lblMensaje.setForeground(UI.TEXTO_OSCURO);
-        lblMensaje.setAlignmentX(Component.CENTER_ALIGNMENT);
-        card.add(lblMensaje);
-
-        card.add(Box.createVerticalStrut(18));
-
-        // Ícono de palomita dibujado
         JPanel palomita = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 Graphics2D g2 = (Graphics2D) g.create();
                 g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-                // Círculo verde
+                int size = Math.min(getWidth(), getHeight()) - 10;
                 g2.setColor(new Color(0x27AE60));
-                g2.fill(new Ellipse2D.Double(10, 5, 56, 56));
-                // Palomita blanca
+                g2.fillOval(5, 5, size, size);
                 g2.setColor(Color.WHITE);
-                g2.setStroke(new java.awt.BasicStroke(4f, java.awt.BasicStroke.CAP_ROUND, java.awt.BasicStroke.JOIN_ROUND));
-                // Trazo izquierdo de la paloma
-                g2.drawLine(20, 35, 30, 46);
-                // Trazo derecho de la paloma
-                g2.drawLine(30, 46, 52, 24);
+                g2.setStroke(new BasicStroke(4f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
+                g2.drawLine(size / 4, size / 2, size / 2, (int)(size * 0.75));
+                g2.drawLine(size / 2, (int)(size * 0.75), (int)(size * 0.8), size / 3);
                 g2.dispose();
             }
         };
         palomita.setOpaque(false);
-        palomita.setPreferredSize(new Dimension(76, 66));
-        palomita.setMaximumSize(new Dimension(76, 66));
-        palomita.setAlignmentX(Component.CENTER_ALIGNMENT);
-        card.add(palomita);
+        palomita.setPreferredSize(new Dimension(80, 80));
+        gbc.gridy = 0;
+        gbc.insets = new Insets(10, 10, 20, 10);
+        card.add(palomita, gbc);
 
-        card.add(Box.createVerticalStrut(18));
+        lblMensaje.setFont(new Font("Georgia", Font.BOLD, 16));
+        lblMensaje.setForeground(UI.TEXTO_OSCURO);
+        gbc.gridy = 1;
+        gbc.insets = new Insets(0, 20, 20, 20);
+        card.add(lblMensaje, gbc);
 
-        JButton btnAceptar = botonVerde("Aceptar");
-        btnAceptar.setAlignmentX(Component.CENTER_ALIGNMENT);
-        btnAceptar.setMaximumSize(new Dimension(160, 42));
+        JButton btnAceptar = UI.boton("Aceptar", new Color(0x27AE60), new Color(0x1E8449));
+        btnAceptar.setPreferredSize(new Dimension(160, 45));
         btnAceptar.addActionListener(e -> aceptar());
-        card.add(btnAceptar);
+        gbc.gridy = 2;
+        gbc.insets = new Insets(0, 10, 10, 10);
+        card.add(btnAceptar, gbc);
 
-        fondo.add(card);
+        UI.centrar(fondo, card);
     }
 
-    /**
-     * Configura el mensaje y el origen antes de mostrar la pantalla.
-     *
-     * @param mensaje texto a mostrar (usa HTML automáticamente para saltos de
-     * línea)
-     * @param origen clave que indica de dónde viene: "registro_cliente",
-     * "eliminar_cliente", "modificar_cliente"
-     */
     public void configurar(String mensaje, String origen) {
         this.origen = origen;
-        // Convertimos saltos de línea a HTML
-        String html = "<html><div style='text-align:center'>"
-                + mensaje.replace("\n", "<br>") + "</div></html>";
-        lblMensaje.setText(html);
+        lblMensaje.setText(mensaje);
     }
 
     private void aceptar() {
         coordinador.regresarDesdeExito(origen);
-    }
-
-    private JButton botonVerde(String texto) {
-        JButton btn = new JButton(texto);
-        btn.setFont(new Font("Georgia", Font.BOLD, 15));
-        btn.setForeground(java.awt.Color.WHITE);
-        btn.setBackground(new java.awt.Color(0x27AE60));
-        btn.setOpaque(true);
-        btn.setBorderPainted(false);
-        btn.setFocusPainted(false);
-        btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        return btn;
     }
 }

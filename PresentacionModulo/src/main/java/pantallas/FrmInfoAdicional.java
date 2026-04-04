@@ -8,10 +8,14 @@ package pantallas;
 import EstilosGUI.UI;
 import DTOs.ClienteFrecuenteDTO;
 import coordinador.Coordinador;
+import java.awt.Color;
 import java.awt.Component;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -29,7 +33,7 @@ import javax.swing.border.EmptyBorder;
  */
 public class FrmInfoAdicional extends JFrame {
 
-    private final Coordinador coordinador;
+     private final Coordinador coordinador;
     private JLabel lblNombreUsuario;
     private JLabel lblVisitas;
     private JLabel lblGasto;
@@ -43,9 +47,7 @@ public class FrmInfoAdicional extends JFrame {
     private void initUI() {
         setTitle("Información Adicional");
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        setResizable(false);
-        setSize(400, 300);
-        setLocationRelativeTo(null);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
@@ -54,82 +56,67 @@ public class FrmInfoAdicional extends JFrame {
             }
         });
 
+        // 🔹 Fondo
         JPanel fondo = new JPanel(new GridBagLayout());
         fondo.setBackground(UI.FONDO);
         setContentPane(fondo);
 
-        JPanel card = UI.card(330, 240);
-        card.setLayout(new BoxLayout(card, BoxLayout.Y_AXIS));
-        card.setBorder(new EmptyBorder(28, 40, 24, 40));
+        JPanel card = UI.card();
 
-        lblNombreUsuario = etiquetaGrande(" ");
-        lblNombreUsuario.setFont(new Font("Georgia", Font.BOLD, 18));
-        card.add(lblNombreUsuario);
+        GridBagConstraints gbc = UI.gbcBase(0, 0);
+        gbc.gridwidth = 2;
+        gbc.anchor = GridBagConstraints.CENTER;
+        
+        lblNombreUsuario = UI.tituloGrande("");
+        card.add(lblNombreUsuario, gbc);
 
-        card.add(Box.createVerticalStrut(18));
+        gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.WEST;
 
-        lblVisitas = etiquetaInfo(" ");
-        card.add(lblVisitas);
-        card.add(Box.createVerticalStrut(8));
+        gbc.gridy++;
+        card.add(UI.titulo("Visitas totales:"), gbc);
+        lblVisitas = UI.valor();
+        gbc.gridx = 1;
+        card.add(lblVisitas, gbc);
 
-        lblGasto = etiquetaInfo(" ");
-        card.add(lblGasto);
-        card.add(Box.createVerticalStrut(8));
+        gbc.gridx = 0;
+        gbc.gridy++;
+        card.add(UI.titulo("Monto total gastado:"), gbc);
+        lblGasto = UI.valor();
+        gbc.gridx = 1;
+        card.add(lblGasto, gbc);
 
-        lblPuntos = etiquetaInfo(" ");
-        card.add(lblPuntos);
+        gbc.gridx = 0;
+        gbc.gridy++;
+        card.add(UI.titulo("Puntos acumulados:"), gbc);
+        lblPuntos = UI.valor();
+        gbc.gridx = 1;
+        card.add(lblPuntos, gbc);
 
-        card.add(Box.createVerticalStrut(22));
 
-        JButton btnAtras = botonRojo("Atrás");
-        btnAtras.setAlignmentX(Component.CENTER_ALIGNMENT);
-        btnAtras.setMaximumSize(new Dimension(140, 40));
+        gbc.gridx = 0;
+        gbc.gridy++;
+        gbc.gridwidth = 2;
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.fill = GridBagConstraints.NONE;
+
+        JButton btnAtras = UI.boton("Atrás", new Color(0xC0392B), new Color(0x922B21));
+        btnAtras.setPreferredSize(new Dimension(150, 40));
         btnAtras.addActionListener(e -> coordinador.regresarDesdeInfoAdicional());
-        card.add(btnAtras);
 
-        fondo.add(card);
+        card.add(btnAtras, gbc);
+
+        UI.centrar(fondo, card);
     }
 
-    /**
-     * Carga los datos del DTO en las etiquetas de la pantalla.
-     *
-     * @param dto el cliente frecuente con estadísticas calculadas
-     */
     public void cargarDatos(ClienteFrecuenteDTO dto) {
         String nombre = dto.getNombres()
                 + (dto.getApellidoPaterno() != null ? " " + dto.getApellidoPaterno() : "");
+
         lblNombreUsuario.setText("Usuario: " + nombre);
-        lblVisitas.setText("Visitas totales:  " + (dto.getTotalVisitas() != null ? dto.getTotalVisitas() : 0));
-        lblGasto.setText(String.format("Monto total Gastado:  $%,.2f",
+        lblVisitas.setText(String.valueOf(dto.getTotalVisitas() != null ? dto.getTotalVisitas() : 0));
+        lblGasto.setText(String.format("$%,.2f",
                 dto.getTotalGastado() != null ? dto.getTotalGastado() : 0.0));
-        lblPuntos.setText("Puntos acumulados:  " + (dto.getPuntos() != null ? dto.getPuntos() : 0));
-    }
-
-    private JLabel etiquetaGrande(String texto) {
-        JLabel lbl = new JLabel(texto, SwingConstants.CENTER);
-        lbl.setFont(new Font("Georgia", Font.BOLD, 17));
-        lbl.setForeground(UI.TEXTO_OSCURO);
-        lbl.setAlignmentX(Component.CENTER_ALIGNMENT);
-        return lbl;
-    }
-
-    private JLabel etiquetaInfo(String texto) {
-        JLabel lbl = new JLabel(texto);
-        lbl.setFont(new Font("Georgia", Font.PLAIN, 15));
-        lbl.setForeground(UI.TEXTO_OSCURO);
-        lbl.setAlignmentX(Component.LEFT_ALIGNMENT);
-        return lbl;
-    }
-
-    private JButton botonRojo(String texto) {
-        JButton btn = new JButton(texto);
-        btn.setFont(new Font("Georgia", Font.BOLD, 14));
-        btn.setForeground(java.awt.Color.WHITE);
-        btn.setBackground(new java.awt.Color(0xC0392B));
-        btn.setOpaque(true);
-        btn.setBorderPainted(false);
-        btn.setFocusPainted(false);
-        btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        return btn;
+        lblPuntos.setText(String.valueOf(dto.getPuntos() != null ? dto.getPuntos() : 0));
     }
 }

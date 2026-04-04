@@ -6,11 +6,15 @@ package pantallas;
 
 import EstilosGUI.UI;
 import coordinador.Coordinador;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -31,10 +35,7 @@ import javax.swing.border.EmptyBorder;
 public class FrmSeleccionarId extends JFrame {
 
     private final Coordinador coordinador;
-    /**
-     * "modificar" o "eliminar"
-     */
-    private String accion;
+    private String accion; 
     private JTextField txtId;
 
     public FrmSeleccionarId(Coordinador coordinador) {
@@ -45,9 +46,8 @@ public class FrmSeleccionarId extends JFrame {
     private void initUI() {
         setTitle("Seleccionar ID");
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        setResizable(false);
-        setSize(380, 280);
-        setLocationRelativeTo(null);
+        
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
@@ -60,58 +60,76 @@ public class FrmSeleccionarId extends JFrame {
         fondo.setBackground(UI.FONDO);
         setContentPane(fondo);
 
-        JPanel card = UI.card(300, 210);
-        card.setLayout(new BoxLayout(card, BoxLayout.Y_AXIS));
-        card.setBorder(new EmptyBorder(36, 46, 36, 46));
+        JPanel card = UI.card();
 
-        JLabel lblTitulo = new JLabel("Ingrese el id del Cliente:", SwingConstants.CENTER);
-        lblTitulo.setFont(new Font("Georgia", Font.PLAIN, 16));
-        lblTitulo.setForeground(UI.TEXTO_OSCURO);
-        lblTitulo.setAlignmentX(Component.CENTER_ALIGNMENT);
-        card.add(lblTitulo);
+        GridBagConstraints gbc = UI.gbcBase(0, 0);
+        gbc.anchor = GridBagConstraints.CENTER;
 
-        card.add(Box.createVerticalStrut(20));
+        JLabel lblTitulo = UI.tituloGrande("Ingrese el ID del cliente");
+        gbc.gridy = 0;
+        gbc.insets = new Insets(10, 10, 20, 10);
+        card.add(lblTitulo, gbc);
 
-        txtId = new JTextField(10);
+        gbc.gridy++;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+
+        txtId = new JTextField();
         txtId.setFont(new Font("Georgia", Font.PLAIN, 18));
         txtId.setForeground(UI.TEXTO_OSCURO);
         txtId.setBackground(UI.AZUL_NORMAL.brighter());
         txtId.setHorizontalAlignment(JTextField.CENTER);
-        txtId.setMaximumSize(new Dimension(160, 38));
-        txtId.setAlignmentX(Component.CENTER_ALIGNMENT);
-        card.add(txtId);
+        txtId.setPreferredSize(new Dimension(200, 45));
 
-        card.add(Box.createVerticalStrut(24));
+        txtId.addActionListener(e -> aceptar());
 
-        JPanel botones = new JPanel(new GridLayout(1, 2, 14, 0));
+        card.add(txtId, gbc);
+
+        gbc.gridy++;
+        gbc.insets = new Insets(20, 10, 10, 10);
+        gbc.fill = GridBagConstraints.NONE;
+
+        JPanel botones = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 0));
         botones.setOpaque(false);
-        botones.setMaximumSize(new Dimension(260, 44));
-        botones.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        JButton btnAtras = botonRojo("Atrás");
+        JButton btnAtras = UI.boton("Atrás", new Color(0xC0392B), new Color(0x922B21));
+        btnAtras.setPreferredSize(new Dimension(140, 40));
         btnAtras.addActionListener(e -> coordinador.regresarDesdeSeleccionarId());
 
-        JButton btnAceptar = botonVerde("Aceptar");
+        JButton btnAceptar = UI.boton("Aceptar", new Color(0x27AE60), new Color(0x1E8449));
+        btnAceptar.setPreferredSize(new Dimension(140, 40));
         btnAceptar.addActionListener(e -> aceptar());
 
         botones.add(btnAtras);
         botones.add(btnAceptar);
-        card.add(botones);
 
-        fondo.add(card);
+        card.add(botones, gbc);
+
+        UI.centrar(fondo, card);
     }
 
     private void aceptar() {
         String texto = txtId.getText().trim();
+
         if (texto.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Ingrese un ID.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(
+                this,
+                "Ingrese un ID.",
+                "Aviso",
+                JOptionPane.WARNING_MESSAGE
+            );
             return;
         }
+
         Long id;
         try {
             id = Long.parseLong(texto);
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "El ID debe ser un número.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(
+                this,
+                "El ID debe ser un número.",
+                "Aviso",
+                JOptionPane.WARNING_MESSAGE
+            );
             return;
         }
 
@@ -122,36 +140,8 @@ public class FrmSeleccionarId extends JFrame {
         }
     }
 
-    /**
-     * Configura la acción (modificar / eliminar) y limpia el campo.
-     */
     public void setAccion(String accion) {
         this.accion = accion;
         txtId.setText("");
     }
-
-    private JButton botonRojo(String texto) {
-        JButton btn = new JButton(texto);
-        btn.setFont(new Font("Georgia", Font.BOLD, 14));
-        btn.setForeground(java.awt.Color.WHITE);
-        btn.setBackground(new java.awt.Color(0xC0392B));
-        btn.setOpaque(true);
-        btn.setBorderPainted(false);
-        btn.setFocusPainted(false);
-        btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        return btn;
-    }
-
-    private JButton botonVerde(String texto) {
-        JButton btn = new JButton(texto);
-        btn.setFont(new Font("Georgia", Font.BOLD, 14));
-        btn.setForeground(java.awt.Color.WHITE);
-        btn.setBackground(new java.awt.Color(0x27AE60));
-        btn.setOpaque(true);
-        btn.setBorderPainted(false);
-        btn.setFocusPainted(false);
-        btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        return btn;
-    }
-
 }

@@ -229,7 +229,7 @@ public class PobladorBD {
         poblar();
     }
     
-    private static String encriptarTelefono(String telefonoPlano) {
+    public static String encriptarTelefono(String telefonoPlano) {
         try {
             String algoritmo = "AES/ECB/PKCS5Padding";
             String clave = "MiClaveSecreta16";

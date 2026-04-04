@@ -10,7 +10,9 @@ import DTOs.ClienteFrecuenteDTO;
 import coordinador.Coordinador;
 import excepciones.NegocioException;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -53,9 +55,8 @@ public class FrmRegistrarCliente extends JFrame {
     private void initUI() {
         setTitle("Registrar Cliente");
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        setResizable(false);
-        setSize(480, 420);
-        setLocationRelativeTo(null);
+
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
@@ -68,125 +69,79 @@ public class FrmRegistrarCliente extends JFrame {
         fondo.setBackground(UI.FONDO);
         setContentPane(fondo);
 
-        JPanel card = UI.card(400, 350);
-        card.setLayout(new BorderLayout());
-        card.setBorder(new EmptyBorder(28, 44, 28, 44));
+        JPanel card = UI.card();
 
-        // Título
-        JLabel lblTitulo = new JLabel("Ingrese los datos del cliente", SwingConstants.CENTER);
-        lblTitulo.setFont(new Font("Georgia", Font.PLAIN, 17));
-        lblTitulo.setForeground(UI.TEXTO_OSCURO);
-        card.add(lblTitulo, BorderLayout.NORTH);
+        GridBagConstraints gbc = UI.gbcBase(0, 0);
+        gbc.gridwidth = 2;
+        gbc.anchor = GridBagConstraints.CENTER;
 
-        // Formulario con GridBagLayout
+        JLabel lblTitulo = UI.tituloGrande("Registrar Cliente");
+        card.add(lblTitulo, gbc);
+
+        gbc.gridy++;
+        JLabel lblSub = UI.titulo("Ingrese los datos del cliente");
+        lblSub.setHorizontalAlignment(SwingConstants.CENTER);
+        card.add(lblSub, gbc);
+
+        gbc.gridy++;
         JPanel form = new JPanel(new GridBagLayout());
         form.setOpaque(false);
-        form.setBorder(new EmptyBorder(18, 0, 0, 0));
+        card.add(form, gbc);
 
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(6, 4, 6, 4);
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.anchor = GridBagConstraints.WEST;
+        GridBagConstraints fgbc = UI.gbcBase(0, 0);
+        fgbc.anchor = GridBagConstraints.WEST;
 
-        // Fila 0: Nombres
-        agregarFila(form, gbc, 0, "Nombres *:", txtNombres = campoTexto());
+        agregarFila(form, fgbc, 0, "Nombres *:", txtNombres = campoTexto());
+        agregarFila(form, fgbc, 1, "Apellido Paterno *:", txtApellidoPaterno = campoTexto());
+        agregarFila(form, fgbc, 2, "Apellido Materno:", txtApellidoMaterno = campoTexto());
+        agregarFila(form, fgbc, 3, "Correo Electrónico:", txtCorreo = campoTexto());
+        agregarFila(form, fgbc, 4, "Teléfono *:", txtTelefono = campoTexto());
 
-        // Fila 1: Apellido Paterno
-        agregarFila(form, gbc, 1, "ApellidoPaterno *:", txtApellidoPaterno = campoTexto());
+        gbc.gridy++;
+        gbc.gridwidth = 2;
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.fill = GridBagConstraints.NONE;
 
-        // Fila 2: Apellido Materno
-        agregarFila(form, gbc, 2, "ApellidoMaterno:", txtApellidoMaterno = campoTexto());
-
-        // Fila 3: Correo Electrónico
-        agregarFila(form, gbc, 3, "Correo Electrónico:", txtCorreo = campoTexto());
-
-        // Fila 4: Teléfono
-        agregarFila(form, gbc, 4, "Teléfono *:", txtTelefono = campoTexto());
-
-        card.add(form, BorderLayout.CENTER);
-
-        // Botones Atrás / Registrar
-        JPanel botones = new JPanel(new GridLayout(1, 2, 16, 0));
+        JPanel botones = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 0));
         botones.setOpaque(false);
-        botones.setBorder(new EmptyBorder(10, 0, 0, 0));
 
-        JButton btnAtras = botonRojo("Atrás");
+        JButton btnAtras = UI.boton("Atrás", new Color(0xC0392B), new Color(0x922B21));
+        btnAtras.setPreferredSize(new Dimension(150, 40));
         btnAtras.addActionListener(e -> coordinador.regresarDesdeRegistrarCliente());
 
-        JButton btnRegistrar = botonVerde("Registrar");
+        JButton btnRegistrar = UI.boton("Registrar", new Color(0x27AE60), new Color(0x1E8449));
+        btnRegistrar.setPreferredSize(new Dimension(150, 40));
         btnRegistrar.addActionListener(e -> registrar());
 
         botones.add(btnAtras);
         botones.add(btnRegistrar);
-        card.add(botones, BorderLayout.SOUTH);
 
-        fondo.add(card);
+        card.add(botones, gbc);
+
+        UI.centrar(fondo, card);
     }
 
-    /**
-     * Crea un campo de texto con el estilo del sistema.
-     */
     private JTextField campoTexto() {
         JTextField tf = new JTextField(18);
         tf.setFont(new Font("Georgia", Font.PLAIN, 14));
         tf.setForeground(UI.TEXTO_OSCURO);
         tf.setBackground(UI.AZUL_NORMAL.brighter());
-        tf.setPreferredSize(new Dimension(180, 32));
         return tf;
     }
 
-    /**
-     * Agrega una fila de etiqueta + campo al formulario.
-     */
     private void agregarFila(JPanel form, GridBagConstraints gbc, int fila, String etiqueta, JTextField campo) {
         gbc.gridx = 0;
         gbc.gridy = fila;
-        gbc.weightx = 0.35;
-        JLabel lbl = new JLabel(etiqueta, SwingConstants.RIGHT);
-        lbl.setFont(new Font("Georgia", Font.PLAIN, 14));
-        lbl.setForeground(UI.TEXTO_OSCURO);
+        gbc.weightx = 0.4;
+
+        JLabel lbl = UI.titulo(etiqueta);
         form.add(lbl, gbc);
 
         gbc.gridx = 1;
-        gbc.weightx = 0.65;
+        gbc.weightx = 0.6;
         form.add(campo, gbc);
     }
 
-    /**
-     * Botón rojo para "Atrás" / "Cancelar".
-     */
-    private JButton botonRojo(String texto) {
-        JButton btn = new JButton(texto);
-        btn.setFont(new Font("Georgia", Font.BOLD, 15));
-        btn.setForeground(java.awt.Color.WHITE);
-        btn.setBackground(new java.awt.Color(0xC0392B));
-        btn.setOpaque(true);
-        btn.setBorderPainted(false);
-        btn.setFocusPainted(false);
-        btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn.setPreferredSize(new Dimension(120, 42));
-        return btn;
-    }
-
-    /**
-     * Botón verde para acciones de confirmación.
-     */
-    private JButton botonVerde(String texto) {
-        JButton btn = new JButton(texto);
-        btn.setFont(new Font("Georgia", Font.BOLD, 15));
-        btn.setForeground(java.awt.Color.WHITE);
-        btn.setBackground(new java.awt.Color(0x27AE60));
-        btn.setOpaque(true);
-        btn.setBorderPainted(false);
-        btn.setFocusPainted(false);
-        btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn.setPreferredSize(new Dimension(120, 42));
-        return btn;
-    }
-
-    /**
-     * Recoge los datos, llama al BO y muestra resultado
-     */
     private void registrar() {
         String nombres = txtNombres.getText().trim();
         String apPat = txtApellidoPaterno.getText().trim();
@@ -204,15 +159,20 @@ public class FrmRegistrarCliente extends JFrame {
 
         try {
             clienteBO.registrar(dto);
-            coordinador.mostrarExito("El cliente fue registrado con éxito", "registro_cliente");
+            coordinador.mostrarExito(
+                "El cliente fue registrado con éxito",
+                "registro_cliente"
+            );
         } catch (NegocioException ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error de validación", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(
+                this,
+                ex.getMessage(),
+                "Error de validación",
+                JOptionPane.WARNING_MESSAGE
+            );
         }
     }
 
-    /**
-     * Limpia todos los campos del formulario.
-     */
     public void limpiar() {
         txtNombres.setText("");
         txtApellidoPaterno.setText("");

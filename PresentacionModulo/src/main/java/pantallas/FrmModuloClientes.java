@@ -10,7 +10,9 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -36,9 +38,8 @@ public class FrmModuloClientes extends JFrame {
     private void iniciar() {
         setTitle("Módulo de clientes");
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        setResizable(false);
-        setSize(520, 420);
-        setLocationRelativeTo(null);
+
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
@@ -51,23 +52,29 @@ public class FrmModuloClientes extends JFrame {
         fondo.setBackground(UI.FONDO);
         setContentPane(fondo);
 
-        JPanel card = UI.card(440, 340);
-        card.setLayout(new BorderLayout());
-        card.setBorder(new EmptyBorder(36, 44, 40, 44));
+        JPanel card = UI.card();
 
-        // Titulo
-        JLabel lblTitulo = new JLabel("Modulo de clientes", SwingConstants.CENTER);
-        lblTitulo.setFont(new Font("Georgia", Font.BOLD, 19));
-        lblTitulo.setForeground(UI.TEXTO_OSCURO);
-        card.add(lblTitulo, BorderLayout.NORTH);
+        GridBagConstraints gbc = UI.gbcBase(0, 0);
+        gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.CENTER;
 
-        // Botones de opciones en columna
+        JLabel lblTitulo = UI.tituloGrande("Módulo de clientes");
+        gbc.gridy = 0;
+        gbc.insets = new Insets(10, 10, 20, 10);
+        card.add(lblTitulo, gbc);
+
+        gbc.gridy++;
         JPanel columna = new JPanel();
         columna.setOpaque(false);
         columna.setLayout(new BoxLayout(columna, BoxLayout.Y_AXIS));
-        columna.setBorder(new EmptyBorder(26, 0, 0, 0));
 
-        String[] opciones = {"Registrar Cliente", "Modificar Cliente", "Eliminar Cliente", "Buscador de Clientes"};
+        String[] opciones = {
+            "Registrar Cliente",
+            "Modificar Cliente",
+            "Eliminar Cliente",
+            "Buscador de Clientes"
+        };
+
         for (String opcion : opciones) {
             JButton btn = UI.botonPrimario(opcion);
             btn.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -85,33 +92,25 @@ public class FrmModuloClientes extends JFrame {
 
                 case "Buscador de Clientes" ->
                     btn.addActionListener(e -> coordinador.abrirBuscadorClientes());
-
             }
+
             columna.add(btn);
             columna.add(Box.createVerticalStrut(12));
         }
 
-        card.add(columna, BorderLayout.CENTER);
+        card.add(columna, gbc);
 
-        // Boton volver pantalla modulos
-        JButton btnVolver = new JButton("Volver");
-        btnVolver.setFont(new Font("Georgia", Font.PLAIN, 13));
-        btnVolver.setForeground(UI.TEXTO_OSCURO);
-        btnVolver.setContentAreaFilled(false);
-        btnVolver.setBorderPainted(false);
-        btnVolver.setFocusPainted(false);
-        btnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnVolver.setAlignmentX(Component.CENTER_ALIGNMENT);
+        gbc.gridy++;
+        gbc.insets = new Insets(20, 10, 10, 10);
+        gbc.fill = GridBagConstraints.NONE;
+
+        JButton btnVolver = UI.boton("Volver", UI.AZUL_OSCURO, UI.AZUL_OSCURO_HOVER);
+        btnVolver.setPreferredSize(new Dimension(140, 40));
         btnVolver.addActionListener(e -> coordinador.regresarDesdeModuloClientes());
 
-        JPanel footer = new JPanel();
-        footer.setOpaque(false);
-        footer.setBorder(new EmptyBorder(10, 0, 0, 0));
-        footer.add(btnVolver);
-        card.add(footer, BorderLayout.SOUTH);
+        card.add(btnVolver, gbc);
 
-        fondo.add(card);
-
+        UI.centrar(fondo, card);
     }
 
 }

@@ -7,6 +7,7 @@ package DAOs;
 import entidades.Cliente;
 import entidades.ClienteFrecuente;
 import excepciones.PersistenciaException;
+import insertsMasivosGPTOs.PobladorBD;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -29,7 +30,8 @@ public class ClienteDAOTest {
         ClienteFrecuente temp = new ClienteFrecuente();
         temp.setNombres("Test");
         temp.setApellidoPaterno("Unitario");
-        temp.setTelefono("1234567890");
+        String telefonoEncriptado= PobladorBD.encriptarTelefono("6442014769");
+        temp.setTelefono(telefonoEncriptado);
         temp.setCorreo("test@mail.com");
         
         Cliente guardado = dao.registrarCliente(temp);
@@ -45,7 +47,8 @@ public class ClienteDAOTest {
         ClienteFrecuente cliente = new ClienteFrecuente();
         cliente.setNombres("Dayanara");
         cliente.setApellidoPaterno("Garcia");
-        cliente.setTelefono("6441256974");
+        String telefonoEncriptado= PobladorBD.encriptarTelefono("6442014769");
+        cliente.setTelefono(telefonoEncriptado);
         
         Cliente nuevo = dao.registrarCliente(cliente);
         
