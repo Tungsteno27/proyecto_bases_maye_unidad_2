@@ -7,8 +7,12 @@ package pantallas;
 import EstilosGUI.UI;
 import coordinador.Coordinador;
 import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagLayout;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,25 +24,25 @@ import javax.swing.border.EmptyBorder;
  *
  * @author Dayanara Peralta G
  */
-public class FrmEnProgreso extends JFrame{
+public class FrmModulosComandas extends JFrame{
     private final Coordinador coordinador;
 
-    public FrmEnProgreso(Coordinador coordinador) {
+    public FrmModulosComandas(Coordinador coordinador) {
         this.coordinador = coordinador;
         iniciar();
     }
 
     private void iniciar() {
-        setTitle("En mantenimiento");
+        setTitle("Modulo Comandas");
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setResizable(false);
-        setSize(400, 300);
+        setSize(520, 420);
         setLocationRelativeTo(null);
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent e) {
-                coordinador.cerrarSesion();
+                coordinador.cerrarSesion();//ponerle otra cosa
             }
         });
 
@@ -46,15 +50,45 @@ public class FrmEnProgreso extends JFrame{
         fondo.setBackground(UI.FONDO);
         setContentPane(fondo);
 
-        JPanel card = UI.card(320, 200);
+        JPanel card = UI.card(440, 340);
         card.setLayout(new BorderLayout());
-        card.setBorder(new EmptyBorder(30, 30, 30, 30));
+        card.setBorder(new EmptyBorder(36, 44, 40, 44));
 
-        // Texto principal
-        JLabel lblMensaje = new JLabel("En progreso", SwingConstants.CENTER);
-        lblMensaje.setFont(new Font("Georgia", Font.BOLD, 20));
-        lblMensaje.setForeground(UI.TEXTO_OSCURO);
-        card.add(lblMensaje, BorderLayout.CENTER);
+        // Titulo
+        JLabel lblTitulo = new JLabel("Modulo de clientes", SwingConstants.CENTER);
+        lblTitulo.setFont(new Font("Georgia", Font.BOLD, 19));
+        lblTitulo.setForeground(UI.TEXTO_OSCURO);
+        card.add(lblTitulo, BorderLayout.NORTH);
+        
+        // Botones de opciones en columna
+        JPanel columna = new JPanel();
+        columna.setOpaque(false);
+        columna.setLayout(new BoxLayout(columna, BoxLayout.Y_AXIS));
+        columna.setBorder(new EmptyBorder(26, 0, 0, 0));
+
+        String[] opciones = {"Registrar", "Modificar", "Buscar"};
+        for (String opcion : opciones) {
+            JButton btn = UI.botonPrimario(opcion);
+            btn.setAlignmentX(Component.CENTER_ALIGNMENT);
+            btn.setMaximumSize(new Dimension(260, 46));
+
+            switch (opcion) {
+                case "Registrar" ->
+                    btn.addActionListener(e -> coordinador.abrirSeleccionadorMesa());
+
+                case "Modificar" ->
+                    btn.addActionListener(e -> coordinador.abrirModuloProductos());//.abrirSeleccionarComanda()
+
+                case "Buscar" ->
+                    btn.addActionListener(e -> coordinador.abrirModuloProductos());//.abrirBuscarComanda()
+
+            }
+            columna.add(btn);
+            columna.add(Box.createVerticalStrut(12));
+        }
+
+        card.add(columna, BorderLayout.CENTER);
+
 
         // Botón volver
         JButton btnVolver = new JButton("Volver");

@@ -11,8 +11,9 @@ import DTOs.ClienteFrecuenteDTO;
 import excepciones.NegocioException;
 import javax.swing.JOptionPane;
 import pantallas.FrmBuscadorClientes;
+import pantallas.FrmComanda;
 import pantallas.FrmEnMantenimiento;
-import pantallas.FrmEnProgreso;
+import pantallas.FrmModulosComandas;
 import pantallas.FrmExito;
 import pantallas.FrmInfoAdicional;
 import pantallas.FrmModificarCliente;
@@ -21,6 +22,7 @@ import pantallas.FrmSeleccionRol;
 import pantallas.FrmModulos;
 import pantallas.FrmPassword;
 import pantallas.FrmRegistrarCliente;
+import pantallas.FrmSeleccionadorMesa;
 import pantallas.FrmSeleccionarId;
 
 /**
@@ -44,7 +46,10 @@ public class Coordinador {
     private FrmInfoAdicional    frmInfoAdicional;
     private FrmExito            frmExito;  
     private FrmEnMantenimiento frmMantenimieto;
-    private FrmEnProgreso frmProgreso;
+    
+    private FrmModulosComandas frmModuloComandas;
+    private FrmSeleccionadorMesa frmSeleccionarMesa;
+    private FrmComanda frmComanda;
     
     //
     private ClienteBO clienteBO;
@@ -76,9 +81,9 @@ public class Coordinador {
     //Si elige mesero lo manda al modulo de comandas (Dayanara)
     public void rolMeseroSeleccionado() {
         if (frmSeleccionRol != null) frmSeleccionRol.setVisible(false);
-        if (frmProgreso == null) frmProgreso = new FrmEnProgreso(this);
-        frmProgreso.setVisible(true);
-        frmProgreso.toFront();
+        if (frmModuloComandas == null) frmModuloComandas = new FrmModulosComandas(this);
+        frmModuloComandas.setVisible(true);
+        frmModuloComandas.toFront();
     }
  
     //Valida la contraseña ingresada (falta implementar, aún no sé donde guardarla)
@@ -354,6 +359,21 @@ public class Coordinador {
         if (frmMantenimieto == null) frmMantenimieto = new FrmEnMantenimiento(this);
         frmMantenimieto.setVisible(true);
         frmMantenimieto.toFront();
+    }
+    
+    //Seleccionar mesa
+    public void abrirSeleccionadorMesa(){
+        if(frmModuloComandas != null){frmModuloComandas.setVisible(false);}
+        if(frmSeleccionarMesa == null){frmSeleccionarMesa = new FrmSeleccionadorMesa(this);}
+        frmSeleccionarMesa.setVisible(true);
+        frmSeleccionarMesa.toFront();
+    }
+    
+    public void abrirComanda(int numeroMesa){
+        if(frmSeleccionarMesa != null)frmSeleccionarMesa.setVisible(false);
+        if(frmComanda == null) frmComanda = new FrmComanda(this);
+        frmComanda.setVisible(true);
+        frmComanda.toFront();
     }
 }
     
