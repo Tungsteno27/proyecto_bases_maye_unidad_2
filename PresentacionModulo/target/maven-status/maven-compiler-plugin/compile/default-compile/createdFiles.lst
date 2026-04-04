@@ -1,4 +1,5 @@
 EstilosGUI\UI$2.class
+pantallas\FrmModulosComandas$1.class
 EstilosGUI\UI.class
 pantallas\FrmBuscadorClientes$2.class
 pantallas\FrmExito$2.class
@@ -7,8 +8,6 @@ pantallas\FrmModuloClientes$1.class
 pantallas\FrmRegistrarCliente$1.class
 pantallas\FrmPassword$2.class
 EstilosGUI\UI$3.class
-pantallas\FrmEnProgreso$1.class
-pantallas\FrmEnProgreso.class
 iniciar\ArrancarSistema.class
 pantallas\FrmPassword.class
 pantallas\FrmEnMantenimiento$1.class
@@ -19,12 +18,16 @@ pantallas\FrmSeleccionRol.class
 pantallas\FrmEnMantenimiento.class
 pantallas\FrmExito$1.class
 pantallas\FrmInfoAdicional$1.class
+pantallas\FrmModulosComandas.class
+pantallas\FrmSeleccionadorMesa.class
 pantallas\FrmSeleccionarId$1.class
 pantallas\FrmModulos$1.class
 EstilosGUI\UI$1.class
 pantallas\FrmModuloClientes.class
+pantallas\FrmSeleccionadorMesa$1.class
 pantallas\FrmBuscadorClientes$1.class
 pantallas\FrmModulos.class
+pantallas\FrmComanda.class
 EstilosGUI\UI$4.class
 pantallas\FrmExito.class
 pantallas\FrmModificarCliente$1.class

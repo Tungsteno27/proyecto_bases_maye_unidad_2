@@ -7,15 +7,18 @@ package pantallas;
 import EstilosGUI.UI;
 import coordinador.Coordinador;
 import java.awt.BorderLayout;
-import java.awt.Dimension;
+import java.awt.Color;
 import java.awt.Font;
-import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Insets;
+import java.awt.GridLayout;
+import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JToggleButton;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
@@ -23,50 +26,44 @@ import javax.swing.border.EmptyBorder;
  *
  * @author Dayanara Peralta G
  */
-public class FrmEnProgreso extends JFrame{
+public class FrmSeleccionadorMesa extends JFrame{
     private final Coordinador coordinador;
+    private ButtonGroup tables;
+    private int mesaSeleccionada = -1;
 
-    public FrmEnProgreso(Coordinador coordinador) {
+    public FrmSeleccionadorMesa(Coordinador coordinador){
         this.coordinador = coordinador;
         iniciar();
     }
-
-    private void iniciar() {
-        setTitle("En progreso");
+    
+    private void iniciar(){
+        setTitle("Selección de mesas");
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
-
+        setResizable(false);
+        setSize(400, 300);
+        setLocationRelativeTo(null);
+        
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent e) {
-                coordinador.cerrarSesion();
+                coordinador.cerrarSesion();//ponerle otra cosa
             }
         });
-
+        
         JPanel fondo = new JPanel(new GridBagLayout());
         fondo.setBackground(UI.FONDO);
         setContentPane(fondo);
 
-        JPanel card = UI.card();
-
-        GridBagConstraints gbc = UI.gbcBase(0, 0);
-        gbc.anchor = GridBagConstraints.CENTER;
-
-        JLabel lblMensaje = UI.tituloGrande("En progreso");
-        gbc.gridy = 0;
-        gbc.insets = new Insets(10, 10, 20, 10);
-        card.add(lblMensaje, gbc);
-
-        JButton btnVolver = UI.botonAccion("Volver");
-        btnVolver.setPreferredSize(new Dimension(140, 40));
-        btnVolver.addActionListener(e -> coordinador.iniciarSistema());
-
-        gbc.gridy = 1;
-        gbc.insets = new Insets(10, 10, 10, 10);
-        gbc.fill = GridBagConstraints.NONE;
-        card.add(btnVolver, gbc);
-
-        UI.centrar(fondo, card);
+        JPanel card = UI.card(440, 340);
+        card.setLayout(new BorderLayout());
+        card.setBorder(new EmptyBorder(36, 44, 40, 44));
+        
+        // Titulo
+        JLabel lblTitulo = new JLabel("Mesas", SwingConstants.CENTER);
+        lblTitulo.setFont(new Font("Georgia", Font.BOLD, 19));
+        lblTitulo.setForeground(UI.TEXTO_OSCURO);
+        card.add(lblTitulo, BorderLayout.NORTH);
+        
     }
+    
 }
