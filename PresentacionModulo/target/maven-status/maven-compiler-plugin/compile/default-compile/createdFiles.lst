@@ -1,13 +1,17 @@
 EstilosGUI\UI$2.class
+pantallas\FrmBuscadorProductos$4.class
 pantallas\FrmModulosComandas$1.class
 EstilosGUI\UI.class
 pantallas\FrmBuscadorClientes$2.class
 pantallas\FrmExito$2.class
 pantallas\FrmBuscadorClientes.class
+pantallas\FrmBuscadorProductos$1.class
 pantallas\FrmModuloClientes$1.class
 pantallas\FrmRegistrarCliente$1.class
 pantallas\FrmPassword$2.class
 EstilosGUI\UI$3.class
+pantallas\FrmBuscadorProductos$3.class
+pantallas\FrmBuscadorProductos.class
 iniciar\ArrancarSistema.class
 pantallas\FrmPassword.class
 pantallas\FrmEnMantenimiento$1.class
@@ -25,6 +29,7 @@ EstilosGUI\UI$1.class
 pantallas\FrmModuloClientes.class
 pantallas\FrmBuscadorClientes$1.class
 pantallas\FrmModulos.class
+pantallas\FrmBuscadorProductos$2.class
 pantallas\FrmComanda.class
 EstilosGUI\UI$4.class
 pantallas\FrmExito.class

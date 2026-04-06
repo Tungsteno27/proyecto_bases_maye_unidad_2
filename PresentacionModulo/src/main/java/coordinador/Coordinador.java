@@ -5,12 +5,20 @@
 package coordinador;
 
 import BOs.ClienteBO;
+import BOs.IngredienteBO;
+import BOs.ProductoBO;
 import DAOs.ClienteDAO;
+import DAOs.IngredienteDAO;
+import DAOs.ProductoDAO;
 import DTOs.ClienteDTO;
 import DTOs.ClienteFrecuenteDTO;
+import DTOs.ProductoDTO;
 import excepciones.NegocioException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import pantallas.FrmBuscadorClientes;
+import pantallas.FrmBuscadorProductos;
 import pantallas.FrmComanda;
 import pantallas.FrmEnMantenimiento;
 import pantallas.FrmModulosComandas;
@@ -49,12 +57,19 @@ public class Coordinador {
     private FrmModulosComandas frmModuloComandas;
     private FrmComanda frmComanda;
     
-    //
+    //Módulo de productos
+    private FrmBuscadorProductos frmBuscadorProductos;
+    //BO's
     private ClienteBO clienteBO;
+    private ProductoBO productoBO;
+    private IngredienteBO ingredienteBO;
     
     //Método que arranca el sistema
     public void iniciarSistema() {
+        
         clienteBO = new ClienteBO(new ClienteDAO());
+        productoBO = new ProductoBO( new ProductoDAO(), new IngredienteDAO());
+        ingredienteBO = new IngredienteBO(new IngredienteDAO());
         
         if (frmSeleccionRol == null) {
             frmSeleccionRol = new FrmSeleccionRol(this);
@@ -347,9 +362,13 @@ public class Coordinador {
      */
     public void abrirModuloProductos(){
         if (frmModulos != null) frmModulos.setVisible(false);
-        if (frmMantenimieto == null) frmMantenimieto = new FrmEnMantenimiento(this);
-        frmMantenimieto.setVisible(true);
-        frmMantenimieto.toFront();
+
+        if (frmBuscadorProductos == null) {
+            frmBuscadorProductos = new FrmBuscadorProductos(this);
+        }
+
+        frmBuscadorProductos.setVisible(true);
+        frmBuscadorProductos.toFront();
     }
     
     public void abrirModuloReportes(){
@@ -360,7 +379,7 @@ public class Coordinador {
     }
     
     //Seleccionar mesa
-    /*public void abrirSeleccionadorMesa(){
+    public void abrirSeleccionadorMesa(){
         if(frmModuloComandas != null){frmModuloComandas.setVisible(false);}
         if(frmSeleccionarMesa == null){frmSeleccionarMesa = new FrmSeleccionadorMesa(this);}
         frmSeleccionarMesa.setVisible(true);
@@ -372,7 +391,79 @@ public class Coordinador {
         if(frmComanda == null) frmComanda = new FrmComanda(this);
         frmComanda.setVisible(true);
         frmComanda.toFront();
-    }*/
-}
+    }
     
+    //MÓDULO DE PRODUCTOS
+    
+    public void abrirBuscadorProductos() {
+        if (frmModulos != null) frmModulos.setVisible(false);
+        if (frmBuscadorProductos == null) {
+            frmBuscadorProductos = new FrmBuscadorProductos(this);
+        }
+        frmBuscadorProductos.setVisible(true);
+        frmBuscadorProductos.toFront();
+    }
+   
+    public void regresarDesdeBuscadorProductos() {
+        if (frmBuscadorProductos != null) frmBuscadorProductos.setVisible(false);
+        if (frmModulos == null) frmModulos = new FrmModulos(this);
+        frmModulos.setVisible(true);
+        frmModulos.toFront();
+    }
+
+    public void abrirRegistrarProducto() {
+        if (frmBuscadorProductos != null) frmBuscadorProductos.setVisible(false);
+        // luego pongo el frame de registro porque está batalloso
+    }
+
+    public void abrirModificarProducto(Long id) {
+        // guardamos el id para que la pantalla de modificar se lo pida al coordinador
+        this.idProductoSeleccionado = id;
+        if (frmBuscadorProductos != null) frmBuscadorProductos.setVisible(false);
+        // Luego pongo el frame de actualizar porque está batalloso también
+    }
+
+ 
+    private Long idProductoSeleccionado;
+
+    public Long getIdProductoSeleccionado() {
+        return idProductoSeleccionado;
+    }
+
+    
+    public List<ProductoDTO> obtenerProductos() {
+            return productoBO.obtenerTodos();
+    }
+
+    public List<ProductoDTO> buscarProductos(String nombre, String tipo) {
+        try {
+            return productoBO.buscarProductos(nombre, tipo);
+        } catch (NegocioException e) {
+            JOptionPane.showMessageDialog(null,
+                "Error al buscar productos: " + e.getMessage());
+            return new ArrayList<>();
+        }
+    }
+
+    public void eliminarProducto(Long id) {
+        String mensaje = "<html><b>¿Está seguro de eliminar este producto?</b></html>";
+        int confirmacion = JOptionPane.showConfirmDialog(
+            null, mensaje,
+            "Confirmar eliminación",
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.WARNING_MESSAGE
+        );
+        if (confirmacion == JOptionPane.YES_OPTION) {
+            try {
+                productoBO.cambiarEstado(id, "INACTIVO");
+                JOptionPane.showMessageDialog(null, "Producto eliminado correctamente.");
+            } catch (NegocioException e) {
+                JOptionPane.showMessageDialog(null,
+                    "Error al eliminar: " + e.getMessage(),
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+}
 

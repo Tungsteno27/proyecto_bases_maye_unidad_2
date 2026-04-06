@@ -10,6 +10,7 @@ import entidades.ClienteFrecuente;
 import entidades.Comanda;
 import entidades.ComandaProducto;
 import entidades.EstadoComanda;
+import entidades.EstadoProducto;
 import entidades.Ingrediente;
 import entidades.Mesa;
 import entidades.Mesero;
@@ -30,7 +31,7 @@ import javax.persistence.EntityManager;
 /**
  * ESTA CLASE SÓLO EXISTE COMO UNA PRUEBA RÁPIDA DE QUE LAS TABLAS FUNCIONAN COMO ESTÁN MODELADAS, BASÁNDOSE EN EL DISEÑO DESCRITO EN EL DIAGRAMA
  * DE CLASES DE DOMINIO, AÚN NO SE GUARDA EL TELEFONO CIFRADO, NI LOS CÓDIGOS TIENEN EL FORMATO ADECUADO, ESO LO VEREMOS MAÑANA
- * -daya: el telefono ya se guarda cifrado
+ * -daya: el telefono ya se guarda cifrado 
  * @author Tungs
  */
 public class PobladorBD {
@@ -122,21 +123,22 @@ public class PobladorBD {
             // =====================
             // 5. PRODUCTOS
             // =====================
-            String[][] datosProductos = {
-                {"Pizza Margherita", "Pizza"},
-                {"Ensalada César", "Ensalada"},
-                {"Pollo a la Plancha", "Plato Fuerte"},
-                {"Pasta Alfredo", "Pasta"},
-                {"Hamburguesa Clásica", "Hamburguesa"}
-            };
 
             List<Producto> productos = new ArrayList<>();
+                String[][] datosProductos = {
+                {"Pizza Margherita", "Pizza", "Deliciosa pizza con tomate y queso mozzarella", "urogallo.png"},
+                {"Ensalada César",   "Ensalada", "Ensalada fresca con aderezo césar y crutones", "urogallo.png"},
+                {"Pollo a la Plancha","Plato Fuerte","Pechuga de pollo a la plancha con especias","urogallo.png"}
+            };
+
             for (String[] datos : datosProductos) {
                 Producto p = new Producto();
                 p.setNombre(datos[0]);
-                p.setPrecio(50.0 + random.nextDouble() * 200);
                 p.setTipo(datos[1]);
-                p.setIngredientes(new ArrayList<>());
+                p.setDescripcion(datos[2]);
+                p.setPrecio(50.0 + random.nextDouble() * 200);
+                p.setEstado(EstadoProducto.ACTIVO);
+                p.setImagenUrl(datos[3]); 
                 em.persist(p);
                 productos.add(p);
             }
