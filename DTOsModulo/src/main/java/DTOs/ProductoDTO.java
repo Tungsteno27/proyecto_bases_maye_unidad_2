@@ -15,16 +15,22 @@ public class ProductoDTO {
     private String nombre;
     private Double precio;
     private String tipo;
+    private String Descripcion;
+    private String estado;
+    private String imagenUrl;
     private List<ProductoIngredienteDTO> ingredientes;
 
     public ProductoDTO() {
     }
 
-    public ProductoDTO(Long id, String nombre, Double precio, String tipo, List<ProductoIngredienteDTO> ingredientes) {
+    public ProductoDTO(Long id, String nombre, Double precio, String tipo, String Descripcion, String estado, String imagenUrl, List<ProductoIngredienteDTO> ingredientes) {
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
         this.tipo = tipo;
+        this.Descripcion = Descripcion;
+        this.estado = estado;
+        this.imagenUrl = imagenUrl;
         this.ingredientes = ingredientes;
     }
 
@@ -60,6 +66,30 @@ public class ProductoDTO {
         this.tipo = tipo;
     }
 
+    public String getDescripcion() {
+        return Descripcion;
+    }
+
+    public void setDescripcion(String Descripcion) {
+        this.Descripcion = Descripcion;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getImagenUrl() {
+        return imagenUrl;
+    }
+
+    public void setImagenUrl(String imagenUrl) {
+        this.imagenUrl = imagenUrl;
+    }
+
     public List<ProductoIngredienteDTO> getIngredientes() {
         return ingredientes;
     }
@@ -67,5 +97,7 @@ public class ProductoDTO {
     public void setIngredientes(List<ProductoIngredienteDTO> ingredientes) {
         this.ingredientes = ingredientes;
     }
+    
+    
     
 }

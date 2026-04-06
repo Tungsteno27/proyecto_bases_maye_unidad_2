@@ -1,17 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: DAOs.ClienteDAOTest
 -------------------------------------------------------------------------------
-Tests run: 16, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 4.666 s <<< FAILURE! -- in DAOs.ClienteDAOTest
-DAOs.ClienteDAOTest.testBuscarFrecuentesPorFiltros_Exitoso -- Time elapsed: 0.021 s <<< FAILURE!
-org.opentest4j.AssertionFailedError: expected: <false> but was: <true>
-	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
-	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
-	at org.junit.jupiter.api.AssertFalse.failNotFalse(AssertFalse.java:63)
-	at org.junit.jupiter.api.AssertFalse.assertFalse(AssertFalse.java:36)
-	at org.junit.jupiter.api.AssertFalse.assertFalse(AssertFalse.java:31)
-	at org.junit.jupiter.api.Assertions.assertFalse(Assertions.java:231)
-	at DAOs.ClienteDAOTest.testBuscarFrecuentesPorFiltros_Exitoso(ClienteDAOTest.java:228)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-
+Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.946 s -- in DAOs.ClienteDAOTest

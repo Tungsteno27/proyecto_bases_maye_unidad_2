@@ -54,7 +54,7 @@ public class FrmSeleccionadorMesa extends JFrame{
         fondo.setBackground(UI.FONDO);
         setContentPane(fondo);
 
-        JPanel card = UI.card(440, 340);
+        JPanel card = UI.card();
         card.setLayout(new BorderLayout());
         card.setBorder(new EmptyBorder(36, 44, 40, 44));
         

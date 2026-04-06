@@ -9,27 +9,23 @@ package DTOs;
  * @author Dayanara Peralta G
  */
 public class ProductoIngredienteDTO {
-    private Long id;
+    private Long idIngrediente;
     private Double cantidad;
-    private ProductoDTO producto;
-    private IngredienteDTO ingrediente;
 
     public ProductoIngredienteDTO() {
     }
 
-    public ProductoIngredienteDTO(Long id, Double cantidad, ProductoDTO producto, IngredienteDTO ingrediente) {
-        this.id = id;
+    public ProductoIngredienteDTO(Long idIngrediente, Double cantidad) {
+        this.idIngrediente = idIngrediente;
         this.cantidad = cantidad;
-        this.producto = producto;
-        this.ingrediente = ingrediente;
     }
 
-    public Long getId() {
-        return id;
+    public Long getIdIngrediente() {
+        return idIngrediente;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdIngrediente(Long idIngrediente) {
+        this.idIngrediente = idIngrediente;
     }
 
     public Double getCantidad() {
@@ -39,21 +35,7 @@ public class ProductoIngredienteDTO {
     public void setCantidad(Double cantidad) {
         this.cantidad = cantidad;
     }
-
-    public ProductoDTO getProducto() {
-        return producto;
-    }
-
-    public void setProducto(ProductoDTO producto) {
-        this.producto = producto;
-    }
-
-    public IngredienteDTO getIngrediente() {
-        return ingrediente;
-    }
-
-    public void setIngrediente(IngredienteDTO ingrediente) {
-        this.ingrediente = ingrediente;
-    }
     
+    
+   
 }

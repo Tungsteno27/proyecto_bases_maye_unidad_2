@@ -1,5 +1,11 @@
-excepciones\PersistenciaException.class
-interfaces\IClienteDAO.class
+DAOs\ComandaDAO.class
 insertsMasivosGPTOs\PobladorBD.class
+DAOs\IngredienteDAO.class
+excepciones\PersistenciaException.class
+interfaces\IProductoDAO.class
+interfaces\IClienteDAO.class
+DAOs\ProductoDAO.class
+DAOs\ComandaProductoDAO.class
 conexion\ConexionBD.class
 DAOs\ClienteDAO.class
+DAOs\MesaDAO.class
