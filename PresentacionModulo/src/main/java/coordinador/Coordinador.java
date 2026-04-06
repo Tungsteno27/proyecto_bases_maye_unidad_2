@@ -22,7 +22,6 @@ import pantallas.FrmSeleccionRol;
 import pantallas.FrmModulos;
 import pantallas.FrmPassword;
 import pantallas.FrmRegistrarCliente;
-import pantallas.FrmSeleccionadorMesa;
 import pantallas.FrmSeleccionarId;
 
 /**
@@ -48,7 +47,6 @@ public class Coordinador {
     private FrmEnMantenimiento frmMantenimieto;
     
     private FrmModulosComandas frmModuloComandas;
-    private FrmSeleccionadorMesa frmSeleccionarMesa;
     private FrmComanda frmComanda;
     
     //
@@ -362,7 +360,7 @@ public class Coordinador {
     }
     
     //Seleccionar mesa
-    public void abrirSeleccionadorMesa(){
+    /*public void abrirSeleccionadorMesa(){
         if(frmModuloComandas != null){frmModuloComandas.setVisible(false);}
         if(frmSeleccionarMesa == null){frmSeleccionarMesa = new FrmSeleccionadorMesa(this);}
         frmSeleccionarMesa.setVisible(true);
@@ -374,7 +372,7 @@ public class Coordinador {
         if(frmComanda == null) frmComanda = new FrmComanda(this);
         frmComanda.setVisible(true);
         frmComanda.toFront();
-    }
+    }*/
 }
     
 

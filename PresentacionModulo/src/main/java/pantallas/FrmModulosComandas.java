@@ -69,7 +69,7 @@ public class FrmModulosComandas extends JFrame {
 
             switch (opcion) {
                 case "Registrar" ->
-                    btn.addActionListener(e -> coordinador.abrirSeleccionadorMesa());
+                    btn.addActionListener(e -> coordinador.abrirModuloProductos());
                 case "Modificar" ->
                     btn.addActionListener(e -> coordinador.abrirModuloProductos());
                 case "Buscar" ->
