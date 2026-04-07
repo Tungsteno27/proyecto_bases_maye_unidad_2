@@ -13,10 +13,14 @@ import DAOs.ProductoDAO;
 import DTOs.ClienteDTO;
 import DTOs.ClienteFrecuenteDTO;
 import DTOs.ProductoDTO;
+import DTOs.ReporteClienteFrecuenteDTO;
 import excepciones.NegocioException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JasperPrint;
 import pantallas.FrmBuscadorClientes;
 import pantallas.FrmBuscadorProductos;
 import pantallas.FrmComanda;
@@ -26,10 +30,12 @@ import pantallas.FrmExito;
 import pantallas.FrmInfoAdicional;
 import pantallas.FrmModificarCliente;
 import pantallas.FrmModuloClientes;
+import pantallas.FrmModuloReportes;
 import pantallas.FrmSeleccionRol;
 import pantallas.FrmModulos;
 import pantallas.FrmPassword;
 import pantallas.FrmRegistrarCliente;
+import pantallas.FrmReporteClientesFrecuentes;
 import pantallas.FrmSeleccionadorMesa;
 import pantallas.FrmSeleccionarId;
 
@@ -38,11 +44,12 @@ import pantallas.FrmSeleccionarId;
  * @author Tungs
  */
 public class Coordinador {
-
+     private static final Logger LOG = Logger.getLogger(Coordinador.class.getName());
     //aquí se ponen los frames y objetos a utilizar como los BO's
     private FrmSeleccionRol     frmSeleccionRol;
     private FrmPassword         frmPassword;
     private FrmModulos          frmModulos;
+    
  
     
     // Modulo clientes
@@ -61,6 +68,11 @@ public class Coordinador {
     
     //Módulo de productos
     private FrmBuscadorProductos frmBuscadorProductos;
+    
+    //Módulo de Reportes
+    private FrmModuloReportes frmModuloReportes;
+    private FrmReporteClientesFrecuentes frmReporteClientes;
+    
     //BO's
     private ClienteBO clienteBO;
     private ProductoBO productoBO;
@@ -360,7 +372,7 @@ public class Coordinador {
     }
     
     /**
-     *
+     * Método que abre la pantalla del buscador de productos
      */
     public void abrirModuloProductos(){
         if (frmModulos != null) frmModulos.setVisible(false);
@@ -373,12 +385,6 @@ public class Coordinador {
         frmBuscadorProductos.toFront();
     }
     
-    public void abrirModuloReportes(){
-        if (frmModulos != null) frmModulos.setVisible(false);
-        if (frmMantenimieto == null) frmMantenimieto = new FrmEnMantenimiento(this);
-        frmMantenimieto.setVisible(true);
-        frmMantenimieto.toFront();
-    }
     
     //Seleccionar mesa
     public void abrirSeleccionadorMesa(){
@@ -467,5 +473,66 @@ public class Coordinador {
             }
         }
     }
+    
+    //MÓDULO DE REPORTES
+    
+    /**
+     * Método que abre la pantalla del módulo de reportes
+     */
+    public void abrirModuloReportes(){
+        if (frmModulos != null) frmModulos.setVisible(false);
+        if (frmModuloReportes == null) frmModuloReportes = new FrmModuloReportes(this);
+        frmModuloReportes.setVisible(true);
+        frmModuloReportes.toFront();
+    }
+    /**
+     * Método que regresa desde el módulo de reportes
+     */
+    public void regresarDesdeModuloReportes() {
+        if (frmModuloReportes != null) frmModuloReportes.setVisible(false);
+
+        if (frmModulos == null) frmModulos = new FrmModulos(this);
+        frmModulos.setVisible(true);
+        frmModulos.toFront();
+    }
+
+    public void abrirReporteClientes() {
+        if (frmModuloReportes != null) frmModuloReportes.setVisible(false);
+        if (frmReporteClientes == null) {
+            frmReporteClientes = new FrmReporteClientesFrecuentes(this);
+        }
+        frmReporteClientes.setVisible(true);
+        frmReporteClientes.toFront();
+    }
+
+    public void abrirReporteComandas() {
+        JOptionPane.showMessageDialog(null, "Reporte de comandas en desarrollo");
+    }
+    
+    public void regresarDesdeReporteClientes() {
+        if (frmReporteClientes != null) frmReporteClientes.setVisible(false);
+
+        if (frmModuloReportes == null) frmModuloReportes = new FrmModuloReportes(this);
+        frmModuloReportes.setVisible(true);
+        frmModuloReportes.toFront();
+    }
+    
+    public List<ReporteClienteFrecuenteDTO> obtenerReporteClientes(String nombre, Integer minVisitas) {
+        try {
+            return clienteBO.obtenerReporte(nombre, minVisitas);
+        } catch (NegocioException e) {
+            JOptionPane.showMessageDialog(null,
+                "Error al obtener reporte: " + e.getMessage());
+            return new ArrayList<>();
+        }
+    }
+    
+    public JasperPrint generarReporteClientesFrecuentes(List<ReporteClienteFrecuenteDTO> datos) throws NegocioException {
+        return clienteBO.generarReporteClientesFrecuentes(datos);
+    }
+    
+   
+    
+
 }
 

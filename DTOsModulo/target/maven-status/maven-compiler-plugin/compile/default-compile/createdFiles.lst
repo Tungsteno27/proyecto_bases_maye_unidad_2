@@ -1,12 +1,13 @@
 DTOs\ClienteFrecuenteDTO.class
 DTOs\IngredienteDTO.class
+DTOs\ClienteDTO.class
+DTOs\MesaDTO.class
+DTOs\ComandaDTO.class
 DTOs\EmpleadoDTO.class
 DTOs\UnidadMedidaDTO.class
 DTOs\ComandaProductoDTO.class
-DTOs\ClienteDTO.class
 DTOs\MeseroDTO.class
 DTOs\ProductoDTO.class
-DTOs\MesaDTO.class
-DTOs\ComandaDTO.class
+DTOs\ReporteClienteFrecuenteDTO.class
 DTOs\ProductoIngredienteDTO.class
 DTOs\EstadoComandaDTO.class

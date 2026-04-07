@@ -7,14 +7,30 @@ package BOs;
 import DAOs.ClienteDAO;
 import DTOs.ClienteDTO;
 import DTOs.ClienteFrecuenteDTO;
+import DTOs.ReporteClienteFrecuenteDTO;
 import adaptadores.ClienteFrecuenteAdapter;
 import entidades.Cliente;
 import entidades.ClienteFrecuente;
 import excepciones.NegocioException;
 import excepciones.PersistenciaException;
 import factory.ClienteAdapterFactory;
+import java.io.InputStream;
+import java.net.URL;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import utilidadesBO.Encriptador;
 import utilidadesBO.Validadores;
 
@@ -26,6 +42,7 @@ public class ClienteBO {
 
     //El obtener por id ya funciona, faltaría adaptar los otros métodos usando el factory
     private ClienteDAO clienteDAO;
+    private static final Logger LOG = Logger.getLogger(ClienteBO.class.getName());
 
     public ClienteBO(ClienteDAO clienteDAO) {
         this.clienteDAO = clienteDAO;
@@ -271,6 +288,70 @@ public class ClienteBO {
             this.registrar(dto);
         } catch (NegocioException ex) {
             throw new NegocioException("Error al registrar cliente general: " + ex.getMessage());
+        }
+    }
+    
+    /**
+     * Método que genera un reporte con datos de interés de los clientes frecuentes
+     * @param nombreFiltro filtro de nombre 
+     * @param visitasMin el minimo de visitas
+     * @return una lista con los registros que cumplan los filtros
+     * @throws NegocioException si ocurre un error
+     */
+    public List<ReporteClienteFrecuenteDTO> obtenerReporte(String nombreFiltro, Integer visitasMin)throws NegocioException {
+        try {
+            List<ClienteFrecuente> clientes = clienteDAO.obtenerFrecuentes();
+            List<ReporteClienteFrecuenteDTO> reporte = new ArrayList<>();
+
+            for (ClienteFrecuente cf : clientes) {
+                int visitas = clienteDAO.calcularVisitas(cf.getId());
+                double totalGastado = clienteDAO.calcularTotalGastado(cf.getId());
+                LocalDate ultima = clienteDAO.obtenerFechaUltimaComanda(cf.getId());
+
+                boolean cumpleFiltros = true;
+                if (nombreFiltro != null) {
+                    if (!cf.getNombres().toLowerCase().contains(nombreFiltro.toLowerCase())) {
+                        cumpleFiltros = false;
+                    }
+                }
+                if (visitasMin != null) {
+                    if (visitas < visitasMin) {
+                        cumpleFiltros = false;
+                    }
+                }
+                if (cumpleFiltros) {
+                    Date fecha = null;
+                    if (ultima != null) {
+                        fecha = Date.from(
+                            ultima.atStartOfDay(ZoneId.systemDefault()).toInstant()
+                        );
+                    }
+                    ReporteClienteFrecuenteDTO dto = new ReporteClienteFrecuenteDTO(cf.getNombres(),visitas,totalGastado,fecha);
+                    reporte.add(dto);
+                }
+            }
+            return reporte;
+        } catch (PersistenciaException e) {
+            throw new NegocioException("Error al generar reporte: " + e.getMessage());
+        }
+    }
+    
+   public JasperPrint generarReporteClientesFrecuentes(List<ReporteClienteFrecuenteDTO> datos) throws NegocioException {
+        try {
+            InputStream reporteStream = getClass().getResourceAsStream("/reportes/reporte_clientes_frecuentes.jasper");
+            if (reporteStream == null) throw new RuntimeException("No se encontró el reporte");
+
+            JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(datos);
+
+            Map<String, Object> parametros = new HashMap<>();
+            InputStream logoStream = getClass().getResourceAsStream("/reportes/urogallo.png");
+            if (logoStream == null) throw new RuntimeException("No se encontró el logo");
+            parametros.put("logo", logoStream);
+
+            return JasperFillManager.fillReport(reporteStream, parametros, dataSource);
+
+        } catch (Exception e) {
+            throw new NegocioException("Error al generar PDF: " + e.getMessage());
         }
     }
 }
