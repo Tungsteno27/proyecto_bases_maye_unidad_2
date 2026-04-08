@@ -10,6 +10,8 @@ import entidades.ClienteFrecuente;
 import entidades.EstadoComanda;
 import excepciones.PersistenciaException;
 import interfaces.IClienteDAO;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
@@ -280,4 +282,32 @@ public class ClienteDAO implements IClienteDAO {
             em.close();
         }
     }
+    
+    /**
+     * Método que obtiene la fecha de la última comanda de un cliente en específico
+     * @param idCliente el id del cliente a obtener su fecha de última comanda
+     * @return la fecha si tiene, null en caso contrario
+     * @throws PersistenciaException si ocurre un error en la BD
+     */
+    public LocalDate obtenerFechaUltimaComanda(Long idCliente) throws PersistenciaException {
+        EntityManager em = ConexionBD.crearConexion();
+        try {
+            String jpql = "SELECT MAX(c.fechaHora) FROM Comanda c WHERE c.cliente.id = :id AND c.estado = :estado";
+
+            TypedQuery<LocalDateTime> query = em.createQuery(jpql, LocalDateTime.class);
+            query.setParameter("id", idCliente);
+            query.setParameter("estado", EstadoComanda.ENTREGADA);
+            LocalDateTime fecha = query.getSingleResult();
+            
+            if (fecha != null) {
+                return fecha.toLocalDate();
+            }
+            return null;
+        } catch (Exception e) {
+            throw new PersistenciaException("Error al obtener última comanda");
+        } finally {
+            em.close();
+        }
+    }
+    
 }
