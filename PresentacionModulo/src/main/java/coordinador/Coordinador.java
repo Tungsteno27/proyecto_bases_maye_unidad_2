@@ -30,6 +30,7 @@ import pantallas.FrmSeleccionRol;
 import pantallas.FrmModulos;
 import pantallas.FrmPassword;
 import pantallas.FrmRegistrarCliente;
+import pantallas.FrmSeleccionadorMesa;
 import pantallas.FrmSeleccionarId;
 
 /**
@@ -56,6 +57,7 @@ public class Coordinador {
     
     private FrmModulosComandas frmModuloComandas;
     private FrmComanda frmComanda;
+    private FrmSeleccionadorMesa frmSeleccionarMesa;
     
     //Módulo de productos
     private FrmBuscadorProductos frmBuscadorProductos;

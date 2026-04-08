@@ -8,6 +8,9 @@ import conexion.ConexionBD;
 import entidades.Cliente;
 import entidades.Comanda;
 import excepciones.PersistenciaException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
@@ -114,6 +117,23 @@ public class ComandaDAO {
             }
             LOG.warning("Error al actualizar la comanda con el folio: " + comanda.getFolio());
             throw new PersistenciaException("Error al modificar la comanda");
+        }finally{
+            em.close();
+        }
+    }
+    
+    public Long contarComandas(LocalDate fecha) throws PersistenciaException{
+        EntityManager em = ConexionBD.crearConexion();
+        try{
+            LocalDateTime inicioDia = fecha.atStartOfDay();
+            LocalDateTime finDia = fecha.atTime(LocalTime.MAX);
+            String jpql = "select count(c) from Comanda c where c.fecha_hora >= :inicio and c.fehca_hora <= :fin";
+            TypedQuery<Long> query = em.createQuery(jpql, Long.class);
+            query.setParameter("inicio", inicioDia);
+            query.setParameter("fin", finDia);
+            return query.getSingleResult();
+        }catch(Exception e){
+            throw new PersistenciaException("Error al contar las comandas");
         }finally{
             em.close();
         }
