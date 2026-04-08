@@ -35,7 +35,7 @@ import javax.swing.border.EmptyBorder;
 public class FrmSeleccionarId extends JFrame {
 
     private final Coordinador coordinador;
-    private String accion; 
+    private String accion;
     private JTextField txtId;
 
     public FrmSeleccionarId(Coordinador coordinador) {
@@ -46,7 +46,7 @@ public class FrmSeleccionarId extends JFrame {
     private void initUI() {
         setTitle("Seleccionar ID");
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        
+
         setExtendedState(JFrame.MAXIMIZED_BOTH);
 
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -112,10 +112,10 @@ public class FrmSeleccionarId extends JFrame {
 
         if (texto.isEmpty()) {
             JOptionPane.showMessageDialog(
-                this,
-                "Ingrese un ID.",
-                "Aviso",
-                JOptionPane.WARNING_MESSAGE
+                    this,
+                    "Ingrese un ID.",
+                    "Aviso",
+                    JOptionPane.WARNING_MESSAGE
             );
             return;
         }
@@ -125,10 +125,10 @@ public class FrmSeleccionarId extends JFrame {
             id = Long.parseLong(texto);
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(
-                this,
-                "El ID debe ser un número.",
-                "Aviso",
-                JOptionPane.WARNING_MESSAGE
+                    this,
+                    "El ID debe ser un número.",
+                    "Aviso",
+                    JOptionPane.WARNING_MESSAGE
             );
             return;
         }
@@ -137,7 +137,10 @@ public class FrmSeleccionarId extends JFrame {
             coordinador.abrirModificarCliente(id);
         } else if ("eliminar".equals(accion)) {
             coordinador.eliminarCliente(id);
+        } else if ("modificar_ingrediente".equals(accion)) {
+            coordinador.abrirModificarIngrediente(id);
         }
+        
     }
 
     public void setAccion(String accion) {

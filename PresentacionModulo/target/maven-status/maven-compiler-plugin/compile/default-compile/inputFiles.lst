@@ -1,20 +1,24 @@
-C:\NetBeans\ProyectoBasesAV_U2\PresentacionModulo\src\main\java\coordinador\Coordinador.java
-C:\NetBeans\ProyectoBasesAV_U2\PresentacionModulo\src\main\java\EstilosGUI\UI.java
-C:\NetBeans\ProyectoBasesAV_U2\PresentacionModulo\src\main\java\iniciar\ArrancarSistema.java
-C:\NetBeans\ProyectoBasesAV_U2\PresentacionModulo\src\main\java\pantallas\FrmBuscadorClientes.java
-C:\NetBeans\ProyectoBasesAV_U2\PresentacionModulo\src\main\java\pantallas\FrmBuscadorProductos.java
-C:\NetBeans\ProyectoBasesAV_U2\PresentacionModulo\src\main\java\pantallas\FrmComanda.java
-C:\NetBeans\ProyectoBasesAV_U2\PresentacionModulo\src\main\java\pantallas\FrmEnMantenimiento.java
-C:\NetBeans\ProyectoBasesAV_U2\PresentacionModulo\src\main\java\pantallas\FrmExito.java
-C:\NetBeans\ProyectoBasesAV_U2\PresentacionModulo\src\main\java\pantallas\FrmInfoAdicional.java
-C:\NetBeans\ProyectoBasesAV_U2\PresentacionModulo\src\main\java\pantallas\FrmModificarCliente.java
-C:\NetBeans\ProyectoBasesAV_U2\PresentacionModulo\src\main\java\pantallas\FrmModuloClientes.java
-C:\NetBeans\ProyectoBasesAV_U2\PresentacionModulo\src\main\java\pantallas\FrmModuloReportes.java
-C:\NetBeans\ProyectoBasesAV_U2\PresentacionModulo\src\main\java\pantallas\FrmModulos.java
-C:\NetBeans\ProyectoBasesAV_U2\PresentacionModulo\src\main\java\pantallas\FrmModulosComandas.java
-C:\NetBeans\ProyectoBasesAV_U2\PresentacionModulo\src\main\java\pantallas\FrmPassword.java
-C:\NetBeans\ProyectoBasesAV_U2\PresentacionModulo\src\main\java\pantallas\FrmRegistrarCliente.java
-C:\NetBeans\ProyectoBasesAV_U2\PresentacionModulo\src\main\java\pantallas\FrmReporteClientesFrecuentes.java
-C:\NetBeans\ProyectoBasesAV_U2\PresentacionModulo\src\main\java\pantallas\FrmSeleccionadorMesa.java
-C:\NetBeans\ProyectoBasesAV_U2\PresentacionModulo\src\main\java\pantallas\FrmSeleccionarId.java
-C:\NetBeans\ProyectoBasesAV_U2\PresentacionModulo\src\main\java\pantallas\FrmSeleccionRol.java
+C:\Users\Dell PC\OneDrive\Documentos\GitHub\proyecto_bases_unidad_2_n\proyecto_bases_maye_unidad_2\PresentacionModulo\src\main\java\coordinador\Coordinador.java
+C:\Users\Dell PC\OneDrive\Documentos\GitHub\proyecto_bases_unidad_2_n\proyecto_bases_maye_unidad_2\PresentacionModulo\src\main\java\EstilosGUI\UI.java
+C:\Users\Dell PC\OneDrive\Documentos\GitHub\proyecto_bases_unidad_2_n\proyecto_bases_maye_unidad_2\PresentacionModulo\src\main\java\iniciar\ArrancarSistema.java
+C:\Users\Dell PC\OneDrive\Documentos\GitHub\proyecto_bases_unidad_2_n\proyecto_bases_maye_unidad_2\PresentacionModulo\src\main\java\pantallas\FrmBuscadorClientes.java
+C:\Users\Dell PC\OneDrive\Documentos\GitHub\proyecto_bases_unidad_2_n\proyecto_bases_maye_unidad_2\PresentacionModulo\src\main\java\pantallas\FrmBuscadorIngredientes.java
+C:\Users\Dell PC\OneDrive\Documentos\GitHub\proyecto_bases_unidad_2_n\proyecto_bases_maye_unidad_2\PresentacionModulo\src\main\java\pantallas\FrmBuscadorProductos.java
+C:\Users\Dell PC\OneDrive\Documentos\GitHub\proyecto_bases_unidad_2_n\proyecto_bases_maye_unidad_2\PresentacionModulo\src\main\java\pantallas\FrmComanda.java
+C:\Users\Dell PC\OneDrive\Documentos\GitHub\proyecto_bases_unidad_2_n\proyecto_bases_maye_unidad_2\PresentacionModulo\src\main\java\pantallas\FrmEnMantenimiento.java
+C:\Users\Dell PC\OneDrive\Documentos\GitHub\proyecto_bases_unidad_2_n\proyecto_bases_maye_unidad_2\PresentacionModulo\src\main\java\pantallas\FrmExito.java
+C:\Users\Dell PC\OneDrive\Documentos\GitHub\proyecto_bases_unidad_2_n\proyecto_bases_maye_unidad_2\PresentacionModulo\src\main\java\pantallas\FrmInfoAdicional.java
+C:\Users\Dell PC\OneDrive\Documentos\GitHub\proyecto_bases_unidad_2_n\proyecto_bases_maye_unidad_2\PresentacionModulo\src\main\java\pantallas\FrmModificarCliente.java
+C:\Users\Dell PC\OneDrive\Documentos\GitHub\proyecto_bases_unidad_2_n\proyecto_bases_maye_unidad_2\PresentacionModulo\src\main\java\pantallas\FrmModificarIngrediente.java
+C:\Users\Dell PC\OneDrive\Documentos\GitHub\proyecto_bases_unidad_2_n\proyecto_bases_maye_unidad_2\PresentacionModulo\src\main\java\pantallas\FrmModuloClientes.java
+C:\Users\Dell PC\OneDrive\Documentos\GitHub\proyecto_bases_unidad_2_n\proyecto_bases_maye_unidad_2\PresentacionModulo\src\main\java\pantallas\FrmModuloIngredientes.java
+C:\Users\Dell PC\OneDrive\Documentos\GitHub\proyecto_bases_unidad_2_n\proyecto_bases_maye_unidad_2\PresentacionModulo\src\main\java\pantallas\FrmModuloReportes.java
+C:\Users\Dell PC\OneDrive\Documentos\GitHub\proyecto_bases_unidad_2_n\proyecto_bases_maye_unidad_2\PresentacionModulo\src\main\java\pantallas\FrmModulos.java
+C:\Users\Dell PC\OneDrive\Documentos\GitHub\proyecto_bases_unidad_2_n\proyecto_bases_maye_unidad_2\PresentacionModulo\src\main\java\pantallas\FrmModulosComandas.java
+C:\Users\Dell PC\OneDrive\Documentos\GitHub\proyecto_bases_unidad_2_n\proyecto_bases_maye_unidad_2\PresentacionModulo\src\main\java\pantallas\FrmPassword.java
+C:\Users\Dell PC\OneDrive\Documentos\GitHub\proyecto_bases_unidad_2_n\proyecto_bases_maye_unidad_2\PresentacionModulo\src\main\java\pantallas\FrmRegistrarCliente.java
+C:\Users\Dell PC\OneDrive\Documentos\GitHub\proyecto_bases_unidad_2_n\proyecto_bases_maye_unidad_2\PresentacionModulo\src\main\java\pantallas\FrmRegistrarIngrediente.java
+C:\Users\Dell PC\OneDrive\Documentos\GitHub\proyecto_bases_unidad_2_n\proyecto_bases_maye_unidad_2\PresentacionModulo\src\main\java\pantallas\FrmReporteClientesFrecuentes.java
+C:\Users\Dell PC\OneDrive\Documentos\GitHub\proyecto_bases_unidad_2_n\proyecto_bases_maye_unidad_2\PresentacionModulo\src\main\java\pantallas\FrmSeleccionadorMesa.java
+C:\Users\Dell PC\OneDrive\Documentos\GitHub\proyecto_bases_unidad_2_n\proyecto_bases_maye_unidad_2\PresentacionModulo\src\main\java\pantallas\FrmSeleccionarId.java
+C:\Users\Dell PC\OneDrive\Documentos\GitHub\proyecto_bases_unidad_2_n\proyecto_bases_maye_unidad_2\PresentacionModulo\src\main\java\pantallas\FrmSeleccionRol.java

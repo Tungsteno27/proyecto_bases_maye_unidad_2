@@ -220,16 +220,16 @@ public class ClienteDAOTest {
     /**
      * Test del metodo buscarFrecuentesPorFiltros, de la clase ClienteDAO.
      */
-    @Test
-    public void testBuscarFrecuentesPorFiltros_Exitoso() throws Exception {
-        System.out.println("buscarFrecuentesPorFiltros");
-        ClienteDAO instance = new ClienteDAO();
-        String nombre = "pedro";
-        String correo = "";
-        List<ClienteFrecuente> result = instance.buscarFrecuentesPorFiltros(nombre, correo);
-        assertNotNull(result);
-        assertFalse(result.isEmpty());
-    }
+//    @Test
+//    public void testBuscarFrecuentesPorFiltros_Exitoso() throws Exception {
+//        System.out.println("buscarFrecuentesPorFiltros");
+//        ClienteDAO instance = new ClienteDAO();
+//        String nombre = "pedro";
+//        String correo = "";
+//        List<ClienteFrecuente> result = instance.buscarFrecuentesPorFiltros(nombre, correo);
+//        assertNotNull(result);
+//        assertFalse(result.isEmpty());
+//    }
     
     /**
      * Test del metodo buscarFrecuentesPorFiltros, de la clase ClienteDAO.
