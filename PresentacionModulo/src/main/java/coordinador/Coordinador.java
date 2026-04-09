@@ -521,7 +521,7 @@ public class Coordinador {
     }
 
     //Seleccionar mesa
-    public void abrirSeleccionadorMesa() {
+    /*public void abrirSeleccionadorMesa() {
         if (frmModuloComandas != null) {
             frmModuloComandas.setVisible(false);
         }
@@ -541,7 +541,7 @@ public class Coordinador {
         }
         frmComanda.setVisible(true);
         frmComanda.toFront();
-    }
+    }*/
 
     //MÓDULO DE PRODUCTOS
     public void abrirBuscadorProductos() {

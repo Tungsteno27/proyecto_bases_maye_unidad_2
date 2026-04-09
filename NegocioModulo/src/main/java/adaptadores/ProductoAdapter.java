@@ -22,7 +22,7 @@ import java.util.List;
  */
 public class ProductoAdapter {
     
-    IngredienteDAO ingredienteDAO;
+    private static final IngredienteDAO ingredienteDAO = new IngredienteDAO();
     
     /**
      * Método que convierte una entidad producto en un productoDTO
@@ -58,7 +58,7 @@ public class ProductoAdapter {
      * @return una entidad de tipo producto
      * @throws NegocioException si ocurre un error
      */
-    public Producto dtoAProducto(ProductoDTO dto) throws NegocioException {
+    public static Producto dtoAProducto(ProductoDTO dto) throws NegocioException {
         if (dto == null) {
             return null;
         }
@@ -103,7 +103,7 @@ public class ProductoAdapter {
      * @throws PersistenciaException si ocurre un error al llamar al DAO
      * @throws NegocioException si el ingrediente recuperado es nulo
      */
-    private ProductoIngrediente productoIngredienteADominio(ProductoIngredienteDTO dto,Producto producto) throws PersistenciaException, NegocioException {
+    private static ProductoIngrediente productoIngredienteADominio(ProductoIngredienteDTO dto,Producto producto) throws PersistenciaException, NegocioException {
         ProductoIngrediente pi = new ProductoIngrediente();
         Ingrediente ingrediente = ingredienteDAO.buscarPorId(dto.getIdIngrediente());
 
