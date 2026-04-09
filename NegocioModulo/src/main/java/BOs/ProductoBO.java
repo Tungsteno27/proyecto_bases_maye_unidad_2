@@ -20,7 +20,7 @@ import java.util.List;
 import utilidadesBO.Validadores;
 
 /**
- *
+ * Clase que agrega reglas de negocio al CRUD de productos
  * @author Tungs
  */
 public class ProductoBO {
@@ -30,8 +30,6 @@ public class ProductoBO {
     
     ProductoAdapter Adapter= new ProductoAdapter();
 
-
-    
 
     public ProductoBO(ProductoDAO productoDAO, IngredienteDAO ingredienteDAO) {
         this.productoDAO = productoDAO;
@@ -49,21 +47,49 @@ public class ProductoBO {
         if (dto == null) {
             throw new NegocioException("El producto no puede ser nulo");
         }
-        if(dto.getPrecio() < 0){
-            throw new NegocioException("El precio del producto no puede ser negativo");
+        if (dto.getPrecio() < 0) {
+            throw new NegocioException("El precio no puede ser negativo");
+        }
+        if (dto.getIngredientes() == null || dto.getIngredientes().isEmpty()) {
+            throw new NegocioException("El producto debe tener al menos un ingrediente");
+        }
+
+        try {
+            Producto producto = new Producto();
+            producto.setNombre(dto.getNombre());
+            producto.setPrecio(dto.getPrecio());
+            producto.setTipo(dto.getTipo());
+            producto.setDescripcion(dto.getDescripcion());
+            producto.setEstado(EstadoProducto.ACTIVO);
+            producto.setImagenUrl(dto.getImagenUrl());
+            //Antes pasaba que no se agregaban bien los ingredientes, por eso lo hice como en el actualizar
+            List<ProductoIngrediente> lista = new ArrayList<>();
+
+            if (dto.getIngredientes() != null) {
+                for (ProductoIngredienteDTO piDTO : dto.getIngredientes()) {
+                    if (piDTO.getCantidad() == null || piDTO.getCantidad() <= 0) {
+                        throw new NegocioException("Cantidad inválida");
+                    }
+                    Ingrediente ingrediente = ingredienteDAO.buscarPorId(piDTO.getIdIngrediente());
+
+                    if (ingrediente == null) {
+                        throw new NegocioException("No se encontró al ingrediente");
+                    }
+                    ProductoIngrediente pi = new ProductoIngrediente();
+                    pi.setProducto(producto);
+                    pi.setIngrediente(ingrediente);
+                    pi.setCantidad(piDTO.getCantidad());
+
+                    lista.add(pi);
+                }
+            }
+            producto.setIngredientes(lista);
+            Producto guardado = productoDAO.registrarProducto(producto);
+            return ProductoAdapter.productoADTO(guardado);
+        } catch (PersistenciaException e) {
+            throw new NegocioException("Error al registrar producto");
         }
         
-        try {
-         
-            Producto producto = Adapter.dtoAProducto(dto);
-            
-            Producto guardado = productoDAO.registrarProducto(producto);
-
-            return ProductoAdapter.productoADTO(guardado);
-
-        } catch (PersistenciaException e) {
-            throw new NegocioException("Error al guardar el producto");
-        }
     }
     
     
@@ -115,6 +141,7 @@ public class ProductoBO {
             productoBD.setDescripcion(dto.getDescripcion());
             productoBD.setPrecio(dto.getPrecio());
             productoBD.setTipo(dto.getTipo());
+            productoBD.setImagenUrl(dto.getImagenUrl()); 
             if (dto.getEstado() != null) {
                 productoBD.setEstado(EstadoProducto.valueOf(dto.getEstado()));
             }
@@ -168,8 +195,7 @@ public class ProductoBO {
     
     /**
      * Método que obtiene todos los productos de la base de datos
-     * @return
-     * @throws NegocioException 
+     * @return una lista con todos lo productos en la BD
      */
     public List<ProductoDTO> obtenerTodos() {
         List<Producto> productos = productoDAO.obtenerTodos();
@@ -178,6 +204,22 @@ public class ProductoBO {
             resultado.add(ProductoAdapter.productoADTO(p));
         }
         return resultado;  
+    }
+    
+    /**
+     * Método que busca un producto en la base de datos por su id
+     * @param id el id del producto a buscar
+     * @return un DTO de producto
+     * @throws NegocioException si ocurre un error al buscar
+     */
+    public ProductoDTO obtenerPorId(Long id) throws NegocioException {
+        try {
+            Producto producto = productoDAO.buscarPorId(id);
+            if (producto == null) return null;
+            return ProductoAdapter.productoADTO(producto);
+        } catch (Exception e) {
+            throw new NegocioException("Error al obtener producto");
+        }
     }
     
     

@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: DAOs.ClienteDAOTest
 -------------------------------------------------------------------------------
-Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.960 s -- in DAOs.ClienteDAOTest
+Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.072 s -- in DAOs.ClienteDAOTest

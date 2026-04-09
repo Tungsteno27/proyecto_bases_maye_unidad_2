@@ -1,6 +1,7 @@
 EstilosGUI\UI$2.class
 pantallas\FrmReporteClientesFrecuentes.class
 pantallas\FrmModuloClientes$1.class
+pantallas\FrmRegistrarProducto.class
 pantallas\FrmPassword$2.class
 pantallas\FrmBuscadorIngredientes.class
 pantallas\FrmBuscadorProductos$3.class
@@ -21,6 +22,7 @@ pantallas\FrmModificarCliente$1.class
 pantallas\FrmPassword$1.class
 coordinador\Coordinador.class
 pantallas\FrmRegistrarIngrediente.class
+pantallas\FrmRegistrarProducto$1.class
 pantallas\FrmModuloReportes.class
 pantallas\FrmModificarIngrediente.class
 pantallas\FrmBuscadorProductos$4.class
@@ -43,6 +45,7 @@ pantallas\FrmSeleccionRol.class
 pantallas\FrmModuloReportes$1.class
 pantallas\FrmEnMantenimiento.class
 pantallas\FrmInfoAdicional$1.class
+pantallas\FrmRegistrarProducto$2.class
 pantallas\FrmReporteClientesFrecuentes$3.class
 pantallas\FrmModulosComandas.class
 pantallas\FrmSeleccionarId$1.class

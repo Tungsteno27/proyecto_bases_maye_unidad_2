@@ -1,11 +1,11 @@
-C:\Users\Dell PC\OneDrive\Documentos\GitHub\proyecto_bases_unidad_2_n\proyecto_bases_maye_unidad_2\PersistenciaModulo\src\main\java\conexion\ConexionBD.java
-C:\Users\Dell PC\OneDrive\Documentos\GitHub\proyecto_bases_unidad_2_n\proyecto_bases_maye_unidad_2\PersistenciaModulo\src\main\java\DAOs\ClienteDAO.java
-C:\Users\Dell PC\OneDrive\Documentos\GitHub\proyecto_bases_unidad_2_n\proyecto_bases_maye_unidad_2\PersistenciaModulo\src\main\java\DAOs\ComandaDAO.java
-C:\Users\Dell PC\OneDrive\Documentos\GitHub\proyecto_bases_unidad_2_n\proyecto_bases_maye_unidad_2\PersistenciaModulo\src\main\java\DAOs\ComandaProductoDAO.java
-C:\Users\Dell PC\OneDrive\Documentos\GitHub\proyecto_bases_unidad_2_n\proyecto_bases_maye_unidad_2\PersistenciaModulo\src\main\java\DAOs\IngredienteDAO.java
-C:\Users\Dell PC\OneDrive\Documentos\GitHub\proyecto_bases_unidad_2_n\proyecto_bases_maye_unidad_2\PersistenciaModulo\src\main\java\DAOs\MesaDAO.java
-C:\Users\Dell PC\OneDrive\Documentos\GitHub\proyecto_bases_unidad_2_n\proyecto_bases_maye_unidad_2\PersistenciaModulo\src\main\java\DAOs\ProductoDAO.java
-C:\Users\Dell PC\OneDrive\Documentos\GitHub\proyecto_bases_unidad_2_n\proyecto_bases_maye_unidad_2\PersistenciaModulo\src\main\java\excepciones\PersistenciaException.java
-C:\Users\Dell PC\OneDrive\Documentos\GitHub\proyecto_bases_unidad_2_n\proyecto_bases_maye_unidad_2\PersistenciaModulo\src\main\java\insertsMasivosGPTOs\PobladorBD.java
-C:\Users\Dell PC\OneDrive\Documentos\GitHub\proyecto_bases_unidad_2_n\proyecto_bases_maye_unidad_2\PersistenciaModulo\src\main\java\interfaces\IClienteDAO.java
-C:\Users\Dell PC\OneDrive\Documentos\GitHub\proyecto_bases_unidad_2_n\proyecto_bases_maye_unidad_2\PersistenciaModulo\src\main\java\interfaces\IProductoDAO.java
+C:\NetBeans\ProyectoBasesAV_U2\PersistenciaModulo\src\main\java\conexion\ConexionBD.java
+C:\NetBeans\ProyectoBasesAV_U2\PersistenciaModulo\src\main\java\DAOs\ClienteDAO.java
+C:\NetBeans\ProyectoBasesAV_U2\PersistenciaModulo\src\main\java\DAOs\ComandaDAO.java
+C:\NetBeans\ProyectoBasesAV_U2\PersistenciaModulo\src\main\java\DAOs\ComandaProductoDAO.java
+C:\NetBeans\ProyectoBasesAV_U2\PersistenciaModulo\src\main\java\DAOs\IngredienteDAO.java
+C:\NetBeans\ProyectoBasesAV_U2\PersistenciaModulo\src\main\java\DAOs\MesaDAO.java
+C:\NetBeans\ProyectoBasesAV_U2\PersistenciaModulo\src\main\java\DAOs\ProductoDAO.java
+C:\NetBeans\ProyectoBasesAV_U2\PersistenciaModulo\src\main\java\excepciones\PersistenciaException.java
+C:\NetBeans\ProyectoBasesAV_U2\PersistenciaModulo\src\main\java\insertsMasivosGPTOs\PobladorBD.java
+C:\NetBeans\ProyectoBasesAV_U2\PersistenciaModulo\src\main\java\interfaces\IClienteDAO.java
+C:\NetBeans\ProyectoBasesAV_U2\PersistenciaModulo\src\main\java\interfaces\IProductoDAO.java

@@ -18,6 +18,7 @@ import DTOs.ReporteClienteFrecuenteDTO;
 import excepciones.NegocioException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -40,6 +41,7 @@ import pantallas.FrmModulos;
 import pantallas.FrmPassword;
 import pantallas.FrmRegistrarCliente;
 import pantallas.FrmRegistrarIngrediente;
+import pantallas.FrmRegistrarProducto;
 import pantallas.FrmReporteClientesFrecuentes;
 import pantallas.FrmSeleccionadorMesa;
 import pantallas.FrmSeleccionarId;
@@ -73,6 +75,7 @@ public class Coordinador {
 
     //Módulo de productos
     private FrmBuscadorProductos frmBuscadorProductos;
+    private FrmRegistrarProducto frmRegistrarProducto;
 
     //Módulo de Reportes
     private FrmModuloReportes frmModuloReportes;
@@ -83,6 +86,7 @@ public class Coordinador {
     private FrmRegistrarIngrediente frmRegistrarIngrediente;
     private FrmModificarIngrediente frmModificarIngrediente;
     private FrmBuscadorIngredientes frmBuscadorIngredientes;
+    private Consumer<IngredienteDTO> callbackIngrediente;
 
     //BO's
     private ClienteBO clienteBO;
@@ -567,24 +571,82 @@ public class Coordinador {
         frmModulos.toFront();
     }
 
+    /**
+     * Método que abre la pantalla de registrar producto
+     */
     public void abrirRegistrarProducto() {
         if (frmBuscadorProductos != null) {
             frmBuscadorProductos.setVisible(false);
         }
-        // luego pongo el frame de registro porque está batalloso
+
+        if (frmRegistrarProducto == null) {
+            frmRegistrarProducto = new FrmRegistrarProducto(this);
+        }
+
+        frmRegistrarProducto.limpiar();
+        frmRegistrarProducto.setVisible(true);
+        frmRegistrarProducto.toFront();
+    }
+    
+    
+    public void abrirModificarProducto(Long id) {
+        try {
+            ProductoDTO dto = productoBO.obtenerPorId(id);
+
+            if (dto == null) {
+                JOptionPane.showMessageDialog(null, "Producto no encontrado");
+                return;
+            }
+            if (frmBuscadorProductos != null) {
+                frmBuscadorProductos.setVisible(false);
+            }
+            if (frmRegistrarProducto == null) {
+                frmRegistrarProducto = new FrmRegistrarProducto(this);
+            }
+            frmRegistrarProducto.limpiar();
+            frmRegistrarProducto.cargarProducto(dto);
+            frmRegistrarProducto.setVisible(true);
+            frmRegistrarProducto.toFront();
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al cargar producto");
+        }
+    }
+    
+    
+    /**
+     * Método que regresa a la pantalla de buscador de productos
+     */
+    public void regresarDesdeRegistrarProducto() {
+        if (frmRegistrarProducto != null) {
+            frmRegistrarProducto.setVisible(false);
+        }
+
+        if (frmBuscadorProductos == null) {
+            frmBuscadorProductos = new FrmBuscadorProductos(this);
+        }
+
+        frmBuscadorProductos.setVisible(true);
+        frmBuscadorProductos.toFront();
+    }
+    
+    /**
+     * Método que registra un producto mandando a llamar al BO
+     * @param dto el dto del producto a crear/agregar
+     * @return un mensaje si ocurre una excepción, nulo en caso contrario
+     */
+    public String registrarProducto(ProductoDTO dto) {
+        try {
+            productoBO.registrarProducto(dto);
+            return null;
+        } catch (NegocioException e) {
+            return e.getMessage();
+        }
     }
 
-    public void abrirModificarProducto(Long id) {
-        // guardamos el id para que la pantalla de modificar se lo pida al coordinador
-        this.idProductoSeleccionado = id;
-        if (frmBuscadorProductos != null) {
-            frmBuscadorProductos.setVisible(false);
-        }
-        // Luego pongo el frame de actualizar porque está batalloso también
-    }
 
     private Long idProductoSeleccionado;
-
+    
     public Long getIdProductoSeleccionado() {
         return idProductoSeleccionado;
     }
@@ -603,28 +665,28 @@ public class Coordinador {
         }
     }
 
-    public void eliminarProducto(Long id) {
-        String mensaje = "<html><b>¿Está seguro de eliminar este producto?</b></html>";
-        int confirmacion = JOptionPane.showConfirmDialog(
-                null, mensaje,
-                "Confirmar eliminación",
-                JOptionPane.YES_NO_OPTION,
-                JOptionPane.WARNING_MESSAGE
-        );
-        if (confirmacion == JOptionPane.YES_OPTION) {
-            try {
-                productoBO.cambiarEstado(id, "INACTIVO");
-                JOptionPane.showMessageDialog(null, "Producto eliminado correctamente.");
-            } catch (NegocioException e) {
-                JOptionPane.showMessageDialog(null,
-                        "Error al eliminar: " + e.getMessage(),
-                        "Error",
-                        JOptionPane.ERROR_MESSAGE);
-            }
+    public boolean eliminarProducto(Long id) {
+        try {
+            productoBO.cambiarEstado(id, "INACTIVO");
+            return true;
+        } catch (NegocioException e) {
+            LOG.severe("Error al eliminar producto: " + e.getMessage());
+            return false;
         }
     }
+    
+    public String actualizarProducto(ProductoDTO dto) {
+        try {
+            productoBO.actualizarProducto(dto);
+            return null;
+        } catch (NegocioException e) {
+            return e.getMessage();
+        }
+    }
+    
 
     //MÓDULO DE REPORTES
+    
     /**
      * Método que abre la pantalla del módulo de reportes
      */
@@ -666,6 +728,7 @@ public class Coordinador {
     }
 
     public void abrirReporteComandas() {
+        //Cambiar esto cuando se implemente, no puede haber UI en el coordinador
         JOptionPane.showMessageDialog(null, "Reporte de comandas en desarrollo");
     }
 
@@ -680,22 +743,32 @@ public class Coordinador {
         frmModuloReportes.setVisible(true);
         frmModuloReportes.toFront();
     }
-
+    /**
+     * Método que genera un reporte de clientes según los filtros
+     * @param nombre el nombre del cliente
+     * @param minVisitas el mínimo de visitas 
+     * @return una lista de clientes frecuentes con datos específicos
+     */
     public List<ReporteClienteFrecuenteDTO> obtenerReporteClientes(String nombre, Integer minVisitas) {
         try {
             return clienteBO.obtenerReporte(nombre, minVisitas);
         } catch (NegocioException e) {
-            JOptionPane.showMessageDialog(null,
-                    "Error al obtener reporte: " + e.getMessage());
             return new ArrayList<>();
         }
     }
-
+    /**
+     * Método que genera el reporte en pdf de clientes frecuentes
+     * @param datos la lista de clientesFrecuntes generada por el método obtenerReporte(nombre, minVisitas)
+     * @return el documento ya llenado
+     * @throws NegocioException si ocurre un error al llamar al BO
+     */
     public JasperPrint generarReporteClientesFrecuentes(List<ReporteClienteFrecuenteDTO> datos) throws NegocioException {
         return clienteBO.generarReporteClientesFrecuentes(datos);
     }
 
     // MODULO INGREDIENTES
+    
+    
     /**
      * Regresa desde el módulo de ingredientes al menú de módulos.
      */
@@ -819,18 +892,19 @@ public class Coordinador {
         frmBuscadorIngredientes.toFront();
     }
 
-    /**
-     * Abre el buscador de ingredientes en modo selección (llamado desde
-     * productos). Al elegir un ingrediente se invoca el callback con el DTO
-     * seleccionado.
-     *
-     * @param callback función que recibe el IngredienteDTO elegido
-     */
-    public void abrirBuscadorIngredientesSeleccion(java.util.function.Consumer<DTOs.IngredienteDTO> callback) {
+    public void abrirBuscadorIngredientesSeleccion(Consumer<IngredienteDTO> callback) {
+        this.callbackIngrediente = callback;
+
         if (frmBuscadorIngredientes == null) {
             frmBuscadorIngredientes = new FrmBuscadorIngredientes(this, ingredienteBO);
         }
-        frmBuscadorIngredientes.abrirModoSeleccion(callback);
+
+        frmBuscadorIngredientes.abrirModoSeleccion(ingrediente -> {
+            if (callbackIngrediente != null) {
+                callbackIngrediente.accept(ingrediente);
+            }
+        });
+
         frmBuscadorIngredientes.setVisible(true);
         frmBuscadorIngredientes.toFront();
     }
@@ -848,5 +922,9 @@ public class Coordinador {
         frmModuloIngredientes.setVisible(true);
         frmModuloIngredientes.toFront();
     }
+    
+    
+    
+    
 
 }

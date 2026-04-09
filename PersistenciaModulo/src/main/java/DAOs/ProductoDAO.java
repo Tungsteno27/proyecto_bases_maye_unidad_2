@@ -22,7 +22,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 /**
- *
+ * Clase que implementa métodos CRUD (y demás) sobre productos en la bd
  * @author Tungs
  */
 public class ProductoDAO implements IProductoDAO {

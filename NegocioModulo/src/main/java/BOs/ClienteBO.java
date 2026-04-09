@@ -47,7 +47,11 @@ public class ClienteBO {
     public ClienteBO(ClienteDAO clienteDAO) {
         this.clienteDAO = clienteDAO;
     }
-
+    /**
+     * Método que registra un cliente en la BD
+     * @param dto el dto del cliente a registrrar
+     * @throws NegocioException 
+     */
     public void registrar(ClienteDTO dto) throws NegocioException {
         try {
             if (dto.getNombres() == null || dto.getNombres().isBlank()) {
