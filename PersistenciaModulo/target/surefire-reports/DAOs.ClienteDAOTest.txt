@@ -339,4 +339,3 @@ Error Code: 1045 [in thread "main"]
 	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
 	at conexion.ConexionBD.<clinit>(ConexionBD.java:16)
 	... 5 more
-

@@ -17,6 +17,7 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.File;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -253,18 +254,21 @@ public class FrmBuscadorProductos extends JFrame{
     private void actualizarTabla(List<ProductoDTO> lista) {
         modeloTabla.setRowCount(0);
         if (lista == null) return;
-
         for (ProductoDTO p : lista) {
             ImageIcon icon = null;
             if (p.getImagenUrl() != null) {
                 java.net.URL imgUrl = getClass().getResource("/imagenes/" + p.getImagenUrl());
                 if (imgUrl != null) {
-                    icon = new ImageIcon(imgUrl);
-                    Image img = icon.getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+                    Image img = new ImageIcon(imgUrl).getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
                     icon = new ImageIcon(img);
+                } else {
+                    File archivo = new File(p.getImagenUrl());
+                    if (archivo.exists()) {
+                        Image img = new ImageIcon(archivo.getAbsolutePath()).getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH);
+                        icon = new ImageIcon(img);
+                    }
                 }
             }
-
             modeloTabla.addRow(new Object[]{
                 icon,              
                 p.getId(),         
@@ -274,6 +278,7 @@ public class FrmBuscadorProductos extends JFrame{
                 p.getEstado()
             });
         }
+        
     }
 
     /**
@@ -283,14 +288,35 @@ public class FrmBuscadorProductos extends JFrame{
         int fila = tabla.getSelectedRow();
         if (fila == -1) {
             JOptionPane.showMessageDialog(this,
-                "Seleccione un producto primero.",
-                "Aviso",
-                JOptionPane.WARNING_MESSAGE);
+                    "Seleccione un producto primero.",
+                    "Aviso",
+                    JOptionPane.WARNING_MESSAGE);
             return;
         }
-        Long id = (Long) modeloTabla.getValueAt(fila, 0);
-        coordinador.eliminarProducto(id);
-        actualizarTabla((List<ProductoDTO>) coordinador.obtenerProductos());
+        Long id = (Long) modeloTabla.getValueAt(fila, 1); 
+        int confirmacion = JOptionPane.showConfirmDialog(
+                this,
+                "¿Está seguro de eliminar este producto?",
+                "Confirmar eliminación",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.WARNING_MESSAGE
+        );
+
+        if (confirmacion == JOptionPane.YES_OPTION) {
+            boolean eliminado = coordinador.eliminarProducto(id);
+
+            if (eliminado) {
+                JOptionPane.showMessageDialog(this,
+                        "Producto eliminado correctamente.");
+                cargarTodos();
+            } else {
+                JOptionPane.showMessageDialog(this,
+                        "Error al eliminar el producto.",
+                        "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        
     }
 
     /**
@@ -305,7 +331,7 @@ public class FrmBuscadorProductos extends JFrame{
                 JOptionPane.WARNING_MESSAGE);
             return;
         }
-        Long id = (Long) modeloTabla.getValueAt(fila, 0);
+        Long id = (Long) modeloTabla.getValueAt(fila, 1);
         coordinador.abrirModificarProducto(id);
     }
 }

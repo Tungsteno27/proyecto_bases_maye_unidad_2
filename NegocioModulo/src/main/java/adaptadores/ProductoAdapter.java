@@ -125,10 +125,14 @@ public class ProductoAdapter {
         if (pi == null){
             return null;
         }
+        ProductoIngredienteDTO dto = new ProductoIngredienteDTO();
 
-        return new ProductoIngredienteDTO(
-                pi.getIngrediente().getId(),
-                pi.getCantidad()
-        );
+        dto.setIdIngrediente(pi.getIngrediente().getId());
+        dto.setCantidad(pi.getCantidad());
+
+        dto.setNombreIngrediente(pi.getIngrediente().getNombre());
+        dto.setUnidad(pi.getIngrediente().getUnidadMedida().name());
+
+        return dto;
     }
 }
