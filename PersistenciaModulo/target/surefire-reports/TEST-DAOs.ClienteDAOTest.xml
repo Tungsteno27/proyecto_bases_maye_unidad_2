@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="DAOs.ClienteDAOTest" time="3.875" tests="15" errors="15" skipped="0" failures="0">
-
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="DAOs.ClienteDAOTest" time="3.812" tests="15" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="23"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-	<property name="java.class.path" value="C:\Users\dayan\OneDrive\Documentos\GitHub\proyecto_bases_maye_unidad_2\PersistenciaModulo\target\test-classes;C:\Users\dayan\OneDrive\Documentos\GitHub\proyecto_bases_maye_unidad_2\PersistenciaModulo\target\classes;C:\Users\dayan\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.core\2.7.12\org.eclipse.persistence.core-2.7.12.jar;C:\Users\dayan\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.asm\9.4.0\org.eclipse.persistence.asm-9.4.0.jar;C:\Users\dayan\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.antlr\2.7.12\org.eclipse.persistence.antlr-2.7.12.jar;C:\Users\dayan\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.jpa\2.7.12\org.eclipse.persistence.jpa-2.7.12.jar;C:\Users\dayan\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.jpa.jpql\2.7.12\org.eclipse.persistence.jpa.jpql-2.7.12.jar;C:\Users\dayan\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.moxy\2.7.12\org.eclipse.persistence.moxy-2.7.12.jar;C:\Users\dayan\.m2\repository\org\eclipse\persistence\jakarta.persistence\2.2.3\jakarta.persistence-2.2.3.jar;C:\Users\dayan\OneDrive\Documentos\GitHub\proyecto_bases_maye_unidad_2\DominioModulo\target\DominioModulo-1.0-SNAPSHOT.jar;C:\Users\dayan\.m2\repository\com\mysql\mysql-connector-j\9.0.0\mysql-connector-j-9.0.0.jar;C:\Users\dayan\.m2\repository\com\google\protobuf\protobuf-java\4.26.1\protobuf-java-4.26.1.jar;C:\Users\dayan\OneDrive\Documentos\GitHub\proyecto_bases_maye_unidad_2\DTOsModulo\target\DTOsModulo-1.0-SNAPSHOT.jar;C:\Users\dayan\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.3\junit-jupiter-api-5.10.3.jar;C:\Users\dayan\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\dayan\.m2\repository\org\junit\platform\junit-platform-commons\1.10.3\junit-platform-commons-1.10.3.jar;C:\Users\dayan\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\dayan\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.3\junit-jupiter-params-5.10.3.jar;C:\Users\dayan\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.3\junit-jupiter-engine-5.10.3.jar;C:\Users\dayan\.m2\repository\org\junit\platform\junit-platform-engine\1.10.3\junit-platform-engine-1.10.3.jar;"/>
+    <property name="java.class.path" value="C:\Users\dayan\OneDrive\Documentos\GitHub\proyecto_bases_maye_unidad_2\PersistenciaModulo\target\test-classes;C:\Users\dayan\OneDrive\Documentos\GitHub\proyecto_bases_maye_unidad_2\PersistenciaModulo\target\classes;C:\Users\dayan\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.core\2.7.12\org.eclipse.persistence.core-2.7.12.jar;C:\Users\dayan\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.asm\9.4.0\org.eclipse.persistence.asm-9.4.0.jar;C:\Users\dayan\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.antlr\2.7.12\org.eclipse.persistence.antlr-2.7.12.jar;C:\Users\dayan\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.jpa\2.7.12\org.eclipse.persistence.jpa-2.7.12.jar;C:\Users\dayan\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.jpa.jpql\2.7.12\org.eclipse.persistence.jpa.jpql-2.7.12.jar;C:\Users\dayan\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.moxy\2.7.12\org.eclipse.persistence.moxy-2.7.12.jar;C:\Users\dayan\.m2\repository\org\eclipse\persistence\jakarta.persistence\2.2.3\jakarta.persistence-2.2.3.jar;C:\Users\dayan\OneDrive\Documentos\GitHub\proyecto_bases_maye_unidad_2\DominioModulo\target\DominioModulo-1.0-SNAPSHOT.jar;C:\Users\dayan\.m2\repository\com\mysql\mysql-connector-j\9.0.0\mysql-connector-j-9.0.0.jar;C:\Users\dayan\.m2\repository\com\google\protobuf\protobuf-java\4.26.1\protobuf-java-4.26.1.jar;C:\Users\dayan\OneDrive\Documentos\GitHub\proyecto_bases_maye_unidad_2\DTOsModulo\target\DTOsModulo-1.0-SNAPSHOT.jar;C:\Users\dayan\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.3\junit-jupiter-api-5.10.3.jar;C:\Users\dayan\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\dayan\.m2\repository\org\junit\platform\junit-platform-commons\1.10.3\junit-platform-commons-1.10.3.jar;C:\Users\dayan\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\dayan\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.3\junit-jupiter-params-5.10.3.jar;C:\Users\dayan\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.3\junit-jupiter-engine-5.10.3.jar;C:\Users\dayan\.m2\repository\org\junit\platform\junit-platform-engine\1.10.3\junit-platform-engine-1.10.3.jar;"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
@@ -16,7 +15,7 @@
     <property name="user.country" value="MX"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-23\bin"/>
-	<property name="sun.java.command" value="C:\Users\dayan\AppData\Local\Temp\surefire11408313249725263821\surefirebooter-20260408201358759_3.jar C:\Users\dayan\AppData\Local\Temp\surefire11408313249725263821 2026-04-08T20-13-47_614-jvmRun1 surefire-20260408201358759_1tmp surefire_0-20260408201358759_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\dayan\AppData\Local\Temp\surefire13387478613169573227\surefirebooter-20260412005550689_3.jar C:\Users\dayan\AppData\Local\Temp\surefire13387478613169573227 2026-04-12T00-55-46_041-jvmRun1 surefire-20260412005550689_1tmp surefire_0-20260412005550689_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\dayan\OneDrive\Documentos\GitHub\proyecto_bases_maye_unidad_2\PersistenciaModulo\target\test-classes;C:\Users\dayan\OneDrive\Documentos\GitHub\proyecto_bases_maye_unidad_2\PersistenciaModulo\target\classes;C:\Users\dayan\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.core\2.7.12\org.eclipse.persistence.core-2.7.12.jar;C:\Users\dayan\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.asm\9.4.0\org.eclipse.persistence.asm-9.4.0.jar;C:\Users\dayan\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.antlr\2.7.12\org.eclipse.persistence.antlr-2.7.12.jar;C:\Users\dayan\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.jpa\2.7.12\org.eclipse.persistence.jpa-2.7.12.jar;C:\Users\dayan\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.jpa.jpql\2.7.12\org.eclipse.persistence.jpa.jpql-2.7.12.jar;C:\Users\dayan\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.moxy\2.7.12\org.eclipse.persistence.moxy-2.7.12.jar;C:\Users\dayan\.m2\repository\org\eclipse\persistence\jakarta.persistence\2.2.3\jakarta.persistence-2.2.3.jar;C:\Users\dayan\OneDrive\Documentos\GitHub\proyecto_bases_maye_unidad_2\DominioModulo\target\DominioModulo-1.0-SNAPSHOT.jar;C:\Users\dayan\.m2\repository\com\mysql\mysql-connector-j\9.0.0\mysql-connector-j-9.0.0.jar;C:\Users\dayan\.m2\repository\com\google\protobuf\protobuf-java\4.26.1\protobuf-java-4.26.1.jar;C:\Users\dayan\OneDrive\Documentos\GitHub\proyecto_bases_maye_unidad_2\DTOsModulo\target\DTOsModulo-1.0-SNAPSHOT.jar;C:\Users\dayan\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.3\junit-jupiter-api-5.10.3.jar;C:\Users\dayan\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\dayan\.m2\repository\org\junit\platform\junit-platform-commons\1.10.3\junit-platform-commons-1.10.3.jar;C:\Users\dayan\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\dayan\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.3\junit-jupiter-params-5.10.3.jar;C:\Users\dayan\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.3\junit-jupiter-engine-5.10.3.jar;C:\Users\dayan\.m2\repository\org\junit\platform\junit-platform-engine\1.10.3\junit-platform-engine-1.10.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -26,12 +25,12 @@
     <property name="java.version.date" value="2025-01-21"/>
     <property name="java.home" value="C:\Program Files\Java\jdk-23"/>
     <property name="file.separator" value="\"/>
-	<property name="basedir" value="C:\Users\dayan\OneDrive\Documentos\GitHub\proyecto_bases_maye_unidad_2\PersistenciaModulo"/>
+    <property name="basedir" value="C:\Users\dayan\OneDrive\Documentos\GitHub\proyecto_bases_maye_unidad_2\PersistenciaModulo"/>
     <property name="java.vm.compressedOopsMode" value="32-bit"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\dayan\AppData\Local\Temp\surefire11408313249725263821\surefirebooter-20260408201358759_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\dayan\AppData\Local\Temp\surefire13387478613169573227\surefirebooter-20260412005550689_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="23.0.2+7-58"/>
@@ -42,380 +41,235 @@
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="file.encoding" value="UTF-8"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
-	<property name="maven.ext.class.path" value="C:\Program Files\NetBeans-24\netbeans\java\maven-nblib\netbeans-eventspy.jar"/>
+    <property name="maven.ext.class.path" value="C:\Program Files\NetBeans-24\netbeans\java\maven-nblib\netbeans-eventspy.jar"/>
     <property name="localRepository" value="C:\Users\dayan\.m2\repository"/>
     <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
     <property name="java.io.tmpdir" value="C:\Users\dayan\AppData\Local\Temp\"/>
     <property name="java.version" value="23.0.2"/>
     <property name="user.dir" value="C:\Users\dayan\OneDrive\Documentos\GitHub\proyecto_bases_maye_unidad_2\PersistenciaModulo"/>
-	<property name="os.arch" value="amd64"/>
+    <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="native.encoding" value="Cp1252"/>
-	<property name="java.library.path" value="C:\Program Files\Java\jdk-23\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\170\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\dotnet\;C:\Program Files\nodejs\;C:\Users\dayan\AppData\Local\Programs\Python\Launcher\;C:\Users\dayan\AppData\Local\Microsoft\WindowsApps;C:\Users\dayan\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\dayan\.dotnet\tools;C:\Users\dayan\AppData\Local\GitHubDesktop\bin;C:\Users\dayan\AppData\Roaming\npm;."/>
-	<property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-23\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\170\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\dotnet\;C:\Program Files\nodejs\;C:\Users\dayan\AppData\Local\Programs\Python\Launcher\;C:\Users\dayan\AppData\Local\Microsoft\WindowsApps;C:\Users\dayan\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\dayan\.dotnet\tools;C:\Users\dayan\AppData\Local\GitHubDesktop\bin;C:\Users\dayan\AppData\Roaming\npm;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
     <property name="stderr.encoding" value="Cp1252"/>
     <property name="java.vendor" value="Oracle Corporation"/>
     <property name="java.vm.version" value="23.0.2+7-58"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="67.0"/>
   </properties>
-  <testcase name="testEliminarCliente_Fail" classname="DAOs.ClienteDAOTest" time="3.686">
-    <error type="java.lang.ExceptionInInitializerError"><![CDATA[java.lang.ExceptionInInitializerError
-	at DAOs.ClienteDAO.registrarCliente(ClienteDAO.java:43)
-	at DAOs.ClienteDAOTest.setUp(ClienteDAOTest.java:37)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-Caused by: javax.persistence.PersistenceException: Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.7.12.v20230209-e5c4074ef3): org.eclipse.persistence.exceptions.DatabaseException
-Internal Exception: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
-Error Code: 1045
-	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:854)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getAbstractSession(EntityManagerFactoryDelegate.java:222)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getDatabaseSession(EntityManagerFactoryDelegate.java:200)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryImpl.getDatabaseSession(EntityManagerFactoryImpl.java:542)
-	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactoryImpl(PersistenceProvider.java:153)
-	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactory(PersistenceProvider.java:191)
-	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:80)
-	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
-	at conexion.ConexionBD.<clinit>(ConexionBD.java:16)
-	... 5 more
-Caused by: Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.7.12.v20230209-e5c4074ef3): org.eclipse.persistence.exceptions.DatabaseException
-Internal Exception: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
-Error Code: 1045
-	at org.eclipse.persistence.exceptions.DatabaseException.sqlException(DatabaseException.java:333)
-	at org.eclipse.persistence.exceptions.DatabaseException.sqlException(DatabaseException.java:328)
-	at org.eclipse.persistence.sessions.DefaultConnector.connect(DefaultConnector.java:140)
-	at org.eclipse.persistence.sessions.DatasourceLogin.connectToDatasource(DatasourceLogin.java:172)
-	at org.eclipse.persistence.internal.sessions.DatabaseSessionImpl.setOrDetectDatasource(DatabaseSessionImpl.java:226)
-	at org.eclipse.persistence.internal.sessions.DatabaseSessionImpl.loginAndDetectDatasource(DatabaseSessionImpl.java:810)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryProvider.login(EntityManagerFactoryProvider.java:261)
-	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:771)
-	... 13 more
-Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:114)
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:845)
-	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:420)
-	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:238)
-	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:180)
-	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:682)
-	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:191)
-	at org.eclipse.persistence.sessions.DefaultConnector.connect(DefaultConnector.java:100)
-	... 18 more
-]]></error>
-    <system-out><![CDATA[[EL Info]: 2026-04-08 20:14:02.204--ServerSession(834466358)--EclipseLink, version: Eclipse Persistence Services - 2.7.12.v20230209-e5c4074ef3
-[EL Severe]: ejb: 2026-04-08 20:14:04.602--ServerSession(834466358)--Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.7.12.v20230209-e5c4074ef3): org.eclipse.persistence.exceptions.DatabaseException
-Internal Exception: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
-Error Code: 1045
+  <testcase name="testEliminarCliente_Fail" classname="DAOs.ClienteDAOTest" time="2.571">
+    <system-out><![CDATA[[EL Info]: 2026-04-12 00:55:52.64--ServerSession(345887595)--EclipseLink, version: Eclipse Persistence Services - 2.7.12.v20230209-e5c4074ef3
+eliminarCliente
 ]]></system-out>
-  </testcase>
-  <testcase name="testObtenerFrecuentes" classname="DAOs.ClienteDAOTest" time="0.008">
-    <error message="Could not initialize class conexion.ConexionBD" type="java.lang.NoClassDefFoundError"><![CDATA[java.lang.NoClassDefFoundError: Could not initialize class conexion.ConexionBD
-	at DAOs.ClienteDAO.registrarCliente(ClienteDAO.java:43)
-	at DAOs.ClienteDAOTest.setUp(ClienteDAOTest.java:37)
+    <system-err><![CDATA[abr 12, 2026 12:55:54 A.M. DAOs.ClienteDAO registrarCliente
+INFO: se insertó al cliente de nombre: Test
+java.lang.IllegalArgumentException: An instance of a null PK has been incorrectly provided for this find operation.
+	at org.eclipse.persistence.internal.jpa.EntityManagerImpl.findInternal(EntityManagerImpl.java:886)
+	at org.eclipse.persistence.internal.jpa.EntityManagerImpl.find(EntityManagerImpl.java:830)
+	at org.eclipse.persistence.internal.jpa.EntityManagerImpl.find(EntityManagerImpl.java:696)
+	at DAOs.ClienteDAO.eliminarCliente(ClienteDAO.java:106)
+	at DAOs.ClienteDAOTest.lambda$testEliminarCliente_Fail$2(ClienteDAOTest.java:118)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3115)
+	at DAOs.ClienteDAOTest.testEliminarCliente_Fail(ClienteDAOTest.java:117)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-Caused by: java.lang.ExceptionInInitializerError: Exception javax.persistence.PersistenceException: Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.7.12.v20230209-e5c4074ef3): org.eclipse.persistence.exceptions.DatabaseException
-Internal Exception: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
-Error Code: 1045 [in thread "main"]
-	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:854)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getAbstractSession(EntityManagerFactoryDelegate.java:222)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getDatabaseSession(EntityManagerFactoryDelegate.java:200)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryImpl.getDatabaseSession(EntityManagerFactoryImpl.java:542)
-	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactoryImpl(PersistenceProvider.java:153)
-	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactory(PersistenceProvider.java:191)
-	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:80)
-	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
-	at conexion.ConexionBD.<clinit>(ConexionBD.java:16)
-	... 5 more
-]]></error>
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+abr 12, 2026 12:55:54 A.M. DAOs.ClienteDAO eliminarCliente
+WARNING: Ocurrió un error al intentar eliminar al cliente con id: null
+]]></system-err>
   </testcase>
-  <testcase name="testCalcularTotalGastado_Exitoso" classname="DAOs.ClienteDAOTest" time="0.008">
-    <error message="Could not initialize class conexion.ConexionBD" type="java.lang.NoClassDefFoundError"><![CDATA[java.lang.NoClassDefFoundError: Could not initialize class conexion.ConexionBD
-	at DAOs.ClienteDAO.registrarCliente(ClienteDAO.java:43)
-	at DAOs.ClienteDAOTest.setUp(ClienteDAOTest.java:37)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-Caused by: java.lang.ExceptionInInitializerError: Exception javax.persistence.PersistenceException: Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.7.12.v20230209-e5c4074ef3): org.eclipse.persistence.exceptions.DatabaseException
-Internal Exception: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
-Error Code: 1045 [in thread "main"]
-	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:854)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getAbstractSession(EntityManagerFactoryDelegate.java:222)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getDatabaseSession(EntityManagerFactoryDelegate.java:200)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryImpl.getDatabaseSession(EntityManagerFactoryImpl.java:542)
-	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactoryImpl(PersistenceProvider.java:153)
-	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactory(PersistenceProvider.java:191)
-	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:80)
-	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
-	at conexion.ConexionBD.<clinit>(ConexionBD.java:16)
-	... 5 more
-]]></error>
+  <testcase name="testObtenerFrecuentes" classname="DAOs.ClienteDAOTest" time="0.27">
+    <system-out><![CDATA[obtenerFrecuentes
+]]></system-out>
+    <system-err><![CDATA[abr 12, 2026 12:55:54 A.M. DAOs.ClienteDAO registrarCliente
+INFO: se insertó al cliente de nombre: Test
+]]></system-err>
   </testcase>
-  <testcase name="testBuscarCliente_Exitoso" classname="DAOs.ClienteDAOTest" time="0.006">
-    <error message="Could not initialize class conexion.ConexionBD" type="java.lang.NoClassDefFoundError"><![CDATA[java.lang.NoClassDefFoundError: Could not initialize class conexion.ConexionBD
-	at DAOs.ClienteDAO.registrarCliente(ClienteDAO.java:43)
-	at DAOs.ClienteDAOTest.setUp(ClienteDAOTest.java:37)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-Caused by: java.lang.ExceptionInInitializerError: Exception javax.persistence.PersistenceException: Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.7.12.v20230209-e5c4074ef3): org.eclipse.persistence.exceptions.DatabaseException
-Internal Exception: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
-Error Code: 1045 [in thread "main"]
-	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:854)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getAbstractSession(EntityManagerFactoryDelegate.java:222)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getDatabaseSession(EntityManagerFactoryDelegate.java:200)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryImpl.getDatabaseSession(EntityManagerFactoryImpl.java:542)
-	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactoryImpl(PersistenceProvider.java:153)
-	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactory(PersistenceProvider.java:191)
-	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:80)
-	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
-	at conexion.ConexionBD.<clinit>(ConexionBD.java:16)
-	... 5 more
-]]></error>
+  <testcase name="testCalcularTotalGastado_Exitoso" classname="DAOs.ClienteDAOTest" time="0.052">
+    <system-out><![CDATA[calcularTotalGastado
+]]></system-out>
+    <system-err><![CDATA[abr 12, 2026 12:55:54 A.M. DAOs.ClienteDAO registrarCliente
+INFO: se insertó al cliente de nombre: Test
+abr 12, 2026 12:55:54 A.M. DAOs.ClienteDAO calcularTotalGastado
+INFO: El cliente de id 67 no  ha gastado nada aún
+]]></system-err>
   </testcase>
-  <testcase name="testObtenerTodosLosClientes" classname="DAOs.ClienteDAOTest" time="0.012">
-    <error message="Could not initialize class conexion.ConexionBD" type="java.lang.NoClassDefFoundError"><![CDATA[java.lang.NoClassDefFoundError: Could not initialize class conexion.ConexionBD
-	at DAOs.ClienteDAO.registrarCliente(ClienteDAO.java:43)
-	at DAOs.ClienteDAOTest.setUp(ClienteDAOTest.java:37)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-Caused by: java.lang.ExceptionInInitializerError: Exception javax.persistence.PersistenceException: Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.7.12.v20230209-e5c4074ef3): org.eclipse.persistence.exceptions.DatabaseException
-Internal Exception: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
-Error Code: 1045 [in thread "main"]
-	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:854)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getAbstractSession(EntityManagerFactoryDelegate.java:222)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getDatabaseSession(EntityManagerFactoryDelegate.java:200)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryImpl.getDatabaseSession(EntityManagerFactoryImpl.java:542)
-	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactoryImpl(PersistenceProvider.java:153)
-	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactory(PersistenceProvider.java:191)
-	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:80)
-	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
-	at conexion.ConexionBD.<clinit>(ConexionBD.java:16)
-	... 5 more
-]]></error>
+  <testcase name="testBuscarCliente_Exitoso" classname="DAOs.ClienteDAOTest" time="0.018">
+    <system-out><![CDATA[buscarCliente
+]]></system-out>
+    <system-err><![CDATA[abr 12, 2026 12:55:54 A.M. DAOs.ClienteDAO registrarCliente
+INFO: se insertó al cliente de nombre: Test
+abr 12, 2026 12:55:54 A.M. DAOs.ClienteDAO buscarCliente
+INFO: Se encontró al cliente con id: 68
+]]></system-err>
   </testcase>
-  <testcase name="testRegistrarCliente_Error" classname="DAOs.ClienteDAOTest" time="0.002">
-    <error message="Could not initialize class conexion.ConexionBD" type="java.lang.NoClassDefFoundError"><![CDATA[java.lang.NoClassDefFoundError: Could not initialize class conexion.ConexionBD
-	at DAOs.ClienteDAO.registrarCliente(ClienteDAO.java:43)
-	at DAOs.ClienteDAOTest.setUp(ClienteDAOTest.java:37)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-Caused by: java.lang.ExceptionInInitializerError: Exception javax.persistence.PersistenceException: Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.7.12.v20230209-e5c4074ef3): org.eclipse.persistence.exceptions.DatabaseException
-Internal Exception: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
-Error Code: 1045 [in thread "main"]
-	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:854)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getAbstractSession(EntityManagerFactoryDelegate.java:222)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getDatabaseSession(EntityManagerFactoryDelegate.java:200)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryImpl.getDatabaseSession(EntityManagerFactoryImpl.java:542)
-	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactoryImpl(PersistenceProvider.java:153)
-	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactory(PersistenceProvider.java:191)
-	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:80)
-	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
-	at conexion.ConexionBD.<clinit>(ConexionBD.java:16)
-	... 5 more
-]]></error>
+  <testcase name="testObtenerTodosLosClientes" classname="DAOs.ClienteDAOTest" time="0.045">
+    <system-out><![CDATA[obtenerTodosLosClientes
+]]></system-out>
+    <system-err><![CDATA[abr 12, 2026 12:55:54 A.M. DAOs.ClienteDAO registrarCliente
+INFO: se insertó al cliente de nombre: Test
+]]></system-err>
   </testcase>
-  <testcase name="testBuscarFrecuentesPorFiltros_Fail" classname="DAOs.ClienteDAOTest" time="0.002">
-    <error message="Could not initialize class conexion.ConexionBD" type="java.lang.NoClassDefFoundError"><![CDATA[java.lang.NoClassDefFoundError: Could not initialize class conexion.ConexionBD
-	at DAOs.ClienteDAO.registrarCliente(ClienteDAO.java:43)
-	at DAOs.ClienteDAOTest.setUp(ClienteDAOTest.java:37)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-Caused by: java.lang.ExceptionInInitializerError: Exception javax.persistence.PersistenceException: Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.7.12.v20230209-e5c4074ef3): org.eclipse.persistence.exceptions.DatabaseException
-Internal Exception: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
-Error Code: 1045 [in thread "main"]
-	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:854)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getAbstractSession(EntityManagerFactoryDelegate.java:222)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getDatabaseSession(EntityManagerFactoryDelegate.java:200)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryImpl.getDatabaseSession(EntityManagerFactoryImpl.java:542)
-	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactoryImpl(PersistenceProvider.java:153)
-	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactory(PersistenceProvider.java:191)
-	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:80)
-	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
-	at conexion.ConexionBD.<clinit>(ConexionBD.java:16)
-	... 5 more
-]]></error>
+  <testcase name="testRegistrarCliente_Error" classname="DAOs.ClienteDAOTest" time="0.565">
+    <system-out><![CDATA[registrarCliente
+[EL Warning]: 2026-04-12 00:55:55.393--UnitOfWork(909516251)--Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.7.12.v20230209-e5c4074ef3): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: java.sql.SQLIntegrityConstraintViolationException: Column 'nombres' cannot be null
+Error Code: 1048
+Call: INSERT INTO clientes (apellido_materno, apellido_paterno, correo, fecha_registro, nombres, telefono, tipo_cliente) VALUES (?, ?, ?, ?, ?, ?, ?)
+	bind => [7 parameters bound]
+Query: InsertObjectQuery(com.mycompany.persistenciamodulo.Cliente[ id=null ])
+]]></system-out>
+    <system-err><![CDATA[abr 12, 2026 12:55:54 A.M. DAOs.ClienteDAO registrarCliente
+INFO: se insertó al cliente de nombre: Test
+abr 12, 2026 12:55:55 A.M. DAOs.ClienteDAO registrarCliente
+WARNING: Ocurrió un error al intentar insertar al cliente de nombre: null
+]]></system-err>
   </testcase>
-  <testcase name="testRegistrarCliente_Exitoso" classname="DAOs.ClienteDAOTest" time="0.004">
-    <error message="Could not initialize class conexion.ConexionBD" type="java.lang.NoClassDefFoundError"><![CDATA[java.lang.NoClassDefFoundError: Could not initialize class conexion.ConexionBD
-	at DAOs.ClienteDAO.registrarCliente(ClienteDAO.java:43)
-	at DAOs.ClienteDAOTest.setUp(ClienteDAOTest.java:37)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-Caused by: java.lang.ExceptionInInitializerError: Exception javax.persistence.PersistenceException: Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.7.12.v20230209-e5c4074ef3): org.eclipse.persistence.exceptions.DatabaseException
-Internal Exception: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
-Error Code: 1045 [in thread "main"]
-	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:854)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getAbstractSession(EntityManagerFactoryDelegate.java:222)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getDatabaseSession(EntityManagerFactoryDelegate.java:200)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryImpl.getDatabaseSession(EntityManagerFactoryImpl.java:542)
-	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactoryImpl(PersistenceProvider.java:153)
-	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactory(PersistenceProvider.java:191)
-	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:80)
-	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
-	at conexion.ConexionBD.<clinit>(ConexionBD.java:16)
-	... 5 more
-]]></error>
+  <testcase name="testBuscarFrecuentesPorFiltros_Fail" classname="DAOs.ClienteDAOTest" time="0.024">
+    <system-out><![CDATA[buscarFrecuentesPorFiltros
+]]></system-out>
+    <system-err><![CDATA[abr 12, 2026 12:55:55 A.M. DAOs.ClienteDAO registrarCliente
+INFO: se insertó al cliente de nombre: Test
+]]></system-err>
   </testcase>
-  <testcase name="testEliminarCliente_Exitoso" classname="DAOs.ClienteDAOTest" time="0.004">
-    <error message="Could not initialize class conexion.ConexionBD" type="java.lang.NoClassDefFoundError"><![CDATA[java.lang.NoClassDefFoundError: Could not initialize class conexion.ConexionBD
-	at DAOs.ClienteDAO.registrarCliente(ClienteDAO.java:43)
-	at DAOs.ClienteDAOTest.setUp(ClienteDAOTest.java:37)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-Caused by: java.lang.ExceptionInInitializerError: Exception javax.persistence.PersistenceException: Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.7.12.v20230209-e5c4074ef3): org.eclipse.persistence.exceptions.DatabaseException
-Internal Exception: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
-Error Code: 1045 [in thread "main"]
-	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:854)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getAbstractSession(EntityManagerFactoryDelegate.java:222)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getDatabaseSession(EntityManagerFactoryDelegate.java:200)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryImpl.getDatabaseSession(EntityManagerFactoryImpl.java:542)
-	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactoryImpl(PersistenceProvider.java:153)
-	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactory(PersistenceProvider.java:191)
-	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:80)
-	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
-	at conexion.ConexionBD.<clinit>(ConexionBD.java:16)
-	... 5 more
-]]></error>
+  <testcase name="testRegistrarCliente_Exitoso" classname="DAOs.ClienteDAOTest" time="0.033">
+    <system-out><![CDATA[registrarCliente
+]]></system-out>
+    <system-err><![CDATA[abr 12, 2026 12:55:55 A.M. DAOs.ClienteDAO registrarCliente
+INFO: se insertó al cliente de nombre: Test
+abr 12, 2026 12:55:55 A.M. DAOs.ClienteDAO registrarCliente
+INFO: se insertó al cliente de nombre: Dayanara
+]]></system-err>
   </testcase>
-  <testcase name="testCalcularTotalGastado_Fail" classname="DAOs.ClienteDAOTest" time="0.003">
-    <error message="Could not initialize class conexion.ConexionBD" type="java.lang.NoClassDefFoundError"><![CDATA[java.lang.NoClassDefFoundError: Could not initialize class conexion.ConexionBD
-	at DAOs.ClienteDAO.registrarCliente(ClienteDAO.java:43)
-	at DAOs.ClienteDAOTest.setUp(ClienteDAOTest.java:37)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-Caused by: java.lang.ExceptionInInitializerError: Exception javax.persistence.PersistenceException: Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.7.12.v20230209-e5c4074ef3): org.eclipse.persistence.exceptions.DatabaseException
-Internal Exception: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
-Error Code: 1045 [in thread "main"]
-	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:854)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getAbstractSession(EntityManagerFactoryDelegate.java:222)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getDatabaseSession(EntityManagerFactoryDelegate.java:200)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryImpl.getDatabaseSession(EntityManagerFactoryImpl.java:542)
-	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactoryImpl(PersistenceProvider.java:153)
-	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactory(PersistenceProvider.java:191)
-	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:80)
-	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
-	at conexion.ConexionBD.<clinit>(ConexionBD.java:16)
-	... 5 more
-]]></error>
+  <testcase name="testEliminarCliente_Exitoso" classname="DAOs.ClienteDAOTest" time="0.038">
+    <system-out><![CDATA[eliminarCliente
+]]></system-out>
+    <system-err><![CDATA[abr 12, 2026 12:55:55 A.M. DAOs.ClienteDAO registrarCliente
+INFO: se insertó al cliente de nombre: Test
+abr 12, 2026 12:55:55 A.M. DAOs.ClienteDAO eliminarCliente
+INFO: Se eliminó al cliente con id: 74
+abr 12, 2026 12:55:55 A.M. DAOs.ClienteDAO buscarCliente
+WARNING: No se encontró ningún cliente con id: 74
+]]></system-err>
   </testcase>
-  <testcase name="testCalcularVisitas_Fail" classname="DAOs.ClienteDAOTest" time="0.003">
-    <error message="Could not initialize class conexion.ConexionBD" type="java.lang.NoClassDefFoundError"><![CDATA[java.lang.NoClassDefFoundError: Could not initialize class conexion.ConexionBD
-	at DAOs.ClienteDAO.registrarCliente(ClienteDAO.java:43)
-	at DAOs.ClienteDAOTest.setUp(ClienteDAOTest.java:37)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-Caused by: java.lang.ExceptionInInitializerError: Exception javax.persistence.PersistenceException: Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.7.12.v20230209-e5c4074ef3): org.eclipse.persistence.exceptions.DatabaseException
-Internal Exception: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
-Error Code: 1045 [in thread "main"]
-	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:854)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getAbstractSession(EntityManagerFactoryDelegate.java:222)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getDatabaseSession(EntityManagerFactoryDelegate.java:200)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryImpl.getDatabaseSession(EntityManagerFactoryImpl.java:542)
-	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactoryImpl(PersistenceProvider.java:153)
-	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactory(PersistenceProvider.java:191)
-	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:80)
-	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
-	at conexion.ConexionBD.<clinit>(ConexionBD.java:16)
-	... 5 more
-]]></error>
+  <testcase name="testCalcularTotalGastado_Fail" classname="DAOs.ClienteDAOTest" time="0.021">
+    <system-out><![CDATA[calcularTotalGastado
+]]></system-out>
+    <system-err><![CDATA[abr 12, 2026 12:55:55 A.M. DAOs.ClienteDAO registrarCliente
+INFO: se insertó al cliente de nombre: Test
+abr 12, 2026 12:55:55 A.M. DAOs.ClienteDAO calcularTotalGastado
+INFO: El cliente de id null no  ha gastado nada aún
+]]></system-err>
   </testcase>
-  <testcase name="testActualizarCliente_Fail" classname="DAOs.ClienteDAOTest" time="0.003">
-    <error message="Could not initialize class conexion.ConexionBD" type="java.lang.NoClassDefFoundError"><![CDATA[java.lang.NoClassDefFoundError: Could not initialize class conexion.ConexionBD
-	at DAOs.ClienteDAO.registrarCliente(ClienteDAO.java:43)
-	at DAOs.ClienteDAOTest.setUp(ClienteDAOTest.java:37)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-Caused by: java.lang.ExceptionInInitializerError: Exception javax.persistence.PersistenceException: Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.7.12.v20230209-e5c4074ef3): org.eclipse.persistence.exceptions.DatabaseException
-Internal Exception: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
-Error Code: 1045 [in thread "main"]
-	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:854)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getAbstractSession(EntityManagerFactoryDelegate.java:222)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getDatabaseSession(EntityManagerFactoryDelegate.java:200)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryImpl.getDatabaseSession(EntityManagerFactoryImpl.java:542)
-	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactoryImpl(PersistenceProvider.java:153)
-	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactory(PersistenceProvider.java:191)
-	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:80)
-	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
-	at conexion.ConexionBD.<clinit>(ConexionBD.java:16)
-	... 5 more
-]]></error>
+  <testcase name="testCalcularVisitas_Fail" classname="DAOs.ClienteDAOTest" time="0.025">
+    <system-out><![CDATA[calcularVisitas
+]]></system-out>
+    <system-err><![CDATA[abr 12, 2026 12:55:55 A.M. DAOs.ClienteDAO registrarCliente
+INFO: se insertó al cliente de nombre: Test
+]]></system-err>
   </testcase>
-  <testcase name="testBuscarCliente_Fail" classname="DAOs.ClienteDAOTest" time="0.004">
-    <error message="Could not initialize class conexion.ConexionBD" type="java.lang.NoClassDefFoundError"><![CDATA[java.lang.NoClassDefFoundError: Could not initialize class conexion.ConexionBD
-	at DAOs.ClienteDAO.registrarCliente(ClienteDAO.java:43)
-	at DAOs.ClienteDAOTest.setUp(ClienteDAOTest.java:37)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-Caused by: java.lang.ExceptionInInitializerError: Exception javax.persistence.PersistenceException: Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.7.12.v20230209-e5c4074ef3): org.eclipse.persistence.exceptions.DatabaseException
-Internal Exception: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
-Error Code: 1045 [in thread "main"]
-	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:854)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getAbstractSession(EntityManagerFactoryDelegate.java:222)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getDatabaseSession(EntityManagerFactoryDelegate.java:200)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryImpl.getDatabaseSession(EntityManagerFactoryImpl.java:542)
-	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactoryImpl(PersistenceProvider.java:153)
-	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactory(PersistenceProvider.java:191)
-	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:80)
-	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
-	at conexion.ConexionBD.<clinit>(ConexionBD.java:16)
-	... 5 more
-]]></error>
+  <testcase name="testActualizarCliente_Fail" classname="DAOs.ClienteDAOTest" time="0.018">
+    <system-out><![CDATA[actualizarCliente
+]]></system-out>
+    <system-err><![CDATA[abr 12, 2026 12:55:55 A.M. DAOs.ClienteDAO registrarCliente
+INFO: se insertó al cliente de nombre: Test
+]]></system-err>
   </testcase>
-  <testcase name="testCalcularVisitas_Vacio" classname="DAOs.ClienteDAOTest" time="0.007">
-    <error message="Could not initialize class conexion.ConexionBD" type="java.lang.NoClassDefFoundError"><![CDATA[java.lang.NoClassDefFoundError: Could not initialize class conexion.ConexionBD
-	at DAOs.ClienteDAO.registrarCliente(ClienteDAO.java:43)
-	at DAOs.ClienteDAOTest.setUp(ClienteDAOTest.java:37)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-Caused by: java.lang.ExceptionInInitializerError: Exception javax.persistence.PersistenceException: Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.7.12.v20230209-e5c4074ef3): org.eclipse.persistence.exceptions.DatabaseException
-Internal Exception: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
-Error Code: 1045 [in thread "main"]
-	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:854)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getAbstractSession(EntityManagerFactoryDelegate.java:222)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getDatabaseSession(EntityManagerFactoryDelegate.java:200)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryImpl.getDatabaseSession(EntityManagerFactoryImpl.java:542)
-	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactoryImpl(PersistenceProvider.java:153)
-	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactory(PersistenceProvider.java:191)
-	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:80)
-	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
-	at conexion.ConexionBD.<clinit>(ConexionBD.java:16)
-	... 5 more
-]]></error>
+  <testcase name="testBuscarCliente_Fail" classname="DAOs.ClienteDAOTest" time="0.02">
+    <system-out><![CDATA[buscarCliente
+]]></system-out>
+    <system-err><![CDATA[abr 12, 2026 12:55:55 A.M. DAOs.ClienteDAO registrarCliente
+INFO: se insertó al cliente de nombre: Test
+abr 12, 2026 12:55:55 A.M. DAOs.ClienteDAO buscarCliente
+WARNING: No se encontró ningún cliente con id: -1
+]]></system-err>
   </testcase>
-  <testcase name="testActualizarCliente_Exitoso" classname="DAOs.ClienteDAOTest" time="0.008">
-    <error message="Could not initialize class conexion.ConexionBD" type="java.lang.NoClassDefFoundError"><![CDATA[java.lang.NoClassDefFoundError: Could not initialize class conexion.ConexionBD
-	at DAOs.ClienteDAO.registrarCliente(ClienteDAO.java:43)
-	at DAOs.ClienteDAOTest.setUp(ClienteDAOTest.java:37)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
-Caused by: java.lang.ExceptionInInitializerError: Exception javax.persistence.PersistenceException: Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.7.12.v20230209-e5c4074ef3): org.eclipse.persistence.exceptions.DatabaseException
-Internal Exception: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
-Error Code: 1045 [in thread "main"]
-	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:854)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getAbstractSession(EntityManagerFactoryDelegate.java:222)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getDatabaseSession(EntityManagerFactoryDelegate.java:200)
-	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryImpl.getDatabaseSession(EntityManagerFactoryImpl.java:542)
-	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactoryImpl(PersistenceProvider.java:153)
-	at org.eclipse.persistence.jpa.PersistenceProvider.createEntityManagerFactory(PersistenceProvider.java:191)
-	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:80)
-	at javax.persistence.Persistence.createEntityManagerFactory(Persistence.java:55)
-	at conexion.ConexionBD.<clinit>(ConexionBD.java:16)
-	... 5 more
-]]></error>
+  <testcase name="testCalcularVisitas_Vacio" classname="DAOs.ClienteDAOTest" time="0.017">
+    <system-out><![CDATA[calcularVisitas
+]]></system-out>
+    <system-err><![CDATA[abr 12, 2026 12:55:55 A.M. DAOs.ClienteDAO registrarCliente
+INFO: se insertó al cliente de nombre: Test
+]]></system-err>
+  </testcase>
+  <testcase name="testActualizarCliente_Exitoso" classname="DAOs.ClienteDAOTest" time="0.032">
+    <system-out><![CDATA[actualizarCliente
+]]></system-out>
+    <system-err><![CDATA[abr 12, 2026 12:55:55 A.M. DAOs.ClienteDAO registrarCliente
+INFO: se insertó al cliente de nombre: Test
+abr 12, 2026 12:55:55 A.M. DAOs.ClienteDAO buscarCliente
+INFO: Se encontró al cliente con id: 80
+abr 12, 2026 12:55:55 A.M. DAOs.ClienteDAO actualizarCliente
+INFO: Se actualizó el cliente con id: 80
+]]></system-err>
   </testcase>
 </testsuite>

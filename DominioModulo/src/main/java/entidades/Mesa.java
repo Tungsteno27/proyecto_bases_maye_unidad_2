@@ -7,9 +7,12 @@ package entidades;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 /**
@@ -30,10 +33,11 @@ public class Mesa implements Serializable {
     @Column(name = "numero", nullable = false)
     private Integer numero;
 
-    @Column(name = "estado", length = 50)
-    private String estado;
+    @Enumerated(EnumType.STRING)
+    @JoinColumn(name = "estado", nullable = false)
+    private EstadoMesa estado;
 
-    public Mesa(Long id, Integer numero, String estado) {
+    public Mesa(Long id, Integer numero, EstadoMesa estado) {
         this.id = id;
         this.numero = numero;
         this.estado = estado;
@@ -58,11 +62,11 @@ public class Mesa implements Serializable {
         this.numero = numero;
     }
 
-    public String getEstado() {
+    public EstadoMesa getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(EstadoMesa estado) {
         this.estado = estado;
     }
     

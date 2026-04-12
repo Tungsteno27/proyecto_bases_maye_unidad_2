@@ -1,0 +1,16 @@
+BOs\IngredienteBO.class
+factory\ClienteAdapterFactory.class
+utilidadesBO\Encriptador.class
+excepciones\NegocioException.class
+factory\ComandaAdapterFactory.class
+adaptadores\ClienteFrecuenteAdapter.class
+BOs\ComandaBO.class
+BOs\ClienteBO.class
+adaptadores\ClienteAdapter.class
+adaptadores\IngredienteAdapter.class
+BOs\ProductoBO.class
+adaptadores\ComandaProductosAdapter.class
+adaptadores\MeseroAdapter.class
+adaptadores\MesaAdapter.class
+utilidadesBO\Validadores.class
+adaptadores\ProductoAdapter.class

@@ -5,6 +5,7 @@
 package adaptadores;
 
 import DTOs.MesaDTO;
+import entidades.EstadoMesa;
 import entidades.Mesa;
 
 /**
@@ -17,10 +18,13 @@ public class MesaAdapter {
         if(mesa == null){
             return null;
         }
+        EstadoMesa estado = mesa.getEstado();
         MesaDTO dto = new MesaDTO();
         dto.setId(mesa.getId());
         dto.setNuemro(mesa.getNumero());
-        dto.setEstado(mesa.getEstado());
+        if(mesa.getEstado() != null){
+            dto.setEstado(mesa.getEstado().name());
+        }
         return dto;
     }
     
@@ -31,7 +35,9 @@ public class MesaAdapter {
         Mesa mesa = new Mesa();
         mesa.setId(dto.getId());
         mesa.setNumero(dto.getNuemro());
-        mesa.setEstado(dto.getEstado());
+        if(dto.getEstado() != null){
+            mesa.setEstado(EstadoMesa.valueOf(dto.getEstado().toUpperCase()));
+        }
         return mesa;
     }
 }

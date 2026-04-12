@@ -10,6 +10,7 @@ import entidades.ClienteFrecuente;
 import entidades.Comanda;
 import entidades.ComandaProducto;
 import entidades.EstadoComanda;
+import entidades.EstadoMesa;
 import entidades.EstadoProducto;
 import entidades.Ingrediente;
 import entidades.Mesa;
@@ -171,7 +172,7 @@ public class PobladorBD {
             for (int i = 1; i <= 5; i++) {
                 Mesa mesa = new Mesa();
                 mesa.setNumero(i);
-                mesa.setEstado("DISPONIBLE");
+                mesa.setEstado(EstadoMesa.DISPONIBLE);
                 em.persist(mesa);
                 mesas.add(mesa);
             }

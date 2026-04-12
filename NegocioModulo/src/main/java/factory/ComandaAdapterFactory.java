@@ -13,6 +13,8 @@ import adaptadores.MeseroAdapter;
 import entidades.Comanda;
 import entidades.ComandaProducto;
 import entidades.EstadoComanda;
+import entidades.EstadoMesa;
+import entidades.Mesa;
 import excepciones.NegocioException;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,8 +35,11 @@ public class ComandaAdapterFactory {
         dto.setId(comanda.getId());
         dto.setFolio(comanda.getFolio());
         dto.setFechaHora(comanda.getFechaHora());
-        dto.setEstado(EstadoComandaDTO.ABIERTA);
         dto.setTotalComanda(comanda.getTotalComanda());
+        
+        if(comanda.getEstado() != null){
+            dto.setEstado(EstadoComandaDTO.valueOf(comanda.getEstado().name()));
+        }
         
         if(comanda.getCliente() != null){
             dto.setCliente(ClienteAdapterFactory.entidadADTO(comanda.getCliente()));
@@ -66,6 +71,15 @@ public class ComandaAdapterFactory {
         comanda.setFolio(dto.getFolio());
         comanda.setFechaHora(dto.getFechaHora());
         comanda.setTotalComanda(dto.getTotalComanda());
+        
+        if(dto.getMesa() != null){
+            Mesa mesaEntidad = new Mesa();
+            mesaEntidad.setId(dto.getMesa().getId());
+            if(dto.getMesa().getEstado() !=null){
+                mesaEntidad.setEstado(EstadoMesa.valueOf(dto.getMesa().getEstado().toUpperCase()));
+            }
+            comanda.setMesa(mesaEntidad);
+        }
         
         if(dto.getEstado() != null){
             comanda.setEstado(EstadoComanda.valueOf(dto.getEstado().name()));

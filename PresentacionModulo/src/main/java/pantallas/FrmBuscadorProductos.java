@@ -4,10 +4,10 @@
  */
 package pantallas;
 
-import BOs.ProductoBO;
 import DTOs.ProductoDTO;
 import EstilosGUI.UI;
 import coordinador.Coordinador;
+import excepciones.NegocioException;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -19,12 +19,13 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -35,8 +36,6 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
@@ -205,12 +204,23 @@ public class FrmBuscadorProductos extends JFrame{
 
         JPanel footer = new JPanel(new FlowLayout(FlowLayout.CENTER));
         footer.setOpaque(false);
-
+        
+        JButton btnSeleccionar = UI.boton("Seleccionar", UI.AZUL_OSCURO, UI.AZUL_OSCURO_HOVER);
+        btnSeleccionar.setPreferredSize(new Dimension(140, 40));
+        btnSeleccionar.addActionListener(e -> {
+            try {
+                accionSeleccionar();
+            } catch (NegocioException ex) {
+                Logger.getLogger(FrmBuscadorProductos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        footer.add(btnSeleccionar);
+        
         JButton btnAtras = UI.boton("Atrás", new Color(0xC0392B), new Color(0x922B21));
         btnAtras.setPreferredSize(new Dimension(140, 40));
         btnAtras.addActionListener(e -> coordinador.regresarDesdeBuscadorProductos());
         footer.add(btnAtras);
-
+        
         card.add(footer, BorderLayout.SOUTH);
         fondo.add(card, BorderLayout.CENTER);
 
@@ -333,5 +343,23 @@ public class FrmBuscadorProductos extends JFrame{
         }
         Long id = (Long) modeloTabla.getValueAt(fila, 1);
         coordinador.abrirModificarProducto(id);
+    }
+    
+    private void accionSeleccionar() throws NegocioException{
+        int fila = tabla.getSelectedRow();
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(this,
+                "Seleccione un producto primero.",
+                "Aviso",
+                JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        Long id = (Long) modeloTabla.getValueAt(fila, 1);
+        ProductoDTO prod = coordinador.obtenerProductoPorId(id);
+        
+        if(prod != null){
+            coordinador.agregarProductoAComanda(prod);
+            this.setVisible(false);
+        }
     }
 }

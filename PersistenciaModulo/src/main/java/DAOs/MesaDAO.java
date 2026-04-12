@@ -5,11 +5,13 @@
 package DAOs;
 
 import conexion.ConexionBD;
+import entidades.EstadoMesa;
 import entidades.Mesa;
 import excepciones.PersistenciaException;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 /**
@@ -46,7 +48,7 @@ public class MesaDAO {
             Mesa actualizada = em.merge(mesa);
             em.getTransaction().commit();
             LOG.info("Se actualizó la mesa número: " + mesa.getNumero());
-            return mesa;
+            return actualizada;
         }catch(Exception e){
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
@@ -76,7 +78,29 @@ public class MesaDAO {
         }
     }
     
-    public List<Mesa> consultarPorEstado(String estado) throws PersistenciaException{
+    public void actualizarEstado(Long id, EstadoMesa nuevoEstado) throws PersistenciaException{
+        EntityManager em = ConexionBD.crearConexion();
+        try{
+            em.getTransaction().begin();
+            Mesa mesa = em.find(Mesa.class, id);
+            if(mesa != null){
+                mesa.setEstado(nuevoEstado);
+                em.merge(mesa);
+                //throw new Exception("No existe la mesa con ID: " + id);
+            }
+            
+            em.getTransaction().commit();
+            System.out.println("Mesa " + id + " actualizada a " + nuevoEstado);
+        
+        }catch(Exception e){
+            LOG.warning("Ocurrió un error al intentar modificar el estado de la mesa con id: " + id);
+            throw new PersistenciaException("No se pudo encontrar la mesa");
+        }finally{
+            em.close();
+        }
+    }
+    
+    public List<Mesa> consultarPorEstado(EstadoMesa estado) throws PersistenciaException{
         EntityManager em = ConexionBD.crearConexion();
         try{
             String jpql = "select m from Mesa m where m.estado = :estado";
@@ -87,6 +111,23 @@ public class MesaDAO {
         }catch(Exception e){
             LOG.warning("Ocurrió un error al intentar buscar las mesas con estado: " + estado);
             throw new PersistenciaException("No se pudo encontrar la mesa");
+        }finally{
+            em.close();
+        }
+    }
+    
+    public List<Mesa> consultarTodas() throws PersistenciaException{
+        EntityManager em = ConexionBD.crearConexion();
+        try{
+            String jpql = "select m from Mesa m";
+            TypedQuery<Mesa> query = em.createQuery(jpql, Mesa.class);
+            
+            query.setHint("javax.persistence.cache.retrieveMode", "BYPASS");
+            query.setHint("javax.persistence.cache.storeMode", "REFRESH");
+            List<Mesa> mesas = query.getResultList();
+            return mesas;
+        }catch(Exception e){
+            throw new PersistenciaException("No se pudo consultar todas las mesas");
         }finally{
             em.close();
         }

@@ -19,14 +19,12 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Panel;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -43,24 +41,26 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Dayanara Peralta G
  */
-public class FrmComanda extends JFrame{
+public class FrmModificar extends JFrame{
     private final Coordinador coordinador;
     private MesaDTO mesaA;
     private ClienteFrecuenteDTO cliente;
+    private ComandaDTO comanda;
     private JTextField textFolio;
     private JTextField textMesa;
     private JTextField textCliente;
     private JTextField textProducto;
     private JTable tablaProductos;
     private DefaultTableModel modeloTabla;
+    private JComboBox<String> estado;
 
-    public FrmComanda(Coordinador coordinador) {
+    public FrmModificar(Coordinador coordinador) {
         this.coordinador = coordinador;
         initUI();
     }
     
     private void initUI(){
-        setTitle("Registrar comanda");
+        setTitle("Modificar comanda");
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         
@@ -79,7 +79,7 @@ public class FrmComanda extends JFrame{
         card.setLayout(new BorderLayout(15, 15));
         card.setBorder(new EmptyBorder(25, 30, 30, 30));
 
-        JLabel lblTitulo = UI.tituloGrande("Registrar comanda");
+        JLabel lblTitulo = UI.tituloGrande("Modificar comanda");
         lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
         card.add(lblTitulo, BorderLayout.NORTH);
         
@@ -108,13 +108,26 @@ public class FrmComanda extends JFrame{
         textCliente.setPreferredSize(new Dimension(450, 35));
         filaCliente.add(textCliente);
         
-        JPanel filaProducto = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 0));
+        JPanel filaProducto = new JPanel(new BorderLayout());
         filaProducto.setOpaque(false);
+        
+        JPanel panelEstado = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 0));
+        panelEstado.setOpaque(false);
+        panelEstado.add(new JLabel("Estado: "));
+        
+        String[] estados = {"ABIERTA", "ENTREGADA", "CANCELADA"};
+        estado = new JComboBox<>(estados);
+        estado.setBackground(Color.WHITE);
+        estado.setFont(new Font("Georgia", Font.PLAIN, 14));
+        estado.setBorder(BorderFactory.createLineBorder(new Color(0xD4AF37)));
+        panelEstado.add(estado);
         
         JButton btnBuscar = UI.boton("buscar producto", UI.AZUL_OSCURO, UI.AZUL_OSCURO_HOVER);
         btnBuscar.setPreferredSize(new Dimension(200, 35));
         btnBuscar.addActionListener(e -> coordinador.abrirBuscadorProductosComanda());
-        filaProducto.add(btnBuscar);
+        
+        filaProducto.add(panelEstado, BorderLayout.WEST);
+        filaProducto.add(btnBuscar, BorderLayout.EAST);
         
         superior.add(folioYmesa);
         superior.add(javax.swing.Box.createVerticalStrut(10));
@@ -146,7 +159,7 @@ public class FrmComanda extends JFrame{
         
         JButton btnRegistrar = UI.boton("Aceptar", UI.AZUL_OSCURO, UI.AZUL_OSCURO_HOVER);
         btnRegistrar.setPreferredSize(new Dimension(160, 45));
-        btnRegistrar.addActionListener(e -> registrarComanda());
+        btnRegistrar.addActionListener(e -> comandaModificada());
         
         footer.add(btnCancelar);
         footer.add(btnRegistrar);
@@ -187,22 +200,6 @@ public class FrmComanda extends JFrame{
         });
     }
     
-    public void cargarDatos(MesaDTO mesa, ClienteFrecuenteDTO cliente) throws NegocioException {
-        limpiarFormulario();
-        this.mesaA = mesa;
-        this.cliente = cliente;
-        String folio = coordinador.obtenerFolio();
-        textFolio.setText(folio);
-        
-        textMesa.setText(String.valueOf(mesa.getNuemro()));
-        
-        if (cliente != null) {
-            textCliente.setText(cliente.getNombres() + " " + cliente.getApellidoPaterno());
-        } else {
-            textCliente.setText("Público en General");
-        }
-    }
-    
     public void agregarProducto(ProductoDTO prod){
         DefaultTableModel modelo = (DefaultTableModel) tablaProductos.getModel();
         
@@ -221,56 +218,84 @@ public class FrmComanda extends JFrame{
         }
     }
     
-    private void registrarComanda(){
+    public void cargarDatos(ComandaDTO dto){
+        this.comanda = dto;
+        this.mesaA = dto.getMesa();
+        this.cliente = (ClienteFrecuenteDTO) dto.getCliente();
+        
+        textFolio.setText(dto.getFolio());
+        textMesa.setText(String.valueOf(dto.getMesa().getNuemro()));
+        
+        if (dto.getCliente() != null) {
+            textCliente.setText(dto.getCliente().getNombres());
+        } else {
+            textCliente.setText("Publico general");
+        }
+        estado.setSelectedItem(dto.getEstado().toString());
+        
+        actualizar(dto.getComandaProductos());
+        
+        textFolio.setEditable(false);
+        textMesa.setEditable(false);
+    }
+    
+    private void actualizar(List<ComandaProductoDTO> producto) {
+        modeloTabla.setRowCount(0);
+        if(producto != null){
+            for(ComandaProductoDTO c : producto){
+                modeloTabla.addRow(new Object[]{
+                    c.getProducto(),
+                    c.getProducto().getDescripcion(),
+                    c.getProducto().getPrecio(),
+                    c.getProducto().getTipo(),
+                    c.getComentario(),
+                    "Eliminar"
+                });
+            }
+        }
+    }
+    
+    private void comandaModificada(){
         try{
             if(tablaProductos.getRowCount() == 0){
                 JOptionPane.showMessageDialog(this, "Debes agregar al menos un producto");
                 return;
             }
-            ComandaDTO newComanda = new ComandaDTO();
-            newComanda.setFolio(textFolio.getText());
-            if(this.mesaA == null){
-                JOptionPane.showMessageDialog(this, "Error: no hay ninguna mesa");
-                return;
-            }
-            newComanda.setMesa(this.mesaA);
-            newComanda.setCliente(this.cliente);
-            newComanda.setFechaHora(LocalDateTime.now());
-            newComanda.setEstado(EstadoComandaDTO.ABIERTA);
+            ComandaDTO cambiada = new ComandaDTO();
+            cambiada.setId(this.comanda.getId());
+            cambiada.setFolio(textFolio.getText());
+            cambiada.setMesa(this.mesaA);
+            cambiada.setCliente(this.cliente);
+            cambiada.setFechaHora(LocalDateTime.now());
+            String estado = (String) this.estado.getSelectedItem();
+            cambiada.setEstado(EstadoComandaDTO.valueOf(estado));
             
             List<ComandaProductoDTO> detalles = new ArrayList<>();
             DefaultTableModel modelo = (DefaultTableModel) tablaProductos.getModel();
             
+            double total = 0;
             for(int i = 0; i < modelo.getRowCount(); i++){
                 ComandaProductoDTO detalle = new ComandaProductoDTO();
                 ProductoDTO prod = (ProductoDTO) modelo.getValueAt(i, 0);
                 
-                String espe = modelo.getValueAt(i, 4).toString();
+                String espe = (modelo.getValueAt(i, 4) != null) ? modelo.getValueAt(i, 4).toString() : "";
+                
                 detalle.setProducto(prod);
                 detalle.setCantidad(1D);
                 detalle.setComentario(espe);
+                
                 detalles.add(detalle);
+                total += prod.getPrecio();
             }
-            newComanda.setComandaProductos(detalles);
-            coordinador.guardarComanda(newComanda);
-            limpiarFormulario();
+            cambiada.setComandaProductos(detalles);
+            cambiada.setTotalComanda(total);
+            coordinador.actualizarComanda(cambiada);
+            JOptionPane.showMessageDialog(this, "¡Comanda modificada!");
             this.dispose();
+            coordinador.rolMeseroSeleccionado();
         }catch(Exception e){
             e.printStackTrace(); // Esto imprimirá el error en la consola
             JOptionPane.showMessageDialog(this, "Error interno: " + e.getMessage());
         }
     }
-    
-    public void limpiarFormulario() {
-        textFolio.setText("");
-        textMesa.setText("");
-        textCliente.setText("");
-
-        if (modeloTabla != null) {
-            modeloTabla.setRowCount(0);
-        }
-        this.mesaA = null;
-        this.cliente = null;
-    }
-    
 }

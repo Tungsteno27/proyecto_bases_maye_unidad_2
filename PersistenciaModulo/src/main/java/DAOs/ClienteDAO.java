@@ -36,6 +36,7 @@ public class ClienteDAO implements IClienteDAO {
      * @param cliente el cliente a insertar, puede ser de cualquiera de las
      * clases hijas
      * @return el cliente insertado
+     * @throws excepciones.PersistenciaException
      */
     @Override
     public Cliente registrarCliente(Cliente cliente) throws PersistenciaException {

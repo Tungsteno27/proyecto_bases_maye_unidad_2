@@ -56,7 +56,7 @@ public class Comanda implements Serializable {
     private Mesa mesa;
     
     @ManyToOne
-    @JoinColumn(name = "id_mesero", nullable = false)
+    @JoinColumn(name = "id_mesero")
     private Mesero mesero;
     
     @OneToMany(mappedBy = "comanda", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, orphanRemoval = true)

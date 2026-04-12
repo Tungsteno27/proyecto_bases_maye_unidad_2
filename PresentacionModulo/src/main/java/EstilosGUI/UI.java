@@ -173,4 +173,28 @@ public class UI {
         lbl.setForeground(TEXTO_OSCURO);
         return lbl;
     }
+    public static JTextField texto() {
+    JTextField field = new JTextField(20) {
+        @Override
+        protected void paintComponent(Graphics g) {
+            Graphics2D g2 = (Graphics2D) g.create();
+            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            g2.setColor(Color.WHITE);
+            g2.fill(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 14, 14));
+            g2.setColor(new Color(0xDCDCDC)); 
+            g2.draw(new RoundRectangle2D.Double(0, 0, getWidth() - 1, getHeight() - 1, 14, 14));
+
+            g2.dispose();
+            super.paintComponent(g);
+        }
+    };
+
+    field.setOpaque(false);
+    field.setBorder(new EmptyBorder(8, 14, 8, 14));
+    field.setFont(new Font("Georgia", Font.PLAIN, 15));
+    field.setForeground(TEXTO_OSCURO);
+    field.setCaretColor(TEXTO_OSCURO);
+
+    return field;
+}
 }

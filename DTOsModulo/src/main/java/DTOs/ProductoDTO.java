@@ -97,7 +97,10 @@ public class ProductoDTO {
     public void setIngredientes(List<ProductoIngredienteDTO> ingredientes) {
         this.ingredientes = ingredientes;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return this.nombre;
+    }
     
 }

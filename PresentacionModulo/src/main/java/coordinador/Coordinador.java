@@ -5,17 +5,29 @@
 package coordinador;
 
 import BOs.ClienteBO;
+import BOs.ComandaBO;
 import BOs.IngredienteBO;
 import BOs.ProductoBO;
 import DAOs.ClienteDAO;
+import DAOs.ComandaDAO;
 import DAOs.IngredienteDAO;
+import DAOs.MesaDAO;
 import DAOs.ProductoDAO;
 import DTOs.ClienteDTO;
 import DTOs.ClienteFrecuenteDTO;
+import DTOs.ComandaDTO;
+import DTOs.ComandaProductoDTO;
+import DTOs.EstadoComandaDTO;
 import DTOs.IngredienteDTO;
+import DTOs.MesaDTO;
 import DTOs.ProductoDTO;
 import DTOs.ReporteClienteFrecuenteDTO;
+import Interfaces.ComandaObserver;
+import Interfaces.MesaObserver;
+import entidades.ComandaProducto;
 import excepciones.NegocioException;
+import excepciones.PersistenciaException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
@@ -24,6 +36,8 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JasperPrint;
 import pantallas.FrmBuscadorClientes;
+import pantallas.FrmBuscadorClientesComanda;
+import pantallas.FrmBuscadorComanda;
 import pantallas.FrmBuscadorIngredientes;
 import pantallas.FrmBuscadorProductos;
 import pantallas.FrmComanda;
@@ -31,7 +45,9 @@ import pantallas.FrmEnMantenimiento;
 import pantallas.FrmModulosComandas;
 import pantallas.FrmExito;
 import pantallas.FrmInfoAdicional;
+import pantallas.FrmModificar;
 import pantallas.FrmModificarCliente;
+import pantallas.FrmModificarComanda;
 import pantallas.FrmModificarIngrediente;
 import pantallas.FrmModuloClientes;
 import pantallas.FrmModuloIngredientes;
@@ -45,6 +61,7 @@ import pantallas.FrmRegistrarProducto;
 import pantallas.FrmReporteClientesFrecuentes;
 import pantallas.FrmSeleccionadorMesa;
 import pantallas.FrmSeleccionarId;
+import pantallas.FrmSeleccionarMesa;
 
 /**
  * Clase que coordina el flujo entre pantallas y la lógica de negocio
@@ -68,9 +85,20 @@ public class Coordinador {
     private FrmInfoAdicional frmInfoAdicional;
     private FrmExito frmExito;
     private FrmEnMantenimiento frmMantenimieto;
-
+    
+    //ModuloComandas
+    public MesaDTO mesa;
+    private String origen = "Modulos";
+    private String comanda = "registrar";
+    private List<MesaObserver> observer = new ArrayList<>();
+    private List<ComandaObserver> obser = new ArrayList<>();
     private FrmModulosComandas frmModuloComandas;
     private FrmComanda frmComanda;
+    private FrmSeleccionarMesa frmSeleccionarMesa;
+    private FrmBuscadorClientesComanda frmBuscadorClientesComanda;
+    private FrmModificarComanda frmModificarComanda;
+    private FrmModificar frmModificar;
+    private FrmBuscadorComanda frmBuscadorComanda;
 
     //Módulo de productos
     private FrmBuscadorProductos frmBuscadorProductos;
@@ -89,6 +117,7 @@ public class Coordinador {
 
     //BO's
     private ClienteBO clienteBO;
+    private ComandaBO comandaBO;
     private ProductoBO productoBO;
     private IngredienteBO ingredienteBO;
 
@@ -98,6 +127,7 @@ public class Coordinador {
         clienteBO = new ClienteBO(new ClienteDAO());
         productoBO = new ProductoBO(new ProductoDAO(), new IngredienteDAO());
         ingredienteBO = new IngredienteBO(new IngredienteDAO());
+        comandaBO = new ComandaBO(new ComandaDAO());
 
         if (frmSeleccionRol == null) {
             frmSeleccionRol = new FrmSeleccionRol(this);
@@ -124,9 +154,10 @@ public class Coordinador {
         if (frmSeleccionRol != null) {
             frmSeleccionRol.setVisible(false);
         }
-        if (frmModuloComandas == null) {
-            frmModuloComandas = new FrmModulosComandas(this);
+        if (frmModuloComandas != null) {
+            frmModuloComandas.dispose();
         }
+        frmModuloComandas = new FrmModulosComandas(this);
         frmModuloComandas.setVisible(true);
         frmModuloComandas.toFront();
     }
@@ -512,6 +543,7 @@ public class Coordinador {
      * Método que abre la pantalla del buscador de productos
      */
     public void abrirModuloProductos() {
+        this.origen = "Modulos";
         if (frmModulos != null) {
             frmModulos.setVisible(false);
         }
@@ -524,28 +556,218 @@ public class Coordinador {
         frmBuscadorProductos.toFront();
     }
 
-    //Seleccionar mesa
-    /*public void abrirSeleccionadorMesa() {
+    //modulo comandas
+
+    public String getOrigen() {
+        return origen;
+    }
+
+    public void setOrigen(String origen) {
+        this.origen = origen;
+    }
+    
+    public void agregarObserver(MesaObserver obs){
+        this.observer.add(obs);
+    }
+    
+    public void comandaObserver(ComandaObserver obs){
+        this.obser.add(obs);
+    }
+    
+    public void notiCambioMesas() throws NegocioException{
+        for(MesaObserver obs : observer){
+            try{
+                obs.actualizarMesas();
+            }catch(NegocioException ex){
+                ex.printStackTrace();
+            }
+        }
+    }
+    
+    public void notiCambioComanda() throws NegocioException{
+        for(ComandaObserver obs : obser){
+            obs.comandaObserver();
+        }
+    }
+    
+    public List<MesaDTO> obtenerMesas() throws NegocioException{
+        //return comandaBO.consulatarMesasDisponibles();
+        return comandaBO.consultarTodasMesas();
+    }
+    
+    public List<ComandaDTO> obtenerComandasAbiertas() throws PersistenciaException{
+        return comandaBO.obtenerComandasAbiertas();
+    }
+    
+    public List<ComandaDTO> obtenerComandas() throws PersistenciaException{
+        return comandaBO.obtenerComandas();
+    }
+    
+    public String actualizarComanda(ComandaDTO dto) {
+        try {
+            comandaBO.actualizar(dto);
+            notiCambioComanda();
+            return null;
+        } catch (NegocioException e) {
+            return e.getMessage();
+        }
+    }
+    
+    public String obtenerFolio() throws NegocioException{
+        try{
+            return comandaBO.generarFolio();
+        }catch(PersistenciaException e){
+            return "FOl-000";
+        }
+    }
+    
+    public void abrirSeleccionadorMesa() throws NegocioException {
         if (frmModuloComandas != null) {
             frmModuloComandas.setVisible(false);
         }
         if (frmSeleccionarMesa == null) {
-            frmSeleccionarMesa = new FrmSeleccionadorMesa(this);
+            frmSeleccionarMesa = new FrmSeleccionarMesa(this);
         }
         frmSeleccionarMesa.setVisible(true);
         frmSeleccionarMesa.toFront();
     }
-
-    public void abrirComanda(int numeroMesa) {
-        if (frmSeleccionarMesa != null) {
+    
+    public void abrirSeleccionarCliente(MesaDTO mesa){
+        this.mesa = mesa;
+        if(frmSeleccionarMesa != null){
             frmSeleccionarMesa.setVisible(false);
         }
-        if (frmComanda == null) {
+        if (frmBuscadorClientesComanda == null){
+            frmBuscadorClientesComanda = new FrmBuscadorClientesComanda(this, clienteBO);
+        }
+        frmBuscadorClientesComanda.setVisible(true);
+        frmBuscadorClientesComanda.toFront();
+    }
+    
+    public void abrirNuevaComanda(ClienteFrecuenteDTO cliente) throws NegocioException{
+        this.comanda = "registrar";
+        if(frmSeleccionarMesa != null){
+            frmSeleccionarMesa.setVisible(false);
+        }
+        if(frmComanda == null){
             frmComanda = new FrmComanda(this);
         }
         frmComanda.setVisible(true);
+        frmComanda.cargarDatos(mesa, cliente);
         frmComanda.toFront();
-    }*/
+    }
+    
+    public void agregarProductoAComanda(ProductoDTO producto) {
+        if ("Modulos".equals(this.origen)) {
+            JOptionPane.showMessageDialog(null, "Opcion no valida");
+            this.mostrarModulos();
+
+        } else {
+            if ("registrar".equals(this.comanda)) {
+                if (frmComanda != null) {
+                    frmComanda.agregarProducto(producto);
+                    frmComanda.setVisible(true);
+                    frmComanda.toFront();
+                }
+            } else {
+                if (frmModificar != null) {
+                    frmModificar.agregarProducto(producto);
+                    frmModificar.setVisible(true);
+                    frmModificar.toFront();
+                }
+            }
+        }
+    }
+    
+    public void guardarComanda(ComandaDTO comanda) throws NegocioException {
+        try {
+            comandaBO.registrar(comanda);
+            JOptionPane.showMessageDialog(null, "¡Registrada con éxito!");
+            notiCambioMesas();
+            this.rolMeseroSeleccionado();
+        } catch (NegocioException e) {
+            JOptionPane.showMessageDialog(null, "Error, no se pudo guardar: "+e.getMessage());
+        }
+    }
+    
+    public void abrirModificadorComanda() throws PersistenciaException{
+        if (frmModuloComandas != null) {
+            frmModuloComandas.setVisible(false);
+        }
+        
+        if(frmModificarComanda == null){
+            frmModificarComanda = new FrmModificarComanda(this);
+        }
+        
+        List<ComandaDTO> list = comandaBO.obtenerComandasAbiertas();
+        
+        frmModificarComanda.cargarTabla(list);
+        
+        frmModificarComanda.setVisible(true);
+        frmModificarComanda.toFront();
+    }
+    
+    public void abrirEdicionComanda(String folio){
+        try{
+            this.comanda = "modificar";
+            ComandaDTO  dto = comandaBO.obtenerPorFolio(folio);
+            if (dto == null) {
+                JOptionPane.showMessageDialog(null, "Comanda no encontrado");
+                return;
+            }
+            
+            if (frmModificarComanda != null) {
+                frmModificarComanda.setVisible(false);
+            }
+            
+            if(frmModificar == null){
+                frmModificar = new FrmModificar(this);
+            }
+            frmModificar.cargarDatos(dto);
+            frmModificar.setVisible(true);
+            frmModificar.toFront();
+        }catch(Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al cargar producto");
+        }
+    }
+    
+    public void abrirBuscadorComanda() throws PersistenciaException{
+        if (frmModuloComandas != null) {
+            frmModuloComandas.setVisible(false);
+        }
+        if(frmBuscadorComanda == null){
+            frmBuscadorComanda = new FrmBuscadorComanda(this);
+        }
+        frmBuscadorComanda.setVisible(true);
+        frmBuscadorComanda.toFront();
+    }
+    
+    public List<ComandaDTO> buscarComandas(Integer numeroMesa, EstadoComandaDTO estadoComanda,LocalDateTime inicio, LocalDateTime fin) {
+        try {
+            return comandaBO.buscarComanda(numeroMesa, estadoComanda, inicio, fin);
+        }catch (NegocioException e) {
+            JOptionPane.showMessageDialog(null,
+                    "Error al buscar comandas: " + e.getMessage());
+            return new ArrayList<>();
+        }
+    }
+    
+    public ProductoDTO obtenerProductoPorId(Long id) throws NegocioException{
+        return productoBO.obtenerPorId(id);
+    }
+    public void abrirBuscadorProductosComanda() {
+        this.origen = "Comanda";
+        if (frmComanda != null) {
+            frmComanda.setVisible(false);
+        }
+        if (frmBuscadorProductos == null) {
+            frmBuscadorProductos = new FrmBuscadorProductos(this);
+        }
+        frmBuscadorProductos.setVisible(true);
+        frmBuscadorProductos.toFront();
+    }
+
 
     //MÓDULO DE PRODUCTOS
     public void abrirBuscadorProductos() {
@@ -563,11 +785,19 @@ public class Coordinador {
         if (frmBuscadorProductos != null) {
             frmBuscadorProductos.setVisible(false);
         }
-        if (frmModulos == null) {
-            frmModulos = new FrmModulos(this);
+        if (origen.equals("Modulos")) {
+            if (frmModulos == null) {
+                frmModulos = new FrmModulos(this);
+            }
+            frmModulos.setVisible(true);
+            frmModulos.toFront();
+        } else {
+            if (frmComanda == null) {
+                frmComanda = new FrmComanda(this);
+            }
+            frmComanda.setVisible(true);
+            frmComanda.toFront();
         }
-        frmModulos.setVisible(true);
-        frmModulos.toFront();
     }
 
     /**
@@ -587,7 +817,10 @@ public class Coordinador {
         frmRegistrarProducto.toFront();
     }
     
-    
+    /**
+     *
+     * @param id
+     */
     public void abrirModificarProducto(Long id) {
         try {
             ProductoDTO dto = productoBO.obtenerPorId(id);
@@ -921,9 +1154,4 @@ public class Coordinador {
         frmModuloIngredientes.setVisible(true);
         frmModuloIngredientes.toFront();
     }
-    
-    
-    
-    
-
 }

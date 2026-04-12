@@ -4,6 +4,7 @@ entidades\Ingrediente.class
 entidades\EstadoProducto.class
 entidades\Comanda.class
 entidades\ComandaProducto.class
+entidades\EstadoMesa.class
 entidades\Mesa.class
 entidades\UnidadMedida.class
 entidades\ClienteFrecuente.class

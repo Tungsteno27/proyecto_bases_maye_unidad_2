@@ -6,11 +6,16 @@ package pantallas;
 
 import EstilosGUI.UI;
 import coordinador.Coordinador;
+import excepciones.NegocioException;
+import excepciones.PersistenciaException;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagLayout;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -32,10 +37,8 @@ public class FrmModulosComandas extends JFrame {
     private void iniciar() {
         setTitle("Modulo Comandas");
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        setResizable(false);
-        setSize(520, 420);
-        setLocationRelativeTo(null);
-
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent e) {
@@ -69,16 +72,40 @@ public class FrmModulosComandas extends JFrame {
 
             switch (opcion) {
                 case "Registrar" ->
-                    btn.addActionListener(e -> coordinador.abrirModuloProductos());
+                    btn.addActionListener(e -> {
+                try {
+                    coordinador.abrirSeleccionadorMesa();
+                } catch (NegocioException ex) {
+                    Logger.getLogger(FrmModulosComandas.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            });
                 case "Modificar" ->
-                    btn.addActionListener(e -> coordinador.abrirModuloProductos());
+                    btn.addActionListener(e -> {
+                try {
+                    coordinador.abrirModificadorComanda();
+                } catch (PersistenciaException ex) {
+                    Logger.getLogger(FrmModulosComandas.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            });
                 case "Buscar" ->
-                    btn.addActionListener(e -> coordinador.abrirModuloProductos());
+                    btn.addActionListener(e -> {
+                try {
+                    coordinador.abrirBuscadorComanda();
+                } catch (PersistenciaException ex) {
+                    Logger.getLogger(FrmModulosComandas.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            });
             }
             columna.add(btn);
             columna.add(Box.createVerticalStrut(12));
         }
+        
+        JButton btnAtras = UI.boton("Atrás", UI.AZUL_OSCURO, UI.AZUL_OSCURO_HOVER);
+        btnAtras.setAlignmentX(Component.CENTER_ALIGNMENT);
+        btnAtras.setMaximumSize(new Dimension(140, 40));
+        btnAtras.addActionListener(e -> coordinador.iniciarSistema());
 
+        columna.add(btnAtras);
         card.add(columna, BorderLayout.CENTER);
         UI.centrar(fondo, card);
     }
