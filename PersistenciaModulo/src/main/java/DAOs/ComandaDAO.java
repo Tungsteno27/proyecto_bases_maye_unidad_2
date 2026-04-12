@@ -160,6 +160,46 @@ public class ComandaDAO {
         }
     }
     
+    public List<Comanda> buscarPorFiltros(Integer mesa, EstadoComandaDTO estado, LocalDateTime inicio, LocalDateTime fin, String cliente) throws PersistenciaException {
+        EntityManager em = ConexionBD.crearConexion();
+        try {
+            StringBuilder jpql = new StringBuilder("select c from Comanda c where 1=1");
+            if (mesa != null) {
+                jpql.append(" and c.mesa.numero = :mesa");
+            }
+            if (estado != null) {
+                jpql.append(" and c.estado = :estado");
+            }
+            if (inicio != null && fin != null) {
+                jpql.append(" and c.fechaHora between :inicio and :fin");
+            }
+            if(cliente != null){
+                jpql.append(" and (lower(c.cliente.nombres) like :cliente or lower(c.cliente.apellidoPaterno) like :cliente)");
+            }
+
+            TypedQuery<Comanda> query = em.createQuery(jpql.toString(), Comanda.class);
+            
+            if(mesa != null){
+                query.setParameter("mesa", mesa);
+            }
+            if(estado != null){
+                query.setParameter("estado", EstadoComanda.valueOf(estado.name()));
+            }
+            if(inicio != null && fin != null){
+                query.setParameter("inicio", inicio);
+                query.setParameter("fin", fin);
+            }
+            if(cliente != null){
+                query.setParameter("cliente", cliente);
+            }
+            return query.getResultList();
+        } catch (Exception e) {
+            throw new PersistenciaException("Error al buscar las comandas");
+        } finally {
+            em.close();
+        }
+    }
+    
     /**
      *
      * @param comanda

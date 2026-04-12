@@ -2,6 +2,7 @@ EstilosGUI\UI$2.class
 pantallas\FrmBuscadorClientesComanda.class
 pantallas\FrmModificarComanda.class
 pantallas\FrmReporteClientesFrecuentes.class
+pantallas\FrmReporteComandas$1.class
 pantallas\FrmModificar$2.class
 pantallas\FrmSeleccionarMesa$2.class
 EstilosGUI\UI$5.class
@@ -25,6 +26,7 @@ pantallas\FrmModificar$1.class
 pantallas\FrmBuscadorComanda$5.class
 pantallas\FrmSeleccionadorMesa.class
 EstilosGUI\UI$1.class
+pantallas\FrmReporteComandas$4.class
 pantallas\FrmSeleccionadorMesa$1.class
 pantallas\FrmBuscadorClientes$1.class
 pantallas\FrmComanda$1.class
@@ -46,6 +48,7 @@ pantallas\FrmComanda$3.class
 Interfaces\MesaObserver.class
 pantallas\FrmModificarIngrediente$1.class
 pantallas\FrmModulosComandas$1.class
+pantallas\FrmReporteComandas$3.class
 pantallas\FrmModuloIngredientes.class
 EstilosGUI\UI.class
 pantallas\FrmBuscadorClientes$2.class
@@ -58,6 +61,7 @@ pantallas\FrmBuscadorComanda$4.class
 pantallas\FrmSeleccionarMesa$1.class
 pantallas\FrmRegistrarIngrediente$1.class
 EstilosGUI\UI$3.class
+pantallas\FrmReporteComandas$6.class
 pantallas\FrmModificar.class
 pantallas\FrmReporteClientesFrecuentes$2.class
 pantallas\FrmBuscadorProductos.class
@@ -75,10 +79,13 @@ pantallas\FrmBuscadorIngredientes$1.class
 pantallas\FrmModulos$1.class
 pantallas\FrmModificar$3.class
 pantallas\FrmModuloClientes.class
+pantallas\FrmReporteComandas$5.class
 pantallas\FrmBuscadorComanda$3.class
 pantallas\FrmModuloIngredientes$1.class
 pantallas\FrmModificarComanda$2.class
 pantallas\FrmModulos.class
 pantallas\FrmComanda.class
 pantallas\FrmExito.class
+pantallas\FrmReporteComandas.class
 pantallas\FrmRegistrarCliente.class
+pantallas\FrmReporteComandas$2.class

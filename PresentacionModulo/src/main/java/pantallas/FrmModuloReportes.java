@@ -6,10 +6,13 @@ package pantallas;
 
 import EstilosGUI.UI;
 import coordinador.Coordinador;
+import excepciones.PersistenciaException;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagLayout;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -66,7 +69,13 @@ public class FrmModuloReportes extends JFrame {
         btnAtras.setMaximumSize(new Dimension(200, 40));
 
         btnClientes.addActionListener(e -> coordinador.abrirReporteClientes());
-        btnComandas.addActionListener(e -> coordinador.abrirReporteComandas());
+        btnComandas.addActionListener(e -> {
+            try {
+                coordinador.abrirReporteComandas();
+            } catch (PersistenciaException ex) {
+                Logger.getLogger(FrmModuloReportes.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
         btnAtras.addActionListener(e -> coordinador.regresarDesdeModuloReportes());
 
         contenedor.add(titulo);

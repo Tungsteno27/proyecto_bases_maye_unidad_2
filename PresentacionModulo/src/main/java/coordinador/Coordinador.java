@@ -59,6 +59,7 @@ import pantallas.FrmRegistrarCliente;
 import pantallas.FrmRegistrarIngrediente;
 import pantallas.FrmRegistrarProducto;
 import pantallas.FrmReporteClientesFrecuentes;
+import pantallas.FrmReporteComandas;
 import pantallas.FrmSeleccionadorMesa;
 import pantallas.FrmSeleccionarId;
 import pantallas.FrmSeleccionarMesa;
@@ -107,6 +108,7 @@ public class Coordinador {
     //Módulo de Reportes
     private FrmModuloReportes frmModuloReportes;
     private FrmReporteClientesFrecuentes frmReporteClientes;
+    private FrmReporteComandas frmReporteComandas;
 
     // Modulo de ingredientes
     private FrmModuloIngredientes frmModuloIngredientes;
@@ -753,6 +755,16 @@ public class Coordinador {
         }
     }
     
+    public List<ComandaDTO> buscarComandas(Integer numeroMesa, EstadoComandaDTO estadoComanda,LocalDateTime inicio, LocalDateTime fin, String cliente) {
+        try {
+            return comandaBO.buscarComanda(numeroMesa, estadoComanda, inicio, fin, cliente);
+        }catch (NegocioException e) {
+            JOptionPane.showMessageDialog(null,
+                    "Error al buscar comandas: " + e.getMessage());
+            return new ArrayList<>();
+        }
+    }
+    
     public ProductoDTO obtenerProductoPorId(Long id) throws NegocioException{
         return productoBO.obtenerPorId(id);
     }
@@ -959,14 +971,32 @@ public class Coordinador {
         frmReporteClientes.toFront();
     }
 
-    public void abrirReporteComandas() {
-        //Cambiar esto cuando se implemente, no puede haber UI en el coordinador
-        JOptionPane.showMessageDialog(null, "Reporte de comandas en desarrollo");
+    public void abrirReporteComandas() throws PersistenciaException {
+        if (frmModuloReportes != null) {
+            frmModuloReportes.setVisible(false);
+        }
+        if(frmReporteComandas == null){
+            frmReporteComandas = new FrmReporteComandas(this);
+        }
+        frmReporteComandas.setVisible(true);
+        frmReporteComandas.toFront();
     }
 
     public void regresarDesdeReporteClientes() {
         if (frmReporteClientes != null) {
             frmReporteClientes.setVisible(false);
+        }
+
+        if (frmModuloReportes == null) {
+            frmModuloReportes = new FrmModuloReportes(this);
+        }
+        frmModuloReportes.setVisible(true);
+        frmModuloReportes.toFront();
+    }
+    
+    public void regresarDesdeReporteComandas() {
+        if (frmReporteComandas != null) {
+            frmReporteComandas.setVisible(false);
         }
 
         if (frmModuloReportes == null) {
@@ -996,6 +1026,10 @@ public class Coordinador {
      */
     public JasperPrint generarReporteClientesFrecuentes(List<ReporteClienteFrecuenteDTO> datos) throws NegocioException {
         return clienteBO.generarReporteClientesFrecuentes(datos);
+    }
+    
+    public JasperPrint generarReporteComandas(List<ComandaDTO> datos) throws NegocioException{
+        return comandaBO.generarReporteComandas(datos);
     }
 
     // MODULO INGREDIENTES

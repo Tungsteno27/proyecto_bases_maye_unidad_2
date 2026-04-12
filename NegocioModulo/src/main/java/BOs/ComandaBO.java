@@ -25,14 +25,20 @@ import entidades.Producto;
 import excepciones.NegocioException;
 import excepciones.PersistenciaException;
 import factory.ComandaAdapterFactory;
+import java.io.InputStream;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 /**
  *
@@ -137,6 +143,19 @@ public class ComandaBO {
         }
     }
     
+    public List<ComandaDTO> buscarComanda(Integer numeroMesa, EstadoComandaDTO estadoComanda,LocalDateTime inicio, LocalDateTime fin, String cliente)throws NegocioException{
+        try{
+            List<Comanda> comanda = comandaDAO.buscarPorFiltros(numeroMesa, estadoComanda, inicio, fin, cliente);
+            List<ComandaDTO> dto = new ArrayList<>();
+            for(Comanda c : comanda){
+                dto.add(ComandaAdapterFactory.entidadADTO(c));
+            }
+            return dto;
+        }catch (PersistenciaException e) {
+            throw new NegocioException("No se pudo encontrar comandas");
+        }
+    }
+    
     public List<ProductoDTO> consultarProductosDisponibles() throws NegocioException{
         try{
             List<Producto> todos = productoDAO.obtenerTodos();
@@ -228,5 +247,24 @@ public class ComandaBO {
         }catch(NegocioException e){
             throw new PersistenciaException("Error al consultar el estado de la mesa.");
         }   
+    }
+    
+    public JasperPrint generarReporteComandas(List<ComandaDTO> datos) throws NegocioException{
+        try{
+            InputStream reporteStream = getClass().getResourceAsStream("/reportes/reporte_comandas.jasper");
+            if (reporteStream == null) throw new RuntimeException("No se encontró el reporte");
+
+            JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(datos);
+
+            Map<String, Object> parametros = new HashMap<>();
+            InputStream logoStream = getClass().getResourceAsStream("/imagenes/urogallo.png");
+            if (logoStream == null) throw new RuntimeException("No se encontró el logo");
+            parametros.put("logo", logoStream);
+
+            return JasperFillManager.fillReport(reporteStream, parametros, dataSource);
+
+        }catch(Exception e){
+            throw new NegocioException("Error al generar PDF: " + e.getMessage());
+        }
     }
 }
