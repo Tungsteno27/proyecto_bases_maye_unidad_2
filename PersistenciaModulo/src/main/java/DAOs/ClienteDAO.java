@@ -145,6 +145,7 @@ public class ClienteDAO implements IClienteDAO {
      *
      * @return una lista de clientes frecuentes
      */
+    @Override
     public List<ClienteFrecuente> obtenerFrecuentes() {
         EntityManager em = ConexionBD.crearConexion();
         String jpql = "SELECT cf FROM ClienteFrecuente cf";
@@ -160,6 +161,7 @@ public class ClienteDAO implements IClienteDAO {
      * @return el número de visitas máximas
      * @throws PersistenciaException si ocurre un error
      */
+    @Override
     public int calcularVisitas(Long idCliente) throws PersistenciaException {
         EntityManager em = ConexionBD.crearConexion();
         try {
@@ -189,6 +191,7 @@ public class ClienteDAO implements IClienteDAO {
      * @return la cantidad decimal de dinero gastado
      * @throws PersistenciaException si ocurre un error
      */
+    @Override
     public double calcularTotalGastado(Long idCliente) throws PersistenciaException {
         EntityManager em = ConexionBD.crearConexion();
         try {
@@ -290,6 +293,7 @@ public class ClienteDAO implements IClienteDAO {
      * @return la fecha si tiene, null en caso contrario
      * @throws PersistenciaException si ocurre un error en la BD
      */
+    @Override
     public LocalDate obtenerFechaUltimaComanda(Long idCliente) throws PersistenciaException {
         EntityManager em = ConexionBD.crearConexion();
         try {

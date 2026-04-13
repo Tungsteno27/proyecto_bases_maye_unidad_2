@@ -153,7 +153,6 @@ public class ProductoBO {
                         throw new NegocioException("Cantidad inválida");
                     }
                     Ingrediente ingrediente = ingredienteDAO.buscarPorId(piDTO.getIdIngrediente());
-
                     if (ingrediente == null) {
                         throw new NegocioException("Ingrediente no encontrado");
                     }

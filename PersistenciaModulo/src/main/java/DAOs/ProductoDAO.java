@@ -29,15 +29,14 @@ public class ProductoDAO implements IProductoDAO {
     
     //Logger para debuggear (porque habrá muchos errores)
     private static final Logger LOG = Logger.getLogger(ClienteDAO.class.getName());
-    
-    
-    
+           
     /**
      * Método que inserta un producto en la base de datos
      * @param producto el producto insertado
      * @return el producto si se insertó
      * @throws PersistenciaException si ocurre un error al insertar
      */
+    @Override
     public Producto registrarProducto(Producto producto) throws PersistenciaException {
         //Creamos la conexión a la BD con el entityManager
         EntityManager em = ConexionBD.crearConexion();
@@ -72,6 +71,7 @@ public class ProductoDAO implements IProductoDAO {
      * @param tipo el tipo o categoría de producto
      * @return una lista con los producotos que cuadren con los filtros
      */
+    @Override
     public List<Producto> buscarProductos(String nombre, String tipo) {
         EntityManager em = ConexionBD.crearConexion();
         try {
@@ -107,6 +107,7 @@ public class ProductoDAO implements IProductoDAO {
      * @return el producto actualizado
      * @throws PersistenciaException si ocurre un error al comunicarse con la BD
      */
+    @Override
     public Producto actualizarProducto(Producto producto) throws PersistenciaException {
         EntityManager em = ConexionBD.crearConexion();
         try {
@@ -131,6 +132,7 @@ public class ProductoDAO implements IProductoDAO {
      * @return el producto si lo encontró, null en caso contrario
      * @throws PersistenciaException si ocurre un error en la BD
      */
+    @Override
     public Producto buscarPorId (Long id) throws PersistenciaException{
         EntityManager em = ConexionBD.crearConexion();
         try {
@@ -158,6 +160,7 @@ public class ProductoDAO implements IProductoDAO {
      * @return verdadero si existe, falso en caso contrario
      * @throws PersistenciaException si ocurre un error en la base de datos
      */
+    @Override
     public boolean existeProductoNombreDuplicado(String nombre) throws PersistenciaException {
         EntityManager em = ConexionBD.crearConexion();
         try {
@@ -178,6 +181,7 @@ public class ProductoDAO implements IProductoDAO {
      * @return
      * @throws PersistenciaException 
      */
+    @Override
     public List<ProductoIngrediente> obtenerIngredientesPorProducto(Long idProducto) throws PersistenciaException {
         EntityManager em = ConexionBD.crearConexion();
         try {
@@ -198,6 +202,7 @@ public class ProductoDAO implements IProductoDAO {
      * @param estado el nuevo estado
      * @throws PersistenciaException si ocurre un error
      */
+    @Override
     public void cambiarEstado(Long id, String estado) throws PersistenciaException {
         EntityManager em = ConexionBD.crearConexion();
         try {
@@ -218,6 +223,7 @@ public class ProductoDAO implements IProductoDAO {
      * Método que regresa todos los productos
      * @return una lista con todos los productos
      */
+    @Override
     public List<Producto> obtenerTodos() {
         EntityManager em = ConexionBD.crearConexion();
             String jpql = "SELECT p FROM Producto p ORDER BY p.nombre ASC";

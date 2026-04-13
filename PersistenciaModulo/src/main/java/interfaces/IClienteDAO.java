@@ -6,7 +6,9 @@ package interfaces;
 
 import entidades.Cliente;
 import entidades.ClienteFrecuente;
+import entidades.Producto;
 import excepciones.PersistenciaException;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -26,5 +28,14 @@ public interface IClienteDAO {
     public Cliente actualizarCliente(Cliente cliente) throws PersistenciaException;
 
     public List<ClienteFrecuente> buscarFrecuentesPorFiltros(String nombre, String correo) throws PersistenciaException;
-
+    
+    public List<ClienteFrecuente> obtenerFrecuentes();
+    
+    public int calcularVisitas(Long idCliente) throws PersistenciaException;
+    
+    public double calcularTotalGastado(Long idCliente) throws PersistenciaException;
+    
+    public LocalDate obtenerFechaUltimaComanda(Long idCliente) throws PersistenciaException;
+    
+    
 }
