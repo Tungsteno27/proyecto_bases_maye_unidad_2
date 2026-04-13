@@ -6,7 +6,6 @@ package DAOs;
 
 import DTOs.EstadoComandaDTO;
 import conexion.ConexionBD;
-import entidades.Cliente;
 import entidades.Comanda;
 import entidades.EstadoComanda;
 import entidades.Mesa;
@@ -218,6 +217,7 @@ public class ComandaDAO {
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
             }
+            String folio = (comanda != null) ? comanda.getFolio() : "NULO";
             LOG.warning("Error al actualizar la comanda con el folio: " + comanda.getFolio());
             throw new PersistenciaException("Error al modificar la comanda");
         }finally{
