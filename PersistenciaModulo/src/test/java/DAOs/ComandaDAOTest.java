@@ -131,7 +131,8 @@ public class ComandaDAOTest {
     @Test
     public void testBuscarPorFiltrosConCliente() throws Exception {
         System.out.println("buscarPorFiltros");
-        List<Comanda> result = dao.buscarPorFiltros(1, EstadoComandaDTO.ENTREGADA, null, null, null);
+        String nom = "%Dayanara%";
+        List<Comanda> result = dao.buscarEntregadasPorFiltros(null, null, null, nom);
         assertNotNull(result);
         assertFalse(result.isEmpty());
     }
@@ -142,8 +143,9 @@ public class ComandaDAOTest {
     @Test
     public void testBuscarPorFiltrosConCliente_Fail() throws Exception {
         System.out.println("buscarPorFiltros");
-        List<Comanda> result = dao.buscarPorFiltros(2564, null, null, null, null);
-        assertTrue(result.isEmpty());
+        assertThrows(PersistenciaException.class, ()->{
+            dao.buscarEntregadasPorFiltros(-1, null, null, null);
+        });
     }
 
     /**

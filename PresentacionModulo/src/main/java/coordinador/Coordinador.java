@@ -601,6 +601,10 @@ public class Coordinador {
         return comandaBO.obtenerComandasAbiertas();
     }
     
+    public List<ComandaDTO> obtenerComandasEntregadas() throws PersistenciaException{
+        return comandaBO.obtenerComandasEntregadas();
+    }
+    
     public List<ComandaDTO> obtenerComandas() throws PersistenciaException{
         return comandaBO.obtenerComandas();
     }
@@ -755,9 +759,9 @@ public class Coordinador {
         }
     }
     
-    public List<ComandaDTO> buscarComandas(Integer numeroMesa, EstadoComandaDTO estadoComanda,LocalDateTime inicio, LocalDateTime fin, String cliente) {
+    public List<ComandaDTO> buscarComandasEntregadas(Integer numeroMesa, LocalDateTime inicio, LocalDateTime fin, String cliente) {
         try {
-            return comandaBO.buscarComanda(numeroMesa, estadoComanda, inicio, fin, cliente);
+            return comandaBO.buscarComanda(numeroMesa, inicio, fin, cliente);
         }catch (NegocioException e) {
             JOptionPane.showMessageDialog(null,
                     "Error al buscar comandas: " + e.getMessage());
@@ -854,6 +858,7 @@ public class Coordinador {
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error al cargar producto");
+            
         }
     }
     

@@ -143,9 +143,9 @@ public class ComandaBO {
         }
     }
     
-    public List<ComandaDTO> buscarComanda(Integer numeroMesa, EstadoComandaDTO estadoComanda,LocalDateTime inicio, LocalDateTime fin, String cliente)throws NegocioException{
+    public List<ComandaDTO> buscarComanda(Integer numeroMesa, LocalDateTime inicio, LocalDateTime fin, String cliente)throws NegocioException{
         try{
-            List<Comanda> comanda = comandaDAO.buscarPorFiltros(numeroMesa, estadoComanda, inicio, fin, cliente);
+            List<Comanda> comanda = comandaDAO.buscarEntregadasPorFiltros(numeroMesa, inicio, fin, cliente);
             List<ComandaDTO> dto = new ArrayList<>();
             for(Comanda c : comanda){
                 dto.add(ComandaAdapterFactory.entidadADTO(c));
@@ -199,6 +199,15 @@ public class ComandaBO {
         return todas;
     }
     
+    public List<ComandaDTO> obtenerComandasEntregadas() throws PersistenciaException{
+        List<Comanda> comandas = comandaDAO.buscarPorEstado(EstadoComanda.ENTREGADA);
+        List<ComandaDTO> todas = new ArrayList<>();
+        for(Comanda c : comandas){
+            todas.add(ComandaAdapterFactory.entidadADTO(c));
+        }
+        return todas;
+    }
+    
     public List<ComandaDTO> obtenerComandasAbiertas() throws PersistenciaException{
         List<Comanda> comandas = comandaDAO.buscarPorEstado(EstadoComanda.ABIERTA);
         List<ComandaDTO> todas = new ArrayList<>();
@@ -235,20 +244,6 @@ public class ComandaBO {
         
     }
     
-    private void validarDisponibilidad(Long idMesa) throws PersistenciaException{
-        try{
-            Mesa mesa = mesaDAO.buscarPorId(idMesa);
-            if(mesa == null){
-                throw new NegocioException("La mesa no existe.");
-            }
-            if(!"Disponible".equals(mesa.getEstado())){
-                throw new NegocioException("Mesa ocupada.");
-            }
-        }catch(NegocioException e){
-            throw new PersistenciaException("Error al consultar el estado de la mesa.");
-        }   
-    }
-    
     public JasperPrint generarReporteComandas(List<ComandaDTO> datos) throws NegocioException{
         try{
             InputStream reporteStream = getClass().getResourceAsStream("/reportes/reporte_comandas.jasper");
@@ -266,5 +261,12 @@ public class ComandaBO {
         }catch(Exception e){
             throw new NegocioException("Error al generar PDF: " + e.getMessage());
         }
+    }
+    
+    public Double calcularTotalComandas(List<ComandaDTO> comandas){
+        if(comandas == null || comandas.isEmpty()){
+            return 0.0;
+        }
+        return comandas.stream().mapToDouble(ComandaDTO::getTotalComanda).sum();
     }
 }

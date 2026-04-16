@@ -152,11 +152,6 @@ public class FrmBuscadorComanda extends JFrame implements ComandaObserver{
         contenedor.add(lblFiltros);
         contenedor.add(Box.createVerticalStrut(15));
         
-        JLabel lblMesa = UI.titulo("Buscar por numero de mesa: ");
-        lblMesa.setAlignmentX(Component.CENTER_ALIGNMENT);
-        contenedor.add(lblMesa);
-        contenedor.add(Box.createVerticalStrut(15));
-
         JLabel lblNombre = new JLabel("Mesa:");
         lblNombre.setAlignmentX(Component.CENTER_ALIGNMENT);
         contenedor.add(lblNombre);
@@ -167,7 +162,7 @@ public class FrmBuscadorComanda extends JFrame implements ComandaObserver{
         contenedor.add(txtFiltroMesa);
         contenedor.add(Box.createVerticalStrut(12));
         
-        JLabel lblEstado = UI.titulo("Buscar por estado: ");
+        JLabel lblEstado = new JLabel("Buscar por estado: ");
         lblEstado.setAlignmentX(Component.CENTER_ALIGNMENT);
         contenedor.add(lblEstado);
         contenedor.add(Box.createVerticalStrut(15));
@@ -185,21 +180,6 @@ public class FrmBuscadorComanda extends JFrame implements ComandaObserver{
         estado.setMinimumSize(tam);
         estado.setAlignmentX(Component.CENTER_ALIGNMENT);
         contenedor.add(estado);
-        
-        JLabel es = UI.titulo(" ");
-        es.setAlignmentX(Component.CENTER_ALIGNMENT);
-        contenedor.add(es);
-        contenedor.add(Box.createVerticalStrut(15));
-        
-        JLabel lblRangoFechas = UI.titulo("\nBuscar por rango de fechas");
-        lblRangoFechas.setAlignmentX(Component.CENTER_ALIGNMENT);
-        contenedor.add(lblRangoFechas);
-        contenedor.add(Box.createVerticalStrut(15));
-        
-        JLabel lblFormatoFechas = UI.titulo("(AAAA-MM-DD): ");
-        lblFormatoFechas.setAlignmentX(Component.CENTER_ALIGNMENT);
-        contenedor.add(lblFormatoFechas);
-        contenedor.add(Box.createVerticalStrut(15));
         
         JLabel lblInicio = new JLabel("Fecha inicio:");
         lblInicio.setAlignmentX(Component.CENTER_ALIGNMENT);

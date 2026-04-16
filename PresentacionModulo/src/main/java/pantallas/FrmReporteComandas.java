@@ -156,11 +156,6 @@ public class FrmReporteComandas extends JFrame implements ComandaObserver{
         contenedor.add(lblFiltros);
         contenedor.add(Box.createVerticalStrut(15));
         
-        JLabel lblMesa = UI.titulo("Buscar por numero de mesa: ");
-        lblMesa.setAlignmentX(Component.CENTER_ALIGNMENT);
-        contenedor.add(lblMesa);
-        contenedor.add(Box.createVerticalStrut(15));
-
         JLabel lblNombre = new JLabel("Mesa:");
         lblNombre.setAlignmentX(Component.CENTER_ALIGNMENT);
         contenedor.add(lblNombre);
@@ -171,41 +166,7 @@ public class FrmReporteComandas extends JFrame implements ComandaObserver{
         contenedor.add(txtFiltroMesa);
         contenedor.add(Box.createVerticalStrut(12));
         
-        JLabel lblEstado = UI.titulo("Buscar por estado: ");
-        lblEstado.setAlignmentX(Component.CENTER_ALIGNMENT);
-        contenedor.add(lblEstado);
-        contenedor.add(Box.createVerticalStrut(15));
-        
-        Dimension tam = new Dimension(220, 30);
-        
-        String[] estados = {"TODAS", "ABIERTA", "ENTREGADA", "CANCELADA"};
-        estado = new JComboBox<>(estados);
-        estado.setBackground(Color.WHITE);
-        estado.setFont(new Font("Georgia", Font.PLAIN, 14));
-        estado.setBorder(BorderFactory.createLineBorder(new Color(0xD4AF37)));
-        
-        estado.setPreferredSize(tam);
-        estado.setMaximumSize(tam);
-        estado.setMinimumSize(tam);
-        estado.setAlignmentX(Component.CENTER_ALIGNMENT);
-        contenedor.add(estado);
-        
-        JLabel es = UI.titulo(" ");
-        es.setAlignmentX(Component.CENTER_ALIGNMENT);
-        contenedor.add(es);
-        contenedor.add(Box.createVerticalStrut(15));
-        
-        JLabel lblRangoFechas = UI.titulo("\nBuscar por rango de fechas");
-        lblRangoFechas.setAlignmentX(Component.CENTER_ALIGNMENT);
-        contenedor.add(lblRangoFechas);
-        contenedor.add(Box.createVerticalStrut(15));
-        
-        JLabel lblFormatoFechas = UI.titulo("(AAAA-MM-DD): ");
-        lblFormatoFechas.setAlignmentX(Component.CENTER_ALIGNMENT);
-        contenedor.add(lblFormatoFechas);
-        contenedor.add(Box.createVerticalStrut(15));
-        
-        JLabel lblInicio = new JLabel("Fecha inicio:");
+        JLabel lblInicio = new JLabel("Fecha inicio(aaaa-mm-dd):");
         lblInicio.setAlignmentX(Component.CENTER_ALIGNMENT);
         contenedor.add(lblInicio);
 
@@ -215,7 +176,7 @@ public class FrmReporteComandas extends JFrame implements ComandaObserver{
         contenedor.add(txtFiltrofechas1);
         contenedor.add(Box.createVerticalStrut(25));
         
-        JLabel lblFinal = new JLabel("Fecha final:");
+        JLabel lblFinal = new JLabel("Fecha final(aaaa-mm-dd):");
         lblFinal.setAlignmentX(Component.CENTER_ALIGNMENT);
         contenedor.add(lblFinal);
 
@@ -224,11 +185,6 @@ public class FrmReporteComandas extends JFrame implements ComandaObserver{
         txtFiltrofechas2.setAlignmentX(Component.CENTER_ALIGNMENT);
         contenedor.add(txtFiltrofechas2);
         contenedor.add(Box.createVerticalStrut(25));
-        
-        JLabel lblClientes = UI.titulo("Clientes");
-        lblClientes.setAlignmentX(Component.CENTER_ALIGNMENT);
-        contenedor.add(lblClientes);
-        contenedor.add(Box.createVerticalStrut(15));
         
         JLabel lblNomCliente = new JLabel("Cliente:");
         lblNomCliente.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -300,14 +256,6 @@ public class FrmReporteComandas extends JFrame implements ComandaObserver{
             }
         });
         
-        estado.addActionListener(e -> {
-            try {
-                accionBuscar();
-            } catch (NegocioException ex) {
-                Logger.getLogger(FrmBuscadorComanda.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
-        
         txtFiltroCliente.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
@@ -321,12 +269,11 @@ public class FrmReporteComandas extends JFrame implements ComandaObserver{
     }
     
     private void cargarTodos() throws PersistenciaException {
-        actualizarTabla(coordinador.obtenerComandas());
+        actualizarTabla(coordinador.obtenerComandasEntregadas());
     }
     
     private void accionBuscar() throws NegocioException {
         String mesa = txtFiltroMesa.getText().trim();
-        String est = (String) estado.getSelectedItem();
         String inicio = txtFiltrofechas1.getText().trim();
         String fin = txtFiltrofechas2.getText().trim();
         String cli = txtFiltroCliente.getText().trim();
@@ -339,11 +286,6 @@ public class FrmReporteComandas extends JFrame implements ComandaObserver{
                 throw new NegocioException(e.getMessage());
             }
         }
-        EstadoComandaDTO estadoFiltro = null;
-        if(est != null && !"TODAS".equals(est)){
-            estadoFiltro = EstadoComandaDTO.valueOf(est);
-        }
-        
         LocalDateTime iniFiltro = null;
         LocalDateTime finFiltro = null;
         
@@ -364,7 +306,7 @@ public class FrmReporteComandas extends JFrame implements ComandaObserver{
         
         String cliente = cli.isEmpty() ? null : cli;
         
-        List<ComandaDTO> fil = coordinador.buscarComandas(mesaFiltro, estadoFiltro, iniFiltro, finFiltro, cliente);
+        List<ComandaDTO> fil = coordinador.buscarComandasEntregadas(mesaFiltro, iniFiltro, finFiltro, cliente);
         actualizarTabla(fil);
     }
     
@@ -412,15 +354,11 @@ public class FrmReporteComandas extends JFrame implements ComandaObserver{
     private void generarPDF() throws JRException {
         try {
             String mesa = txtFiltroMesa.getText().trim();
-            String est = (String) estado.getSelectedItem();
             String inicio = txtFiltrofechas1.getText().trim();
             String fin = txtFiltrofechas2.getText().trim();
             String cli = txtFiltroCliente.getText().trim();
 
             Integer filMesa = mesa.isEmpty() ? null : Integer.valueOf(mesa);
-
-            EstadoComandaDTO filEstado = (est != null && !"TODAS".equals(est))
-                    ? EstadoComandaDTO.valueOf(est) : null;
 
             LocalDateTime iniFiltro = null;
             LocalDateTime finFiltro = null;
@@ -442,7 +380,7 @@ public class FrmReporteComandas extends JFrame implements ComandaObserver{
                     
             String filCliente = cli.isEmpty() ? null : cli;
             
-            List<ComandaDTO> datos = coordinador.buscarComandas(filMesa, filEstado, iniFiltro, finFiltro, filCliente);
+            List<ComandaDTO> datos = coordinador.buscarComandasEntregadas(filMesa, iniFiltro, finFiltro, filCliente);
                     
             if(datos.isEmpty()){
                 JOptionPane.showMessageDialog(this, "No hay datos");

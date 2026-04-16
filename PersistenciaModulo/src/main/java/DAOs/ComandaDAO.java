@@ -38,13 +38,13 @@ public class ComandaDAO {
             //Iniciamos la transacción
             em.getTransaction().begin();
             if(comanda.getMesa() == null || comanda.getMesa().getId() == null){
-                throw new Exception("El objeto Mesa o su ID llegaron nulos al DAO.");
+                throw new PersistenciaException("El objeto Mesa o su ID llegaron nulos al DAO.");
             }
             System.out.println("DAO: Buscando mesa con ID: " + comanda.getMesa().getId());
             
             Mesa mesa = em.getReference(Mesa.class, comanda.getMesa().getId());
             if (mesa == null) {
-                throw new Exception("La mesa con ID " + comanda.getMesa().getId() + " no existe en la base de datos.");
+                throw new PersistenciaException("La mesa con ID " + comanda.getMesa().getId() + " no existe en la base de datos.");
             }
             
             comanda.setMesa(mesa);
@@ -56,7 +56,7 @@ public class ComandaDAO {
             LOG.info("Se insertó la comanda de folio: " + comanda.getFolio());
             return comanda;
 
-        } catch (Exception e) {
+        } catch (PersistenciaException e) {
             //Si ocurre un error no se hace nada, la base vuelve a la normalidad
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
@@ -159,15 +159,13 @@ public class ComandaDAO {
         }
     }
     
-    public List<Comanda> buscarPorFiltros(Integer mesa, EstadoComandaDTO estado, LocalDateTime inicio, LocalDateTime fin, String cliente) throws PersistenciaException {
+    public List<Comanda> buscarEntregadasPorFiltros(Integer mesa, LocalDateTime inicio, LocalDateTime fin, String cliente) throws PersistenciaException {
         EntityManager em = ConexionBD.crearConexion();
         try {
-            StringBuilder jpql = new StringBuilder("select c from Comanda c where 1=1");
+            StringBuilder jpql = new StringBuilder("select c from Comanda c left join c.cliente cl where c.estado = :estado");
+            
             if (mesa != null) {
                 jpql.append(" and c.mesa.numero = :mesa");
-            }
-            if (estado != null) {
-                jpql.append(" and c.estado = :estado");
             }
             if (inicio != null && fin != null) {
                 jpql.append(" and c.fechaHora between :inicio and :fin");
@@ -177,12 +175,10 @@ public class ComandaDAO {
             }
 
             TypedQuery<Comanda> query = em.createQuery(jpql.toString(), Comanda.class);
+            query.setParameter("estado", EstadoComanda.ENTREGADA);
             
             if(mesa != null){
                 query.setParameter("mesa", mesa);
-            }
-            if(estado != null){
-                query.setParameter("estado", EstadoComanda.valueOf(estado.name()));
             }
             if(inicio != null && fin != null){
                 query.setParameter("inicio", inicio);
@@ -193,7 +189,7 @@ public class ComandaDAO {
             }
             return query.getResultList();
         } catch (Exception e) {
-            throw new PersistenciaException("Error al buscar las comandas");
+            throw new PersistenciaException("Error al buscar las comandas. "+e.getMessage());
         } finally {
             em.close();
         }
@@ -206,6 +202,9 @@ public class ComandaDAO {
      * @throws PersistenciaException
      */
     public Comanda modificarComanda(Comanda comanda) throws PersistenciaException{
+        if(comanda == null) {
+            throw new PersistenciaException("No se puede modificar una comanda nula");
+        }
         EntityManager em = ConexionBD.crearConexion();
         try{
             em.getTransaction().begin();

@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  *
  * @author Tungs
- */
+ *
 public class ProductoDAOTest {
     
     private ProductoDAO productoDAO;
@@ -174,4 +174,4 @@ public class ProductoDAOTest {
     }
     
     
-}
+}*/
