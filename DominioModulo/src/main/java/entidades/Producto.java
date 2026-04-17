@@ -53,6 +53,17 @@ public class Producto implements Serializable {
     @OneToMany(mappedBy = "producto", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, orphanRemoval = true)
     private List<ProductoIngrediente> ingredientes;
 
+    /**
+     * Constructor que inicializa todos los atributos de la clase
+     * @param id
+     * @param nombre
+     * @param precio
+     * @param tipo
+     * @param descripcion
+     * @param estado
+     * @param imagenUrl
+     * @param ingredientes
+     */
     public Producto(Long id, String nombre, Double precio, String tipo, String descripcion, EstadoProducto estado, String imagenUrl, List<ProductoIngrediente> ingredientes) {
         this.id = id;
         this.nombre = nombre;
@@ -64,37 +75,72 @@ public class Producto implements Serializable {
         this.ingredientes = ingredientes;
     }
 
+    /**
+     * Constructor vacio.
+     */
     public Producto() {
     }
 
+    /**
+     * Metodo que devuelve el id de un producto
+     * @return id
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * Metodo que modifica el id de un producto
+     * @param id el nuevo id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     * Metodo que devuelve el nombre de un producto
+     * @return nombre del producto
+     */
     public String getNombre() {
         return nombre;
     }
 
+    /**
+     * Metodo que modifica el nombre de un producto
+     * @param nombre nuevo nombre
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    /**
+     * Metodo que devuelve el precio de un producto
+     * @return precio de un producto
+     */
     public Double getPrecio() {
         return precio;
     }
 
+    /**
+     * Metodo que modifica el precio de un producto
+     * @param precio
+     */
     public void setPrecio(Double precio) {
         this.precio = precio;
     }
 
+    /**
+     * Metodo que devuelve el tipo de un producto
+     * @return tipo de producto
+     */
     public String getTipo() {
         return tipo;
     }
 
+    /**
+     * Metodo que modifica el tipo de un producto
+     * @param tipo
+     */
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }

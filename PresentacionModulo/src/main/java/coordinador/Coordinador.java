@@ -60,7 +60,6 @@ import pantallas.FrmRegistrarIngrediente;
 import pantallas.FrmRegistrarProducto;
 import pantallas.FrmReporteClientesFrecuentes;
 import pantallas.FrmReporteComandas;
-import pantallas.FrmSeleccionadorMesa;
 import pantallas.FrmSeleccionarId;
 import pantallas.FrmSeleccionarMesa;
 
@@ -767,6 +766,10 @@ public class Coordinador {
                     "Error al buscar comandas: " + e.getMessage());
             return new ArrayList<>();
         }
+    }
+    
+    public Double calcularTotalComandas(List<ComandaDTO> comandas) {
+        return comandaBO.calcularTotalComandas(comandas);
     }
     
     public ProductoDTO obtenerProductoPorId(Long id) throws NegocioException{

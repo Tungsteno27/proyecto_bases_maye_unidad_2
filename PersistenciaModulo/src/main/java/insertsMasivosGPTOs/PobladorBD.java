@@ -169,7 +169,7 @@ public class PobladorBD {
             // 7. MESAS
             // =====================
             List<Mesa> mesas = new ArrayList<>();
-            for (int i = 1; i <= 5; i++) {
+            for (int i = 1; i <= 20; i++) {
                 Mesa mesa = new Mesa();
                 mesa.setNumero(i);
                 mesa.setEstado(EstadoMesa.DISPONIBLE);
@@ -214,6 +214,19 @@ public class PobladorBD {
                 comanda.setTotalComanda(totalComanda);
                 em.merge(comanda);
             }
+            
+            // =====================
+            // Registro fijo
+            // =====================
+            Comanda comandaFija = new Comanda();
+            comandaFija.setFolio("F-FIXED-100"); 
+            comandaFija.setEstado(EstadoComanda.ENTREGADA); 
+            comandaFija.setFechaHora(LocalDateTime.now());
+            comandaFija.setTotalComanda(500.0);
+            comandaFija.setMesa(mesas.get(0));
+            comandaFija.setMesero(meseros.get(0));
+            comandaFija.setCliente(clientes.get(0));
+            em.persist(comandaFija);
 
             em.getTransaction().commit();
             System.out.println("¡Base de datos poblada con éxito!");

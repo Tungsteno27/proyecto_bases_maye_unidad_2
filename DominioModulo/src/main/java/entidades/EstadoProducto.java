@@ -5,7 +5,7 @@
 package entidades;
 
 /**
- *
+ * Clase que representa los estados en los que puede estar un producto
  * @author Tungs
  */
 public enum EstadoProducto {

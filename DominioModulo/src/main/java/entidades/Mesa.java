@@ -37,40 +37,69 @@ public class Mesa implements Serializable {
     @JoinColumn(name = "estado", nullable = false)
     private EstadoMesa estado;
 
+    /**
+     * Constructor que recibe como paramentro todos los atributos de la clase
+     * @param id
+     * @param numero
+     * @param estado
+     */
     public Mesa(Long id, Integer numero, EstadoMesa estado) {
         this.id = id;
         this.numero = numero;
         this.estado = estado;
     }
 
+    /**
+     * Constructor vacio.
+     */
     public Mesa() {
     }
     
+    /**
+     * Metodo que devuelve el id de una mesa
+     * @return id
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * Metodo que modifica el id de una mesa
+     * @param id el nuevo id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     * Metodo que devuelve el numero de una mesa
+     * @return el numero de la mesa
+     */
     public Integer getNumero() {
         return numero;
     }
 
+    /**
+     * Metodo que modifica el id de una mesa
+     * @param numero el nuevo numero de la mesa
+     */
     public void setNumero(Integer numero) {
         this.numero = numero;
     }
 
+    /**
+     * Metodo que devuelve el estado de una mesa
+     * @return estado de la mesa
+     */
     public EstadoMesa getEstado() {
         return estado;
     }
 
+    /**
+     * Metodo que modifica el estado de una mesa
+     * @param estado el nuevo estado de la mesa
+     */
     public void setEstado(EstadoMesa estado) {
         this.estado = estado;
     }
-    
-    
-    
-
 }

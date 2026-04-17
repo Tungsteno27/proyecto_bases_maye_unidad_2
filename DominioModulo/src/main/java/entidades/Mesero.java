@@ -28,23 +28,47 @@ public class Mesero extends Empleado implements Serializable {
     @OneToMany(mappedBy = "mesero")
     private List<Comanda> comandas;
 
+    /**
+     * Constructor que recibe como parametro todos los atributos de la clase padre y de esta clase
+     * @param comandas
+     * @param id
+     * @param nombres
+     * @param apellidoPaterno
+     * @param apellidoMaterno
+     * @param fechaRegistro
+     */
     public Mesero(List<Comanda> comandas, Long id, String nombres, String apellidoPaterno, String apellidoMaterno, LocalDate fechaRegistro) {
         super(id, nombres, apellidoPaterno, apellidoMaterno, fechaRegistro);
         this.comandas = comandas;
     }
 
+    /**
+     * Constructor que recibe como parametro los atributos de esta clase
+     * @param comandas
+     */
     public Mesero(List<Comanda> comandas) {
         this.comandas = comandas;
     }
 
+    /**
+     * Constructor vacio.
+     */
     public Mesero() {
         super();
     }
 
+    /**
+     * Metodo que devuelve el id de un mesero
+     * @return comandas
+     */
     public List<Comanda> getComandas() {
         return comandas;
     }
 
+    /**
+     * Metodo que modifica el id de un mesero
+     * @param comandas la nueva comanda
+     */
     public void setComandas(List<Comanda> comandas) {
         this.comandas = comandas;
     }

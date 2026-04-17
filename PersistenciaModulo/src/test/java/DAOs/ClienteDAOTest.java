@@ -4,11 +4,14 @@
  */
 package DAOs;
 
+import conexion.ConexionBD;
 import entidades.Cliente;
 import entidades.ClienteFrecuente;
 import excepciones.PersistenciaException;
 import insertsMasivosGPTOs.PobladorBD;
 import java.util.List;
+import javax.persistence.EntityManager;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
@@ -36,6 +39,22 @@ public class ClienteDAOTest {
         
         Cliente guardado = dao.registrarCliente(temp);
         this.idPrueba = guardado.getId();
+    }
+    
+    @AfterEach
+    public void tearDown(){
+        EntityManager em = ConexionBD.crearConexion();
+        try{
+            em.getTransaction().begin();
+            em.createQuery("DELETE FROM Comanda c WHERE c.cliente.nombres IN ('Test', 'Dayanara', 'Nombre Editado', 'Fantasma')").executeUpdate();
+            em.createQuery("DELETE FROM Cliente c WHERE c.nombres IN ('Test', 'Dayanara', 'Nombre Editado', 'Fantasma')").executeUpdate();
+            em.getTransaction().commit();
+        }catch (Exception e) {
+            if (em.getTransaction().isActive()) em.getTransaction().rollback();
+            System.err.println("Error limpiando datos de prueba: " + e.getMessage());
+        } finally {
+            em.close();
+        }
     }
     
     /**

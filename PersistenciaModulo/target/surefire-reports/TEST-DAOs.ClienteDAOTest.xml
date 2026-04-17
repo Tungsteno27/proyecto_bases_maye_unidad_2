@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="DAOs.ClienteDAOTest" time="3.785" tests="15" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="DAOs.ClienteDAOTest" time="2.778" tests="15" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="23"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="user.country" value="MX"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-23\bin"/>
-    <property name="sun.java.command" value="C:\Users\dayan\AppData\Local\Temp\surefire8229679647217598066\surefirebooter-20260415231902003_3.jar C:\Users\dayan\AppData\Local\Temp\surefire8229679647217598066 2026-04-15T23-18-56_678-jvmRun1 surefire-20260415231902003_1tmp surefire_0-20260415231902003_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\dayan\AppData\Local\Temp\surefire11600621180479080432\surefirebooter-20260416212859257_3.jar C:\Users\dayan\AppData\Local\Temp\surefire11600621180479080432 2026-04-16T21-28-55_832-jvmRun1 surefire-20260416212859257_1tmp surefire_0-20260416212859257_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\dayan\OneDrive\Documentos\GitHub\proyecto_bases_maye_unidad_2\PersistenciaModulo\target\test-classes;C:\Users\dayan\OneDrive\Documentos\GitHub\proyecto_bases_maye_unidad_2\PersistenciaModulo\target\classes;C:\Users\dayan\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.core\2.7.12\org.eclipse.persistence.core-2.7.12.jar;C:\Users\dayan\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.asm\9.4.0\org.eclipse.persistence.asm-9.4.0.jar;C:\Users\dayan\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.antlr\2.7.12\org.eclipse.persistence.antlr-2.7.12.jar;C:\Users\dayan\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.jpa\2.7.12\org.eclipse.persistence.jpa-2.7.12.jar;C:\Users\dayan\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.jpa.jpql\2.7.12\org.eclipse.persistence.jpa.jpql-2.7.12.jar;C:\Users\dayan\.m2\repository\org\eclipse\persistence\org.eclipse.persistence.moxy\2.7.12\org.eclipse.persistence.moxy-2.7.12.jar;C:\Users\dayan\.m2\repository\org\eclipse\persistence\jakarta.persistence\2.2.3\jakarta.persistence-2.2.3.jar;C:\Users\dayan\OneDrive\Documentos\GitHub\proyecto_bases_maye_unidad_2\DominioModulo\target\DominioModulo-1.0-SNAPSHOT.jar;C:\Users\dayan\.m2\repository\com\mysql\mysql-connector-j\9.0.0\mysql-connector-j-9.0.0.jar;C:\Users\dayan\.m2\repository\com\google\protobuf\protobuf-java\4.26.1\protobuf-java-4.26.1.jar;C:\Users\dayan\OneDrive\Documentos\GitHub\proyecto_bases_maye_unidad_2\DTOsModulo\target\DTOsModulo-1.0-SNAPSHOT.jar;C:\Users\dayan\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.3\junit-jupiter-api-5.10.3.jar;C:\Users\dayan\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\dayan\.m2\repository\org\junit\platform\junit-platform-commons\1.10.3\junit-platform-commons-1.10.3.jar;C:\Users\dayan\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\dayan\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.3\junit-jupiter-params-5.10.3.jar;C:\Users\dayan\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.3\junit-jupiter-engine-5.10.3.jar;C:\Users\dayan\.m2\repository\org\junit\platform\junit-platform-engine\1.10.3\junit-platform-engine-1.10.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\dayan\AppData\Local\Temp\surefire8229679647217598066\surefirebooter-20260415231902003_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\dayan\AppData\Local\Temp\surefire11600621180479080432\surefirebooter-20260416212859257_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="23.0.2+7-58"/>
@@ -59,22 +59,22 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="67.0"/>
   </properties>
-  <testcase name="testEliminarCliente_Fail" classname="DAOs.ClienteDAOTest" time="2.358">
-    <system-out><![CDATA[[EL Info]: 2026-04-15 23:19:04.425--ServerSession(1140338296)--EclipseLink, version: Eclipse Persistence Services - 2.7.12.v20230209-e5c4074ef3
+  <testcase name="testEliminarCliente_Fail" classname="DAOs.ClienteDAOTest" time="1.596">
+    <system-out><![CDATA[[EL Info]: 2026-04-16 21:29:00.752--ServerSession(317562294)--EclipseLink, version: Eclipse Persistence Services - 2.7.12.v20230209-e5c4074ef3
 eliminarCliente
 ]]></system-out>
-    <system-err><![CDATA[abr 15, 2026 11:19:05 P.M. DAOs.ClienteDAO registrarCliente
+    <system-err><![CDATA[abr 16, 2026 9:29:01 P.M. DAOs.ClienteDAO registrarCliente
 INFO: se insertó al cliente de nombre: Test
 java.lang.IllegalArgumentException: An instance of a null PK has been incorrectly provided for this find operation.
 	at org.eclipse.persistence.internal.jpa.EntityManagerImpl.findInternal(EntityManagerImpl.java:886)
 	at org.eclipse.persistence.internal.jpa.EntityManagerImpl.find(EntityManagerImpl.java:830)
 	at org.eclipse.persistence.internal.jpa.EntityManagerImpl.find(EntityManagerImpl.java:696)
 	at DAOs.ClienteDAO.eliminarCliente(ClienteDAO.java:106)
-	at DAOs.ClienteDAOTest.lambda$testEliminarCliente_Fail$2(ClienteDAOTest.java:118)
+	at DAOs.ClienteDAOTest.lambda$testEliminarCliente_Fail$2(ClienteDAOTest.java:137)
 	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
 	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
 	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3115)
-	at DAOs.ClienteDAOTest.testEliminarCliente_Fail(ClienteDAOTest.java:117)
+	at DAOs.ClienteDAOTest.testEliminarCliente_Fail(ClienteDAOTest.java:136)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
@@ -144,132 +144,132 @@ java.lang.IllegalArgumentException: An instance of a null PK has been incorrectl
 	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
-abr 15, 2026 11:19:05 P.M. DAOs.ClienteDAO eliminarCliente
+abr 16, 2026 9:29:01 P.M. DAOs.ClienteDAO eliminarCliente
 WARNING: Ocurrió un error al intentar eliminar al cliente con id: null
 ]]></system-err>
   </testcase>
-  <testcase name="testObtenerFrecuentes" classname="DAOs.ClienteDAOTest" time="0.4">
+  <testcase name="testObtenerFrecuentes" classname="DAOs.ClienteDAOTest" time="0.061">
     <system-out><![CDATA[obtenerFrecuentes
 ]]></system-out>
-    <system-err><![CDATA[abr 15, 2026 11:19:05 P.M. DAOs.ClienteDAO registrarCliente
+    <system-err><![CDATA[abr 16, 2026 9:29:01 P.M. DAOs.ClienteDAO registrarCliente
 INFO: se insertó al cliente de nombre: Test
 ]]></system-err>
   </testcase>
-  <testcase name="testCalcularTotalGastado_Exitoso" classname="DAOs.ClienteDAOTest" time="0.061">
+  <testcase name="testCalcularTotalGastado_Exitoso" classname="DAOs.ClienteDAOTest" time="0.042">
     <system-out><![CDATA[calcularTotalGastado
 ]]></system-out>
-    <system-err><![CDATA[abr 15, 2026 11:19:06 P.M. DAOs.ClienteDAO registrarCliente
+    <system-err><![CDATA[abr 16, 2026 9:29:01 P.M. DAOs.ClienteDAO registrarCliente
 INFO: se insertó al cliente de nombre: Test
-abr 15, 2026 11:19:06 P.M. DAOs.ClienteDAO calcularTotalGastado
-INFO: El cliente de id 307 no  ha gastado nada aún
+abr 16, 2026 9:29:01 P.M. DAOs.ClienteDAO calcularTotalGastado
+INFO: El cliente de id 9 no  ha gastado nada aún
 ]]></system-err>
   </testcase>
-  <testcase name="testBuscarCliente_Exitoso" classname="DAOs.ClienteDAOTest" time="0.017">
+  <testcase name="testBuscarCliente_Exitoso" classname="DAOs.ClienteDAOTest" time="0.029">
     <system-out><![CDATA[buscarCliente
 ]]></system-out>
-    <system-err><![CDATA[abr 15, 2026 11:19:06 P.M. DAOs.ClienteDAO registrarCliente
+    <system-err><![CDATA[abr 16, 2026 9:29:01 P.M. DAOs.ClienteDAO registrarCliente
 INFO: se insertó al cliente de nombre: Test
-abr 15, 2026 11:19:06 P.M. DAOs.ClienteDAO buscarCliente
-INFO: Se encontró al cliente con id: 308
+abr 16, 2026 9:29:01 P.M. DAOs.ClienteDAO buscarCliente
+INFO: Se encontró al cliente con id: 10
 ]]></system-err>
   </testcase>
-  <testcase name="testObtenerTodosLosClientes" classname="DAOs.ClienteDAOTest" time="0.088">
+  <testcase name="testObtenerTodosLosClientes" classname="DAOs.ClienteDAOTest" time="0.039">
     <system-out><![CDATA[obtenerTodosLosClientes
 ]]></system-out>
-    <system-err><![CDATA[abr 15, 2026 11:19:06 P.M. DAOs.ClienteDAO registrarCliente
+    <system-err><![CDATA[abr 16, 2026 9:29:01 P.M. DAOs.ClienteDAO registrarCliente
 INFO: se insertó al cliente de nombre: Test
 ]]></system-err>
   </testcase>
-  <testcase name="testRegistrarCliente_Error" classname="DAOs.ClienteDAOTest" time="0.605">
+  <testcase name="testRegistrarCliente_Error" classname="DAOs.ClienteDAOTest" time="0.638">
     <system-out><![CDATA[registrarCliente
-[EL Warning]: 2026-04-15 23:19:07.014--UnitOfWork(1150480094)--Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.7.12.v20230209-e5c4074ef3): org.eclipse.persistence.exceptions.DatabaseException
+[EL Warning]: 2026-04-16 21:29:02.592--UnitOfWork(16556935)--Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.7.12.v20230209-e5c4074ef3): org.eclipse.persistence.exceptions.DatabaseException
 Internal Exception: java.sql.SQLIntegrityConstraintViolationException: Column 'nombres' cannot be null
 Error Code: 1048
 Call: INSERT INTO clientes (apellido_materno, apellido_paterno, correo, fecha_registro, nombres, telefono, tipo_cliente) VALUES (?, ?, ?, ?, ?, ?, ?)
 	bind => [7 parameters bound]
 Query: InsertObjectQuery(com.mycompany.persistenciamodulo.Cliente[ id=null ])
 ]]></system-out>
-    <system-err><![CDATA[abr 15, 2026 11:19:06 P.M. DAOs.ClienteDAO registrarCliente
+    <system-err><![CDATA[abr 16, 2026 9:29:01 P.M. DAOs.ClienteDAO registrarCliente
 INFO: se insertó al cliente de nombre: Test
-abr 15, 2026 11:19:07 P.M. DAOs.ClienteDAO registrarCliente
+abr 16, 2026 9:29:02 P.M. DAOs.ClienteDAO registrarCliente
 WARNING: Ocurrió un error al intentar insertar al cliente de nombre: null
 ]]></system-err>
   </testcase>
-  <testcase name="testBuscarFrecuentesPorFiltros_Fail" classname="DAOs.ClienteDAOTest" time="0.023">
+  <testcase name="testBuscarFrecuentesPorFiltros_Fail" classname="DAOs.ClienteDAOTest" time="0.035">
     <system-out><![CDATA[buscarFrecuentesPorFiltros
 ]]></system-out>
-    <system-err><![CDATA[abr 15, 2026 11:19:07 P.M. DAOs.ClienteDAO registrarCliente
+    <system-err><![CDATA[abr 16, 2026 9:29:02 P.M. DAOs.ClienteDAO registrarCliente
 INFO: se insertó al cliente de nombre: Test
 ]]></system-err>
   </testcase>
-  <testcase name="testRegistrarCliente_Exitoso" classname="DAOs.ClienteDAOTest" time="0.025">
+  <testcase name="testRegistrarCliente_Exitoso" classname="DAOs.ClienteDAOTest" time="0.046">
     <system-out><![CDATA[registrarCliente
 ]]></system-out>
-    <system-err><![CDATA[abr 15, 2026 11:19:07 P.M. DAOs.ClienteDAO registrarCliente
+    <system-err><![CDATA[abr 16, 2026 9:29:02 P.M. DAOs.ClienteDAO registrarCliente
 INFO: se insertó al cliente de nombre: Test
-abr 15, 2026 11:19:07 P.M. DAOs.ClienteDAO registrarCliente
+abr 16, 2026 9:29:02 P.M. DAOs.ClienteDAO registrarCliente
 INFO: se insertó al cliente de nombre: Dayanara
 ]]></system-err>
   </testcase>
-  <testcase name="testEliminarCliente_Exitoso" classname="DAOs.ClienteDAOTest" time="0.034">
+  <testcase name="testEliminarCliente_Exitoso" classname="DAOs.ClienteDAOTest" time="0.042">
     <system-out><![CDATA[eliminarCliente
 ]]></system-out>
-    <system-err><![CDATA[abr 15, 2026 11:19:07 P.M. DAOs.ClienteDAO registrarCliente
+    <system-err><![CDATA[abr 16, 2026 9:29:02 P.M. DAOs.ClienteDAO registrarCliente
 INFO: se insertó al cliente de nombre: Test
-abr 15, 2026 11:19:07 P.M. DAOs.ClienteDAO eliminarCliente
-INFO: Se eliminó al cliente con id: 314
-abr 15, 2026 11:19:07 P.M. DAOs.ClienteDAO buscarCliente
-WARNING: No se encontró ningún cliente con id: 314
+abr 16, 2026 9:29:02 P.M. DAOs.ClienteDAO eliminarCliente
+INFO: Se eliminó al cliente con id: 16
+abr 16, 2026 9:29:02 P.M. DAOs.ClienteDAO buscarCliente
+WARNING: No se encontró ningún cliente con id: 16
 ]]></system-err>
   </testcase>
-  <testcase name="testCalcularTotalGastado_Fail" classname="DAOs.ClienteDAOTest" time="0.015">
+  <testcase name="testCalcularTotalGastado_Fail" classname="DAOs.ClienteDAOTest" time="0.033">
     <system-out><![CDATA[calcularTotalGastado
 ]]></system-out>
-    <system-err><![CDATA[abr 15, 2026 11:19:07 P.M. DAOs.ClienteDAO registrarCliente
+    <system-err><![CDATA[abr 16, 2026 9:29:02 P.M. DAOs.ClienteDAO registrarCliente
 INFO: se insertó al cliente de nombre: Test
-abr 15, 2026 11:19:07 P.M. DAOs.ClienteDAO calcularTotalGastado
+abr 16, 2026 9:29:02 P.M. DAOs.ClienteDAO calcularTotalGastado
 INFO: El cliente de id null no  ha gastado nada aún
 ]]></system-err>
   </testcase>
-  <testcase name="testCalcularVisitas_Fail" classname="DAOs.ClienteDAOTest" time="0.017">
+  <testcase name="testCalcularVisitas_Fail" classname="DAOs.ClienteDAOTest" time="0.034">
     <system-out><![CDATA[calcularVisitas
 ]]></system-out>
-    <system-err><![CDATA[abr 15, 2026 11:19:07 P.M. DAOs.ClienteDAO registrarCliente
+    <system-err><![CDATA[abr 16, 2026 9:29:02 P.M. DAOs.ClienteDAO registrarCliente
 INFO: se insertó al cliente de nombre: Test
 ]]></system-err>
   </testcase>
-  <testcase name="testActualizarCliente_Fail" classname="DAOs.ClienteDAOTest" time="0.014">
+  <testcase name="testActualizarCliente_Fail" classname="DAOs.ClienteDAOTest" time="0.034">
     <system-out><![CDATA[actualizarCliente
 ]]></system-out>
-    <system-err><![CDATA[abr 15, 2026 11:19:07 P.M. DAOs.ClienteDAO registrarCliente
+    <system-err><![CDATA[abr 16, 2026 9:29:02 P.M. DAOs.ClienteDAO registrarCliente
 INFO: se insertó al cliente de nombre: Test
 ]]></system-err>
   </testcase>
-  <testcase name="testBuscarCliente_Fail" classname="DAOs.ClienteDAOTest" time="0.017">
+  <testcase name="testBuscarCliente_Fail" classname="DAOs.ClienteDAOTest" time="0.033">
     <system-out><![CDATA[buscarCliente
 ]]></system-out>
-    <system-err><![CDATA[abr 15, 2026 11:19:07 P.M. DAOs.ClienteDAO registrarCliente
+    <system-err><![CDATA[abr 16, 2026 9:29:02 P.M. DAOs.ClienteDAO registrarCliente
 INFO: se insertó al cliente de nombre: Test
-abr 15, 2026 11:19:07 P.M. DAOs.ClienteDAO buscarCliente
+abr 16, 2026 9:29:02 P.M. DAOs.ClienteDAO buscarCliente
 WARNING: No se encontró ningún cliente con id: -1
 ]]></system-err>
   </testcase>
-  <testcase name="testCalcularVisitas_Vacio" classname="DAOs.ClienteDAOTest" time="0.016">
+  <testcase name="testCalcularVisitas_Vacio" classname="DAOs.ClienteDAOTest" time="0.03">
     <system-out><![CDATA[calcularVisitas
 ]]></system-out>
-    <system-err><![CDATA[abr 15, 2026 11:19:07 P.M. DAOs.ClienteDAO registrarCliente
+    <system-err><![CDATA[abr 16, 2026 9:29:02 P.M. DAOs.ClienteDAO registrarCliente
 INFO: se insertó al cliente de nombre: Test
 ]]></system-err>
   </testcase>
-  <testcase name="testActualizarCliente_Exitoso" classname="DAOs.ClienteDAOTest" time="0.038">
+  <testcase name="testActualizarCliente_Exitoso" classname="DAOs.ClienteDAOTest" time="0.037">
     <system-out><![CDATA[actualizarCliente
 ]]></system-out>
-    <system-err><![CDATA[abr 15, 2026 11:19:07 P.M. DAOs.ClienteDAO registrarCliente
+    <system-err><![CDATA[abr 16, 2026 9:29:02 P.M. DAOs.ClienteDAO registrarCliente
 INFO: se insertó al cliente de nombre: Test
-abr 15, 2026 11:19:07 P.M. DAOs.ClienteDAO buscarCliente
-INFO: Se encontró al cliente con id: 320
-abr 15, 2026 11:19:07 P.M. DAOs.ClienteDAO actualizarCliente
-INFO: Se actualizó el cliente con id: 320
+abr 16, 2026 9:29:02 P.M. DAOs.ClienteDAO buscarCliente
+INFO: Se encontró al cliente con id: 22
+abr 16, 2026 9:29:02 P.M. DAOs.ClienteDAO actualizarCliente
+INFO: Se actualizó el cliente con id: 22
 ]]></system-err>
   </testcase>
 </testsuite>

@@ -97,7 +97,7 @@ public class FrmComanda extends JFrame{
         
         folioYmesa.add(new JLabel("Mesa:"));
         textMesa = UI.texto();
-        textFolio.setEditable(false);
+        textMesa.setEditable(false);
         textMesa.setPreferredSize(new Dimension(80, 35));
         folioYmesa.add(textMesa);
         
@@ -105,6 +105,7 @@ public class FrmComanda extends JFrame{
         filaCliente.setOpaque(false);
         filaCliente.add(new JLabel("Cliente:"));
         textCliente = UI.texto();
+        textCliente.setEditable(false);
         textCliente.setPreferredSize(new Dimension(450, 35));
         filaCliente.add(textCliente);
         

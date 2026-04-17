@@ -63,6 +63,7 @@ public class FrmReporteComandas extends JFrame implements ComandaObserver{
     private JTable tabla;
     private DefaultTableModel modeloTabla;
     private JComboBox<String> estado;
+    private JLabel totalGeneral;
 
 
     public FrmReporteComandas(Coordinador coordinador) throws PersistenciaException {
@@ -201,8 +202,12 @@ public class FrmReporteComandas extends JFrame implements ComandaObserver{
 
         card.add(lateral, BorderLayout.EAST);
         
-        JPanel footer = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        JPanel footer = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         footer.setOpaque(false);
+        
+        totalGeneral = UI.titulo("Total General: $0.00");
+        footer.add(totalGeneral);
+        footer.add(Box.createHorizontalStrut(30));
         
         JButton btnPDF = UI.botonPrimario("Generar PDF");
         btnPDF.setPreferredSize(new Dimension(140, 40));
@@ -314,6 +319,8 @@ public class FrmReporteComandas extends JFrame implements ComandaObserver{
         modeloTabla.setRowCount(0);
         if (lista == null) return;
         
+        Double sumaTotal = coordinador.calcularTotalComandas(lista);
+        
         for (ComandaDTO c : lista) {
             StringBuilder prods = new StringBuilder();
             if(c.getComandaProductos() != null){
@@ -334,6 +341,9 @@ public class FrmReporteComandas extends JFrame implements ComandaObserver{
                 prods.toString(),
                 "$" + c.getTotalComanda()
             });
+        }
+        if(totalGeneral != null){
+            totalGeneral.setText(String.format("Total general: $%.2f", sumaTotal));
         }
         
     }

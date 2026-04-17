@@ -5,7 +5,7 @@
 package entidades;
 
 /**
- *
+ * Clase que representa los estados en los que puede estar una mesa
  * @author Dayanara Peralta G
  */
 public enum EstadoMesa {

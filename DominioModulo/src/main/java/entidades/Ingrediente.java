@@ -39,6 +39,13 @@ public class Ingrediente implements Serializable {
     @Column(name = "unidad_medida")
     private UnidadMedida unidadMedida;
 
+    /**
+     * Constructor que recibe como parametro todos los atributos de la clase
+     * @param id
+     * @param nombre
+     * @param stock
+     * @param unidadMedida
+     */
     public Ingrediente(Long id, String nombre, Double stock, UnidadMedida unidadMedida) {
         this.id = id;
         this.nombre = nombre;
@@ -46,40 +53,73 @@ public class Ingrediente implements Serializable {
         this.unidadMedida = unidadMedida;
     }
 
+    /**
+     * Constructor vacio.
+     */
     public Ingrediente() {
     }
 
+    /**
+     * Metodo que devuelve el id de un ingrediente
+     * @return id
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * Metodo que modifica el id de un ingrediente
+     * @param id el nuevo id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     * Metodo que devuelve el nombre de un ingrediente
+     * @return nombre
+     */
     public String getNombre() {
         return nombre;
     }
 
+    /**
+     * Metodo que modifica el nombre de un ingrediente
+     * @param nombre
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    /**
+     * Metodo que devuelve el stock que hay de un ingrediente
+     * @return stock
+     */
     public Double getStock() {
         return stock;
     }
 
+    /**
+     * Metodo que modifica el stock que hay de un ingrediente
+     * @param stock el nuevo stock
+     */
     public void setStock(Double stock) {
         this.stock = stock;
     }
 
+    /**
+     * Metodo que devuelve la unidad de medida de un ingrediente
+     * @return unidad de medida
+     */
     public UnidadMedida getUnidadMedida() {
         return unidadMedida;
     }
 
+    /**
+     * Metodo que modifica la unidad de medida de un ingrediente
+     * @param unidadMedida nueva unidad de medida
+     */
     public void setUnidadMedida(UnidadMedida unidadMedida) {
         this.unidadMedida = unidadMedida;
     }
-    
-    
 }

@@ -19,7 +19,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 /**
- *
+ * Clase Cliente que crea la tabla clientes en la base de datos
  * @author Tungs
  */
 @Entity
@@ -54,6 +54,15 @@ public class Cliente implements Serializable {
     @Column (name= "fecha_registro")
     private LocalDate fechaRegistro;
 
+    /**
+     * Constructor que inicializa todos los atributos de la clase Cliente
+     * @param nombres
+     * @param apellidoPaterno
+     * @param apellidoMaterno
+     * @param telefono
+     * @param correo
+     * @param fechaRegistro
+     */
     public Cliente(String nombres, String apellidoPaterno, String apellidoMaterno, String telefono, String correo, LocalDate fechaRegistro) {
         this.nombres = nombres;
         this.apellidoPaterno = apellidoPaterno;
@@ -63,72 +72,128 @@ public class Cliente implements Serializable {
         this.fechaRegistro = fechaRegistro;
     }
 
+    /**
+     * Constructor vacio.
+     */
     public Cliente() {
     }
 
+    /**
+     * Metodo que devuelve el nombre o los nombres del cliente
+     * @return nombres
+     */
     public String getNombres() {
         return nombres;
     }
 
+    /**
+     * Metodo que modifica el nombre o los nombre del cliente
+     * @param nombres el nombre o los nombres nuevo
+     */
     public void setNombres(String nombres) {
         this.nombres = nombres;
     }
 
+    /**
+     * Metodo que devuelve el apellido paterno del cliente
+     * @return apellido paterno
+     */
     public String getApellidoPaterno() {
         return apellidoPaterno;
     }
 
+    /**
+     * Metodo que modifica el apellido paterno del cliente
+     * @param apellidoPaterno el nuevo apellido
+     */
     public void setApellidoPaterno(String apellidoPaterno) {
         this.apellidoPaterno = apellidoPaterno;
     }
 
+    /**
+     * Metodo que devuelve el apellido materno del cliente
+     * @return apellido materno
+     */
     public String getApellidoMaterno() {
         return apellidoMaterno;
     }
 
+    /**
+     * Metodo que modifica el apellido materno del cliente
+     * @param apellidoMaterno el nuevo apellido
+     */
     public void setApellidoMaterno(String apellidoMaterno) {
         this.apellidoMaterno = apellidoMaterno;
     }
 
+    /**
+     * Metodo que devuelve el telefono del cliente
+     * @return telefono
+     */
     public String getTelefono() {
         return telefono;
     }
 
+    /**
+     * Metodo que modifica el telefono del cliente
+     * @param telefono el nuevo telefono
+     */
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
+    /**
+     * Metodo que devuelve el correo del cliente
+     * @return correo
+     */
     public String getCorreo() {
         return correo;
     }
 
+    /**
+     * Metodo que modifica el correo del cliente
+     * @param correo el correo nuevo
+     */
     public void setCorreo(String correo) {
         this.correo = correo;
     }
 
+    /**
+     * Metodo que devuelve la fecha de registro del cliente
+     * @return fecha de registro
+     */
     public LocalDate getFechaRegistro() {
         return fechaRegistro;
     }
 
+    /**
+     * Metodo que modifica el telefono del cliente
+     * @param fechaRegistro la nueva fecha de registro
+     */
     public void setFechaRegistro(LocalDate fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
     }
     
-    
-    
-    
-    
-    
-    
-    
+    /**
+     * Metodo que devuelve el id del cliente
+     * @return id
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * Metodo que modifica el id del cliente
+     * @param id
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
         int hash = 0;
@@ -136,6 +201,11 @@ public class Cliente implements Serializable {
         return hash;
     }
 
+    /**
+     *
+     * @param object
+     * @return
+     */
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
@@ -149,6 +219,10 @@ public class Cliente implements Serializable {
         return true;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "com.mycompany.persistenciamodulo.Cliente[ id=" + id + " ]";
